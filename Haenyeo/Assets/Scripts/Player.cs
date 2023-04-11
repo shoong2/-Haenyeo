@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public VariableJoystick joy; //¡∂¿ÃΩ∫∆Ω
@@ -49,7 +49,15 @@ public class Player : MonoBehaviour
         moveVec = new(Mathf.Clamp(moveVec.x, leftEdge, rightEdge), 
             Mathf.Clamp(moveVec.y, bottomEdge, topEdge));
 
+
         rigid.MovePosition(moveVec);
+
+        Debug.Log("Player"+ moveVec.y);
+        Debug.Log("Botton"+bottomEdge);
+        if (moveVec.y <= bottomEdge+2f)
+        {
+            SceneManager.LoadScene("UnderSea");
+        }
     }
 
 
