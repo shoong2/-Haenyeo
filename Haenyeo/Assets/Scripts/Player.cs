@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
-    public VariableJoystick joy; //조이스틱
+     VariableJoystick joy; //조이스틱
 
     public float speed = 1f; //움직임 속도
     float objectWidth;
-    float objectHeight;
+    protected float restrictY = 0.68f;
+    protected float objectHeight;
+
+    protected float x;
+    protected float y;
+    protected bool restrict = true;
 
     Rigidbody2D rigid; 
 
@@ -16,9 +21,19 @@ public class Player : MonoBehaviour
 
     SpriteRenderer render; //좌우반전 스프라이트 렌더러
 
-    Camera mainCamera;
+    protected Camera mainCamera;
 
-    private void Start()
+    float leftEdge;
+    float rightEdge;
+    float topEdge;
+    float bottomEdge;
+
+    private void Awake()
+    {
+        joy = FindObjectOfType<VariableJoystick>();
+    }
+
+    virtual protected void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
@@ -29,8 +44,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float x = joy.Horizontal;
-        float y = joy.Vertical;
+        Debug.Log(y);
+        x = joy.Horizontal;
+        y = joy.Vertical;
 
         //좌우반전
         if (x >= 0)
@@ -41,10 +57,12 @@ public class Player : MonoBehaviour
         moveVec = rigid.position + new Vector2(x, y) * speed * Time.deltaTime;
        
         //카메라 밖으로 나가지 않도록 제한
-        float leftEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
-        float rightEdge = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
-        float topEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 0.68f, 0)).y - objectHeight / 2;
-        float bottomEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
+
+        leftEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
+        rightEdge = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
+        topEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
+        bottomEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
+
 
         moveVec = new(Mathf.Clamp(moveVec.x, leftEdge, rightEdge), 
             Mathf.Clamp(moveVec.y, bottomEdge, topEdge));
@@ -52,9 +70,7 @@ public class Player : MonoBehaviour
 
         rigid.MovePosition(moveVec);
 
-        Debug.Log("Player"+ moveVec.y);
-        Debug.Log("Botton"+bottomEdge);
-        if (moveVec.y <= bottomEdge+2f)
+        if (SceneManager.GetActiveScene().name=="Sea" && moveVec.y <= bottomEdge+2f)
         {
             SceneManager.LoadScene("UnderSea");
         }
