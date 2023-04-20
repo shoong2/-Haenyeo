@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(y);
         x = joy.Horizontal;
         y = joy.Vertical;
 

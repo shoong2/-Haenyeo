@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
-    public void GoSea()
+   public void GoSea()
     {
-        SceneManager.LoadScene("Sea");
+        GameManager.instance.ChangeScene("Sea");
     }
 }
