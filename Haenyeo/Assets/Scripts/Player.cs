@@ -15,12 +15,13 @@ public class Player : MonoBehaviour
     protected float y;
     protected bool restrict = true;
 
-    Rigidbody2D rigid; 
+    protected Rigidbody2D rigid; 
 
     Vector2 moveVec; 
 
-    SpriteRenderer render; //좌우반전 스프라이트 렌더러
+    protected SpriteRenderer render; //좌우반전 스프라이트 렌더러
 
+    Animator playerAnim;
     protected Camera mainCamera;
 
     float leftEdge;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         joy = FindObjectOfType<VariableJoystick>();
+        playerAnim = GetComponent<Animator>();
     }
 
     virtual protected void Start()
@@ -42,16 +44,23 @@ public class Player : MonoBehaviour
         objectHeight = transform.localScale.y;
     }
 
-    private void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         x = joy.Horizontal;
         y = joy.Vertical;
 
         //좌우반전
-        if (x >= 0)
+        if (x > 0)
+        {
             render.flipX = true;
-        else
+            playerAnim.SetTrigger("Move");
+        }
+        else if (x < 0)
+        {
             render.flipX = false;
+        }
+        else
+            playerAnim.SetTrigger("Idle");
 
         moveVec = rigid.position + new Vector2(x, y) * speed * Time.deltaTime;
        

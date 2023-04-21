@@ -7,6 +7,7 @@ public class Player_UnderSea : Player
     Vector3 targetPosition;
     Vector3 tewakTargetPosition;
     Animator playerAnim;
+    public float rayLine = 3f;
     protected override void Start()
     {
         y = 0;
@@ -19,9 +20,16 @@ public class Player_UnderSea : Player
         StartCoroutine(StartUnderSea());
     }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
+        Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
+        RaycastHit2D raycast = Physics2D.Raycast(rigid.position, dir * rayLine);
+    }
+
     IEnumerator StartUnderSea()
     {
-
         while (transform.position != targetPosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, 2f * Time.deltaTime);
