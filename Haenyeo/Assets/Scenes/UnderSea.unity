@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 31765579}
   - component: {fileID: 31765578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shellfish3
   m_TagString: Hoe
   m_Icon: {fileID: 0}
@@ -217,7 +217,8 @@ GameObject:
   m_Component:
   - component: {fileID: 35713342}
   - component: {fileID: 35713341}
-  m_Layer: 0
+  - component: {fileID: 35713343}
+  m_Layer: 7
   m_Name: shellfish1
   m_TagString: Knife
   m_Icon: {fileID: 0}
@@ -291,6 +292,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &35713343
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35713340}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.8, y: 1.8}
+    newSize: {x: 1.8, y: 1.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 1.8}
+  m_EdgeRadius: 0
 --- !u!1 &140163175
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 140163177}
   - component: {fileID: 140163176}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shellfish2
   m_TagString: Knife
   m_Icon: {fileID: 0}
@@ -506,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 577664884}
   - component: {fileID: 577664883}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shellfish4
   m_TagString: Knife
   m_Icon: {fileID: 0}
@@ -597,7 +624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &609293217
 RectTransform:
   m_ObjectHideFlags: 0
@@ -613,11 +640,11 @@ RectTransform:
   m_Father: {fileID: 821007682}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 305, y: -410}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 248, y: 248}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &609293218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 892860650}
   - component: {fileID: 892860649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shellfish5
   m_TagString: Pole
   m_Icon: {fileID: 0}
@@ -1119,6 +1146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   rayLine: 2
+  toolGuide: {fileID: 609293216}
+  tools:
+  - {fileID: 1900126478}
+  - {fileID: 1056660768}
+  - {fileID: 277884214}
 --- !u!50 &1046422902
 Rigidbody2D:
   serializedVersion: 4

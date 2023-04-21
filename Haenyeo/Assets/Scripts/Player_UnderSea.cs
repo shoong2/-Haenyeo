@@ -8,6 +8,14 @@ public class Player_UnderSea : Player
     Vector3 tewakTargetPosition;
     Animator playerAnim;
     public float rayLine = 3f;
+    
+    
+
+    [SerializeField]
+    GameObject toolGuide;
+
+    [SerializeField]
+    GameObject[] tools;
     protected override void Start()
     {
         y = 0;
@@ -20,13 +28,33 @@ public class Player_UnderSea : Player
         StartCoroutine(StartUnderSea());
     }
 
-    protected override void FixedUpdate()
+    //protected override void FixedUpdate()
+    //{
+    //    base.FixedUpdate();
+    //    //Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
+    //    //Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
+    //    //RaycastHit2D raycast = Physics2D.Raycast(rigid.position, dir * rayLine);
+    //}
+
+    private void Update()
     {
-        base.FixedUpdate();
         Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
         Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
-        RaycastHit2D raycast = Physics2D.Raycast(rigid.position, dir * rayLine);
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, dir,rayLine, LayerMask.GetMask("Item"));
+
+        //if(raycast.collider.tag =="Knife")
+        //{
+        //    Debug.Log("?");
+        //    toolGuide.SetActive(true);
+        //    toolGuide.transform.position = tools[0].transform.position;
+        //}
+        if (raycast.collider.tag =="Knife")
+        {
+
+            Debug.Log(raycast.collider.name);
+        }
     }
+
 
     IEnumerator StartUnderSea()
     {
@@ -40,6 +68,8 @@ public class Player_UnderSea : Player
         restrictY = 1f;
 
     }
+
+    
 
 
 }
