@@ -8,7 +8,7 @@ public class Player_UnderSea : Player
     Vector3 tewakTargetPosition;
     Animator playerAnim;
     public float rayLine = 3f;
-
+    public GameObject seaHP;
     //[SerializeField]
     //GameObject hp;
     //[SerializeField]
@@ -35,13 +35,7 @@ public class Player_UnderSea : Player
         StartCoroutine(StartUnderSea());
     }
 
-    //protected override void FixedUpdate()
-    //{
-    //    base.FixedUpdate();
-    //    //Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
-    //    //Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
-    //    //RaycastHit2D raycast = Physics2D.Raycast(rigid.position, dir * rayLine);
-    //}
+    
 
     private void Update()
     {
@@ -54,30 +48,36 @@ public class Player_UnderSea : Player
         {
             if (raycast.collider.tag == "Knife")
             {
-                Debug.Log(raycast.collider.name);
-                toolGuide.SetActive(true);
-                toolGuide.transform.position = tools[0].transform.position;
+                GuideSetting(0);
+                GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
+                    Quaternion.identity, GameObject.Find("UnderSea").transform);
+                
             }
             else if (raycast.collider.tag == "Hoe")
             {
-                toolGuide.SetActive(true);
-                toolGuide.transform.position = tools[1].transform.position;
+                GuideSetting(1);
             }
             else if (raycast.collider.tag == "Pole")
             {
-                toolGuide.SetActive(true);
-                toolGuide.transform.position = tools[2].transform.position;
+                //toolGuide.SetActive(true);
+                //toolGuide.transform.position = tools[2].transform.position;
+                //toolGuide.transform.parent = tools[2].transform;
+                GuideSetting(2);
             }
         }
         else
             toolGuide.SetActive(false);
 
 
-        //Vector3 hpPos = mainCamera.WorldToScreenPoint(transform.position);
-        //hp.transform.position = transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0);
-        //hpSlider.fillAmount = currentHp / maxHp;
-        //currentHp -= Time.deltaTime;
+        
 
+    }
+
+    void GuideSetting(int index)
+    {
+        toolGuide.SetActive(true);
+        toolGuide.transform.position = tools[index].transform.position;
+        toolGuide.transform.parent = tools[index].transform;
     }
 
 
@@ -90,12 +90,27 @@ public class Player_UnderSea : Player
             yield return null;
         }
         yield return new WaitForSeconds(0.5f);
-        playerAnim.SetTrigger("Swim");
+        //playerAnim.SetTrigger("Swim");
+        playerAnim.SetBool("Move", false);
         restrictY = 1f;
 
     }
 
     
+    public void Hoe()
+    {
+        playerAnim.SetTrigger("Hoe");
+    }
+    
+    public void Knife()
+    {
+        playerAnim.SetTrigger("Knife");
+    }
 
+    public void Pole()
+    {
+        playerAnim.SetTrigger("Pole");
+        //playerAnim.SetBool("test", true);
+    }
 
 }

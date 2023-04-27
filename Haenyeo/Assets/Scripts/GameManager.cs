@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Image hpSlider;
     public float maxHp = 10f;
-    float currentHp;
+    public float currentHp;
 
     [SerializeField]
     GameObject player_UnderSea;
@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     Camera mainCamera;
 
     bool underSea = false;
+
+    public GameObject phone;
 
     public string previousSceneName;
 
@@ -137,5 +139,15 @@ public class GameManager : MonoBehaviour
     {
         previousSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void CheckPhone()
+    {
+        if (phone.activeSelf)
+        {
+            phone.SetActive(false);
+        }
+        else
+            phone.SetActive(true);
     }
 }

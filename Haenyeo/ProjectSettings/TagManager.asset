@@ -8,6 +8,7 @@ TagManager:
   - Knife
   - Hoe
   - Pole
+  - Ship
   layers:
   - Default
   - TransparentFX

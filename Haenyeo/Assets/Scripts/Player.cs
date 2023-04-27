@@ -53,14 +53,18 @@ public class Player : MonoBehaviour
         if (x > 0)
         {
             render.flipX = true;
-            playerAnim.SetTrigger("Move");
+            //playerAnim.SetTrigger("Move");
+            playerAnim.SetBool("Move", true);
         }
         else if (x < 0)
         {
             render.flipX = false;
+            //playerAnim.SetTrigger("Move");
+            playerAnim.SetBool("Move", true);
         }
         else
-            playerAnim.SetTrigger("Idle");
+            playerAnim.SetBool("Move", false);
+        //playerAnim.SetTrigger("Idle");
 
         moveVec = rigid.position + new Vector2(x, y) * speed * Time.deltaTime;
        
