@@ -350,6 +350,16 @@ MonoBehaviour:
   divePlayer: {fileID: 1809352673}
   shipAnim: {fileID: 873286474}
   waitTime: 2.35
+  skyImg: {fileID: 318361209}
+  seaImg: {fileID: 1940510126}
+  sky:
+  - {fileID: 21300000, guid: d3445b626852068498ba4a70b4ea6e94, type: 3}
+  - {fileID: 21300000, guid: 043c71ca4e9291f40befd2b43db74e92, type: 3}
+  - {fileID: 21300000, guid: d82e262a992a46e498b72654dad91227, type: 3}
+  sea:
+  - {fileID: 21300000, guid: ff1518b07f081ab4893687057bebe843, type: 3}
+  - {fileID: 21300000, guid: b901b69177850e14ab561d6170ff3e3e, type: 3}
+  - {fileID: 21300000, guid: cb5a5142ead483d488694eb67a2b85c5, type: 3}
 --- !u!1 &318361207
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &514908997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1322,7 +1332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1122568356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1437,7 +1447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1212729964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1513,7 +1523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1283229960
 RectTransform:
   m_ObjectHideFlags: 0

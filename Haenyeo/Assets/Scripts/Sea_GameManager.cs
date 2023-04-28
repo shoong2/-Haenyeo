@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class Sea_GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -15,8 +16,27 @@ public class Sea_GameManager : MonoBehaviour
 
     [SerializeField]
     float waitTime=0.5f;
+
+    public Image skyImg;
+    public Image seaImg;
+    //Sky
+    public Sprite[] sky;
+    //Sea
+    public Sprite[] sea;
     void Start()
     {
+        if(GameManager.instance.time <=GameManager.instance.maxTime/3)
+        {
+
+        }
+        else if(GameManager.instance.time <= GameManager.instance.maxTime / 3*2)
+        {
+
+        }
+        else
+        {
+
+        }
         if(GameManager.instance.previousSceneName =="Room")
             StartCoroutine(StartSea());
         else
@@ -41,23 +61,14 @@ public class Sea_GameManager : MonoBehaviour
         SceneManager.LoadScene("Room");
     }
 
-    void OnMouseDown()
-    {
-        Debug.Log("click");
-        // 마우스 클릭 위치의 Raycast 생성
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
 
-        // Raycast 수행
-        if (Physics.Raycast(ray, out hitInfo))
+    private void Update()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.A))
         {
-            // 클릭한 오브젝트의 태그 확인
-            if (hitInfo.collider.gameObject.CompareTag("Ship"))
-            {
-                Debug.Log("ship");
-                SceneManager.LoadScene("Room");
-            }
-        }
+            skyImg.sprite = sky[2];
+        }    
     }
 
 }

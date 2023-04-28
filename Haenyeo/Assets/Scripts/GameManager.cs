@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public string previousSceneName;
 
+    public float time = 0;
+    public float maxTime = 3;
     private void Awake()
     {
         if(instance ==null)
@@ -69,6 +71,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        time += Time.deltaTime;
+        if(time>=maxTime)
+        {
+            time = 0;
+        }
         if (underSea) //hp 따라다니기
         {
             //Vector3 hpPos = mainCamera.WorldToScreenPoint(player_UnderSea.transform.position);
