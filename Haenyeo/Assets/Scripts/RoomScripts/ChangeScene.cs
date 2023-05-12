@@ -8,4 +8,9 @@ public class ChangeScene : MonoBehaviour
     {
         GameManager.instance.ChangeScene("Sea");
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Room");
+    }
 }

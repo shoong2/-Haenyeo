@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     float topEdge;
     float bottomEdge;
 
+   
+
     private void Awake()
     {
         joy = FindObjectOfType<VariableJoystick>();
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
 
     virtual protected void Start()
     {
+        
         rigid = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main;

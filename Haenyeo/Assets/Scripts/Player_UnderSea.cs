@@ -22,6 +22,8 @@ public class Player_UnderSea : Player
 
     [SerializeField]
     GameObject[] tools;
+
+    bool test = false;
     protected override void Start()
     {
         Debug.Log("start?");
@@ -46,11 +48,19 @@ public class Player_UnderSea : Player
         
         if (raycast)
         {
+            //if (!test)
+            //{
+            //    GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
+            //      Quaternion.identity, GameObject.Find("UnderSea").transform);
+            //    seahp.transform.position += new Vector3(2, 0, 0);
+            //    test = true;
+            //}
+
             if (raycast.collider.tag == "Knife")
             {
                 GuideSetting(0);
-                GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
-                    Quaternion.identity, GameObject.Find("UnderSea").transform);
+                //GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
+                //    Quaternion.identity, GameObject.Find("UnderSea").transform);
                 
             }
             else if (raycast.collider.tag == "Hoe")
@@ -64,6 +74,7 @@ public class Player_UnderSea : Player
                 //toolGuide.transform.parent = tools[2].transform;
                 GuideSetting(2);
             }
+            //Debug.Log("det");
         }
         else
             toolGuide.SetActive(false);
@@ -78,6 +89,14 @@ public class Player_UnderSea : Player
         toolGuide.SetActive(true);
         toolGuide.transform.position = tools[index].transform.position;
         toolGuide.transform.parent = tools[index].transform;
+    }
+
+    public void Attack()
+    {
+        if(toolGuide.activeSelf)
+        {
+
+        }
     }
 
 

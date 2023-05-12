@@ -40,7 +40,10 @@ public class GameManager : MonoBehaviour
     public string previousSceneName;
 
     public float time = 0;
-    public float maxTime = 3;
+    public float maxTime = 30;
+
+    public enum State { Idle, Afternoon, Night };
+    public State state = State.Idle;
     private void Awake()
     {
         if(instance ==null)
@@ -71,13 +74,28 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
-        if(time>=maxTime)
+       
+        //if(time>=maxTime)
+        //{
+        //    time = 0;
+        //}
+
+        if (time <= maxTime / 3)
         {
-            time = 0;
+            state = State.Idle;
         }
+        else if (time <= maxTime / 3 * 2)
+        {
+            state = State.Afternoon;
+        }
+        else
+        {
+            state = State.Night;
+        }
+
         if (underSea) //hp 따라다니기
         {
+            time += Time.deltaTime; //바다에 들어가면 시간 카운트
             //Vector3 hpPos = mainCamera.WorldToScreenPoint(player_UnderSea.transform.position);
             hp.transform.position = player_UnderSea.transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0);
             hpSlider.fillAmount = currentHp / maxHp;
@@ -90,6 +108,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
