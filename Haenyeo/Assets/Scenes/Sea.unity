@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &66290571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1660,7 +1660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefd3c5f1c6af1f4b93d67f0d0a14960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csv_FileName: prologue
+  csv_FileName: test
 --- !u!1 &1122568355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: "\uC18C\uAC1C"
-    line: {x: 1, y: 3}
+    line: {x: 1, y: 5}
     dialogues:
     - name: 
       contexts: []

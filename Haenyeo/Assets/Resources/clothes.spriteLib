@@ -93,4 +93,20 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 8514032557537649795, guid: 75ff57e74fb88074d8ed5ad795e2928b, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 2
+  - m_Name: hair
+    m_Hash: 485974297
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: default
+      m_Hash: 593363167
+      m_Sprite: {fileID: 6224609704117216203, guid: 7fa7635a752e52f45af2043f93d274d3, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 6224609704117216203, guid: 7fa7635a752e52f45af2043f93d274d3, type: 3}
+    - m_Name: H1
+      m_Hash: 682088392
+      m_Sprite: {fileID: -8440114215182266342, guid: 0f51bb086cecbc84ab0ecba9585091ba, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8440114215182266342, guid: 0f51bb086cecbc84ab0ecba9585091ba, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: 
