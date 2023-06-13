@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     VariableJoystick joy;
 
-    Camera mainCamera;
+    public Camera mainCamera;
 
     bool underSea = false;
 
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         mainCamera = Camera.main;
         canvasComp = canvas_.GetComponent<Canvas>();
         SceneManager.sceneLoaded += OnSceneLoaded;
-        
+       
     }
 
     private void Start()
@@ -113,12 +113,14 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log(scene.name);
+        mainCamera = Camera.main;
+        canvasComp.worldCamera = mainCamera;
         if (scene.name != "Room")
         {
             joystick.SetActive(true);
             joy.JoystickReset();
-            mainCamera = Camera.main;
-            canvasComp.worldCamera = mainCamera;
+            //mainCamera = Camera.main;
+            //canvasComp.worldCamera = mainCamera;
             underSeaUI.SetActive(false);
             player_UnderSea.SetActive(false);
             underSea = false;

@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     protected SpriteRenderer render; //좌우반전 스프라이트 렌더러
 
     Animator playerAnim;
-    protected Camera mainCamera;
+    //protected Camera mainCamera;
 
     float leftEdge;
     float rightEdge;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         
         rigid = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
-        mainCamera = Camera.main;
+        //mainCamera = Camera.main;
         objectWidth = transform.localScale.x;
         objectHeight = transform.localScale.y;
     }
@@ -73,10 +73,10 @@ public class Player : MonoBehaviour
        
         //카메라 밖으로 나가지 않도록 제한
 
-        leftEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
-        rightEdge = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
-        topEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
-        bottomEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
+        leftEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
+        rightEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
+        topEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
+        bottomEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
 
 
         moveVec = new(Mathf.Clamp(moveVec.x, leftEdge, rightEdge), 

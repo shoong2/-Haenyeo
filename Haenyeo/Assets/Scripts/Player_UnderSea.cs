@@ -31,9 +31,9 @@ public class Player_UnderSea : Player
         restrictY = 2f;
         base.Start();
         playerAnim = GetComponent<Animator>();
-        targetPosition = new Vector2(transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y - objectHeight*2f);
-        transform.position = new Vector2(transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight*2f);
-        tewakTargetPosition = new Vector2(transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 3f);
+        targetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y);//.y - objectHeight*2f);
+        transform.position = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight*2f);
+        tewakTargetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 3f);
         StartCoroutine(StartUnderSea());
     }
 
