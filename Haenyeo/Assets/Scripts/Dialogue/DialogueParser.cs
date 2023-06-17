@@ -53,6 +53,7 @@ public class DialogueParser : MonoBehaviour
             dialogue.name = row[5];
             Debug.Log(row[5]);
             List<string> contextList = new List<string>();
+            List<string> spriteList = new List<string>();
 
             do
             {

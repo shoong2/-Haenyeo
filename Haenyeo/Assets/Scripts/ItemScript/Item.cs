@@ -15,7 +15,8 @@ public class Item : ScriptableObject
     public enum ItemType
     {
         Cloth,
-        Tool
+        Tool,
+        item
     }
 
 }

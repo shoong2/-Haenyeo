@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class Player_UnderSea : Player
 {
     Vector3 targetPosition;
@@ -17,13 +18,23 @@ public class Player_UnderSea : Player
     //float currentHp;
     //public float hpX =2f;
 
+    RaycastHit2D raycast;
+
     [SerializeField]
     GameObject toolGuide;
 
     [SerializeField]
     GameObject[] tools;
 
+    [SerializeField] Inventory inven;
+
+    bool click = false;
+
     bool test = false;
+
+    public GameObject getBox;
+    public TMP_Text getText;
+    public Image getSprite;
     protected override void Start()
     {
         Debug.Log("start?");
@@ -43,9 +54,9 @@ public class Player_UnderSea : Player
     {
         Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
         Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
-        RaycastHit2D raycast = Physics2D.Raycast(transform.position, dir, rayLine, LayerMask.GetMask("Item"));
+        raycast = Physics2D.Raycast(transform.position, dir, rayLine, LayerMask.GetMask("Item"));
 
-        
+
         if (raycast)
         {
             //if (!test)
@@ -58,37 +69,72 @@ public class Player_UnderSea : Player
 
             if (raycast.collider.tag == "Knife")
             {
-                GuideSetting(0);
+            
+                GuideSetting(0, raycast.collider.gameObject);
+                raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
                 //GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
                 //    Quaternion.identity, GameObject.Find("UnderSea").transform);
-                
+
             }
             else if (raycast.collider.tag == "Hoe")
             {
-                GuideSetting(1);
+                GuideSetting(1, raycast.collider.gameObject);
+                raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
             }
             else if (raycast.collider.tag == "Pole")
             {
                 //toolGuide.SetActive(true);
                 //toolGuide.transform.position = tools[2].transform.position;
                 //toolGuide.transform.parent = tools[2].transform;
-                GuideSetting(2);
+                GuideSetting(2, raycast.collider.gameObject);
+                raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
             }
             //Debug.Log("det");
         }
         else
+        {
             toolGuide.SetActive(false);
+           // raycast.collider.transform.GetComponent<Fish>().canvas.SetActive(false);
+        }
 
+        if (transform.position.y >= 0.5f || transform.position.y <= -35)
+        {
+            GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = false;
+        }
+        else
+            GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = true;
 
-        
 
     }
 
-    void GuideSetting(int index)
+    void GuideSetting(int index, GameObject fish)
     {
         toolGuide.SetActive(true);
         toolGuide.transform.position = tools[index].transform.position;
         toolGuide.transform.parent = tools[index].transform;
+        if(click == true)
+        {
+            if (fish.transform.GetComponent<Fish>().curHp > 0)
+            {
+                fish.transform.GetComponent<Fish>().SetHP();
+                if(fish.transform.GetComponent<Fish>().curHp ==0)
+                {
+                    Destroy(fish.gameObject);
+                    getText.text = "<b>[" + fish.transform.GetComponent<ItemPickUp>().item.itemName + "]</b> 을\n채집했습니다!";
+                    getSprite.sprite = fish.transform.GetComponent<ItemPickUp>().item.itemImage;
+                    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
+                    getBox.SetActive(true);
+                }
+                click = false;
+            }
+            //else
+            //{
+            //    getText.text = "<b>[" + fish.transform.GetComponent<ItemPickUp>().item.itemName + "]</b> 을\n채집했습니다!";
+            //    getSprite.sprite = fish.transform.GetComponent<ItemPickUp>().item.itemImage;
+            //    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
+            //    getBox.SetActive(true);
+            //}
+        }
     }
 
     public void Attack()
@@ -119,16 +165,19 @@ public class Player_UnderSea : Player
     public void Hoe()
     {
         playerAnim.SetTrigger("Hoe");
+        click = true;
     }
     
     public void Knife()
     {
         playerAnim.SetTrigger("Knife");
+        click = true;
     }
 
     public void Pole()
     {
         playerAnim.SetTrigger("Pole");
+        click = true;
         //playerAnim.SetBool("test", true);
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
@@ -15,6 +16,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameObject underSeaUI;
+
+    [SerializeField] TMP_Text meter;
+    float meterNum;
+    [SerializeField] GameObject questBox;
+    [SerializeField] TMP_Text questText;
+    bool isquest = false;
+
     [SerializeField]
     GameObject hp;
     [SerializeField]
@@ -44,6 +52,9 @@ public class GameManager : MonoBehaviour
 
     public enum State { Idle, Afternoon, Night };
     public State state = State.Idle;
+
+    [Header("저장소")]
+    [SerializeField] SaveNLoad storage;
     private void Awake()
     {
         if(instance ==null)
@@ -101,6 +112,19 @@ public class GameManager : MonoBehaviour
             hpSlider.fillAmount = currentHp / maxHp;
             currentHp -= Time.deltaTime;
 
+            meterNum = (-(player_UnderSea.transform.position.y - 6f) / 7f);
+            meter.text = meterNum.ToString("F1") +"M";
+
+            if(!isquest && meterNum>3f)
+            {
+                isquest = false;
+                questText.text = "3M 까지 버티기";
+                questBox.SetActive(true);
+                storage.saveData.isQuest = true;
+                storage.SaveData();
+               
+            }
+
             if(currentHp <=0)
             {
                 underSea = false;
@@ -123,12 +147,14 @@ public class GameManager : MonoBehaviour
             //canvasComp.worldCamera = mainCamera;
             underSeaUI.SetActive(false);
             player_UnderSea.SetActive(false);
+            meter.gameObject.SetActive(false);
             underSea = false;
             if(scene.name != "Sea")
             {
                 currentHp = maxHp; //현재 hp 최대 hp로 초기화
                 underSea = true;
                 underSeaUI.SetActive(true);
+                meter.gameObject.SetActive(true);
                 player_UnderSea.SetActive(true);
             }
 
@@ -146,7 +172,8 @@ public class GameManager : MonoBehaviour
     IEnumerator TewakMove() // 죽었을 때와 같이 쓰기
     {
         underSeaUI.SetActive(false);
-        if(!underSea)
+        meter.gameObject.SetActive(false);
+        if (!underSea)
         {
             player_UnderSea.GetComponent<Animator>().SetTrigger("Die");
         }

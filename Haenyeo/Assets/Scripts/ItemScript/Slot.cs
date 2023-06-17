@@ -9,8 +9,8 @@ public class Slot : MonoBehaviour
     public Image itemImage; // 아이템의 이미지
     public int itemCount;
 
-    [SerializeField]
-    TMP_Text text_Count;
+    //[SerializeField]
+    //TMP_Text text_Count;
 
     //[SerializeField]
     //GameObject go_CountImage; // 아이템 카운트 이미지 필요할 경우 활성화
@@ -34,14 +34,14 @@ public class Slot : MonoBehaviour
 
         if (item.itemType != Item.ItemType.Tool)
         {
-            text_Count.text = itemCount.ToString();
-            text_Count.text = "0";
-            text_Count.gameObject.SetActive(false);
+            //text_Count.text = itemCount.ToString();
+            //text_Count.text = "0";
+            //text_Count.gameObject.SetActive(false);
             
         }
         else
         {
-
+            //text_Count.text = "0";
         }
         SetColor(1);
     }
@@ -51,7 +51,7 @@ public class Slot : MonoBehaviour
     public void SetSlotCount(int _count)
     {
         itemCount += _count;
-        text_Count.text = itemCount.ToString();
+        //text_Count.text = itemCount.ToString();
 
         if(itemCount <=0)
         {
@@ -68,8 +68,8 @@ public class Slot : MonoBehaviour
         itemImage.sprite = null;
         SetColor(0);
 
-        text_Count.text = "0";
-        text_Count.gameObject.SetActive(false);
+        //text_Count.text = "0";
+        //text_Count.gameObject.SetActive(false);
 
     }
 }

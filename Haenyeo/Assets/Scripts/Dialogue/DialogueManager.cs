@@ -171,6 +171,7 @@ public class DialogueManager : MonoBehaviour
         if(index ==0)
         {
             StartCoroutine(ShowRewardBox(new string[] {"초보 헤녀의 고무옷", "초보 해녀의 수경", "초보 해녀의 오리발"}));
+            StartCoroutine(ShowQuestBox(new string[] { "해녀복 착용하기", "바다로 가보기" }));
         }
         else if(index ==1)
         {

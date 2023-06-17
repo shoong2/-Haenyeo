@@ -11,6 +11,9 @@ public class Dialogue
 
     [Tooltip("대사 내용")]
     public string[] contexts;
+
+    [HideInInspector]
+    public string[] spriteName;
 }
 
 [System.Serializable]
