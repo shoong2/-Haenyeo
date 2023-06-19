@@ -50,11 +50,15 @@ public class GameManager : MonoBehaviour
     public float time = 0;
     public float maxTime = 30;
 
+    public TMP_Text timer;
+    public float questTime =60;
+    bool isQuestTime = false;
     public enum State { Idle, Afternoon, Night };
     public State state = State.Idle;
 
     [Header("저장소")]
     [SerializeField] SaveNLoad storage;
+    public int index;
     private void Awake()
     {
         if(instance ==null)
@@ -86,6 +90,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
        
+        if(isquest)
+        {
+            questTime -= Time.deltaTime;
+            timer.text = ((int)questTime).ToString() + "s";
+        }
         //if(time>=maxTime)
         //{
         //    time = 0;
@@ -106,7 +115,8 @@ public class GameManager : MonoBehaviour
 
         if (underSea) //hp 따라다니기
         {
-            time += Time.deltaTime; //바다에 들어가면 시간 카운트
+            if(time<maxTime)
+                time += Time.deltaTime; //바다에 들어가면 시간 카운트
             //Vector3 hpPos = mainCamera.WorldToScreenPoint(player_UnderSea.transform.position);
             hp.transform.position = player_UnderSea.transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0);
             hpSlider.fillAmount = currentHp / maxHp;
@@ -117,7 +127,7 @@ public class GameManager : MonoBehaviour
 
             if(!isquest && meterNum>3f)
             {
-                isquest = false;
+                isquest = true;
                 questText.text = "3M 까지 버티기";
                 questBox.SetActive(true);
                 storage.saveData.isQuest = true;
@@ -136,6 +146,8 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        
+        index = storage.saveData.nowIndex;
         Debug.Log(scene.name);
         mainCamera = Camera.main;
         canvasComp.worldCamera = mainCamera;
@@ -149,13 +161,20 @@ public class GameManager : MonoBehaviour
             player_UnderSea.SetActive(false);
             meter.gameObject.SetActive(false);
             underSea = false;
-            if(scene.name != "Sea")
+            timer.gameObject.SetActive(false);
+            if (scene.name != "Sea")
             {
                 currentHp = maxHp; //현재 hp 최대 hp로 초기화
                 underSea = true;
                 underSeaUI.SetActive(true);
                 meter.gameObject.SetActive(true);
                 player_UnderSea.SetActive(true);
+
+                if (storage.saveData.nowIndex == 6)
+                {
+                    timer.gameObject.SetActive(true);
+                    isquest = true;
+        }
             }
 
         }

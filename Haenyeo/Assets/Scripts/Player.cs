@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
-     VariableJoystick joy; //조이스틱
+    public VariableJoystick joy; //조이스틱
 
     public float speed = 1f; //움직임 속도
     float objectWidth;
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        joy = FindObjectOfType<VariableJoystick>();
+        //joy = FindObjectOfType<VariableJoystick>();
         playerAnim = GetComponent<Animator>();
     }
 
@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
         //mainCamera = Camera.main;
         objectWidth = transform.localScale.x;
         objectHeight = transform.localScale.y;
+
+        joy = FindObjectOfType<VariableJoystick>();
     }
 
     virtual protected void FixedUpdate()

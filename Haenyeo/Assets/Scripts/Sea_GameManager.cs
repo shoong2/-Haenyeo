@@ -7,6 +7,8 @@ public class Sea_GameManager : MonoBehaviour
 {
     [SerializeField]
     GameObject player;
+    Animator playerAnim;
+
     [SerializeField]
     GameObject divePlayer;
 
@@ -27,9 +29,30 @@ public class Sea_GameManager : MonoBehaviour
     public Sprite[] sky;
     //Sea
     public Sprite[] sea;
+
+    public GameObject[] ship;
+
+    public SaveNLoad data;
+    public GameObject yeong;
+    public GameObject seo;
+    public GameObject yoon;
+
+    int index;
+    private void Awake()
+    {
+        //index = data.saveData.nowIndex;
+        //Debug.Log(index);
+    }
     void Start()
     {
-
+        if(GameManager.instance.index >=5)
+        {
+            Debug.Log("tt");
+            yeong.SetActive(false);
+            seo.SetActive(true);
+            yoon.SetActive(true);
+        }
+        playerAnim = player.GetComponent<Animator>();
         if ((int)GameManager.instance.state == 0)
         {
             //skyImg.sprite = sky[(int)State.Idle];
@@ -52,7 +75,7 @@ public class Sea_GameManager : MonoBehaviour
         else
         {
             player.SetActive(true);
-            shipAnim.Play("ShipAnim", -1);
+            shipAnim.Play("idle", -1);
         }
 
     }
@@ -61,14 +84,30 @@ public class Sea_GameManager : MonoBehaviour
     {
         skyImg.sprite = sky[day];
         seaImg.sprite = sea[day];
+
+        for(int i=0; i< ship.Length; i++)
+        {
+            ship[i].SetActive(false);
+            if(i==day)
+            {
+                ship[i].SetActive(true);
+            }
+        }
     }
 
     IEnumerator StartSea()
     {
+        playerAnim.SetTrigger("Jump");
+        //while(player.transform.position.y>-2f)
+        //{
+        //    player.transform.position -= new Vector3(0, 0.1f,0);
+        //    yield return new WaitForSeconds(0.05f);
+        //}
+        //yield return new WaitUntil(() => !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("Jump"));
         divePlayer.SetActive(true);
         yield return new WaitForSeconds(waitTime);
         player.SetActive(true);
-        shipAnim.Play("ShipAnim", -1);
+        shipAnim.Play("idle", -1);
 
     }
 
