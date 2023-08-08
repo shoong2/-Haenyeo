@@ -122,7 +122,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     SceneManager.LoadScene("Room");
                 }
-                Debug.Log(storage.saveData.nowIndex);
+               // Debug.Log(storage.saveData.nowIndex);
                 if (SetSystemIndex(0, hit, "Won", "Room"))
                 {
                     ShowDialogue(DatabaseManager.instance.GetDialogue(1, 9));
