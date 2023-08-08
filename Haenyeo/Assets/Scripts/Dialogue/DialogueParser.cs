@@ -51,14 +51,14 @@ public class DialogueParser : MonoBehaviour
             Dialogue dialogue = new Dialogue(); //대사 리스트 생성
 
             dialogue.name = row[5];
-            Debug.Log(row[5]);
+            //Debug.Log(row[5]);
             List<string> contextList = new List<string>();
             List<string> spriteList = new List<string>();
 
             do
             {
                 contextList.Add(row[6]);
-                Debug.Log(row[6]);
+                //Debug.Log(row[6]);
                 if (++i < data.Length)
                 {
                     row = data[i].Split(new char[] { ',' });
@@ -68,7 +68,7 @@ public class DialogueParser : MonoBehaviour
                     break;
                 }
             }
-            while (row[5].ToString() == "");
+            while (row[5].ToString() == "" && row[6].ToString() == "");
 
             dialogue.contexts = contextList.ToArray();
 

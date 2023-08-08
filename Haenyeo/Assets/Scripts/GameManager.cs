@@ -224,4 +224,11 @@ public class GameManager : MonoBehaviour
         else
             phone.SetActive(true);
     }
+
+    public void ResetData()
+    {
+        storage.saveData.nowIndex = 0;
+        storage.saveData.isQuest = false;
+        storage.SaveData();
+    }
 }
