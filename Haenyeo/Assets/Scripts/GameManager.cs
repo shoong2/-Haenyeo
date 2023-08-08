@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
     public enum State { Idle, Afternoon, Night };
     public State state = State.Idle;
 
+    //더블클릭 종료
+    int ClickCount = 0;
+
     [Header("저장소")]
     [SerializeField] SaveNLoad storage;
     public int index;
@@ -140,6 +143,20 @@ public class GameManager : MonoBehaviour
                 underSea = false;
                 StartCoroutine(TewakMove());
             }
+        }
+
+        //게임 종료
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ClickCount++;
+            if (!IsInvoking("DoubleClick"))
+                Invoke("DoubleClick", 1.0f);
+
+        }
+        else if (ClickCount == 2)
+        {
+            CancelInvoke("DoubleClick");
+            Application.Quit();
         }
     }
 
@@ -230,5 +247,10 @@ public class GameManager : MonoBehaviour
         storage.saveData.nowIndex = 0;
         storage.saveData.isQuest = false;
         storage.SaveData();
+    }
+
+    void DoubleClick()
+    {
+        ClickCount = 0;
     }
 }

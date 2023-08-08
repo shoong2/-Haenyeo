@@ -6,7 +6,7 @@ public class ChangeScene : MonoBehaviour
 {
    public void GoSea()
     {
-        GameManager.instance.ChangeScene("Sea");
+        GameManager.instance.ChangeScene("Beach");
     }
 
     public void StartGame()
