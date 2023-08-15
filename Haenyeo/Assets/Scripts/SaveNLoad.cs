@@ -8,6 +8,8 @@ public class SaveData
 {
     public int nowIndex = 0;
     public bool isQuest = false;
+    public int questAllCount = 0; //누적한것 까지 합쳐지는 퀘스트 카운트
+    public int completeQuest = 0; // 완료한 퀘스트
 }
 
 public class SaveNLoad : MonoBehaviour

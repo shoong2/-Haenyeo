@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Beach : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject[] peole;
+
     void Start()
     {
         

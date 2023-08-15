@@ -26,6 +26,8 @@ public class DialogueManager : MonoBehaviour
     [Header("저장소")]
     [SerializeField] SaveNLoad storage;
     //public string tagName;
+    [Header("퀘스트")]
+    [SerializeField] QuestManager quest;
 
     [Header("알림창")]
     [SerializeField] GameObject rewardBox;
@@ -125,9 +127,10 @@ public class DialogueManager : MonoBehaviour
                // Debug.Log(storage.saveData.nowIndex);
                 if (SetSystemIndex(0, hit, "Won", "Room"))
                 {
+                    Debug.Log("hi?");
                     ShowDialogue(DatabaseManager.instance.GetDialogue(1, 9));
                 }
-                else if(SetSystemIndex(1,hit,"Won","Sea"))
+                else if(SetSystemIndex(1,hit,"Won","Beach"))
                 {
                     ShowDialogue(DatabaseManager.instance.GetDialogue(10, 14));
                 }
@@ -173,6 +176,8 @@ public class DialogueManager : MonoBehaviour
         if(storage.saveData.nowIndex==0)
         {
             GetReward(0);
+            storage.saveData.questAllCount++;
+            quest.ActiveQuest();
         }
         else if(storage.saveData.nowIndex == 1)
         {
@@ -194,12 +199,13 @@ public class DialogueManager : MonoBehaviour
         {
             GetReward(5);
         }
-        storage.saveData.nowIndex++;
+        //storage.saveData.nowIndex++;
         storage.SaveData();
     }
 
     bool SetSystemIndex(int index, RaycastHit2D hit, string character, string SceneName)
     {
+        Debug.Log(hit);
         if (storage.saveData.nowIndex == index && hit.collider.tag == character
             && SceneManager.GetActiveScene().name == SceneName)
         {
@@ -243,6 +249,7 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(ShowQuestBox(new string[] { "잠수 실력을 입증하자" }));
         }
 
+        storage.saveData.nowIndex++;
 
     }
 
