@@ -5,6 +5,10 @@ using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
+
+    [SerializeField] GameObject QuestBoxList;
+    [SerializeField] GameObject questBoxPrefab;
+
     [Header("퀘스트 선택 창")]
     [SerializeField] TMP_Text questText;
 
@@ -17,47 +21,67 @@ public class QuestManager : MonoBehaviour
     [Header("저장소")]
     [SerializeField] SaveNLoad storage;
 
-    [SerializeField] GameObject QuestBoxList;
-    [SerializeField] GameObject questBoxPrefab;
 
-    // Update is called once per frame
-    void Update()
+
+
+
+    public void ActiveQuest(int questCount = 1)
     {
-        
-    }
+        quests = DatabaseManager.instance.GetQuest(questCount);
 
-    public void ActiveQuest()
-    {
-        int qCount = storage.saveData.questAllCount;
-        int qCompleteCount = storage.saveData.completeQuest;
-
-        while(QuestBoxList.transform.childCount != qCount - qCompleteCount)
+        for (int i = 0; i < questCount; i++)
         {
+            int qCount = storage.saveData.questAllCount;
+            int qCompleteCount = storage.saveData.completeQuest;
+
+            //while(QuestBoxList.transform.childCount != qCount - qCompleteCount)
+            //{
+            //    GameObject temp = Instantiate(questBoxPrefab);
+            //    Debug.Log("instance");
+            //    temp.transform.SetParent(QuestBoxList.transform);
+            //    temp.transform.localScale = new Vector3(1, 1, 1);
+
+            //}
+
             GameObject temp = Instantiate(questBoxPrefab);
+            Debug.Log("instance");
             temp.transform.SetParent(QuestBoxList.transform);
-        }
+            temp.transform.localScale = new Vector3(1, 1, 1);
+            temp.transform.GetChild(0).GetComponent<TMP_Text>().text = quests[qCount].name;
 
-        quests = DatabaseManager.instance.GetQuest(qCount - qCompleteCount, qCount);
-        //if (storage.saveData.nowIndex == 1)
-        //{
-        //    //quests = DatabaseManager.instance.GetQuest(1, 1);
-           
-        //    string questName = quests[storage.saveData.questNowCount].name;
-        //    string questDetailText = quests[storage.saveData.questNowCount].details[0];
+            //0번 메인텍스트, 1번 디테일텍스트
+            temp.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = quests[qCount].name;
 
-        //    questDetailText = questDetailText.Replace("'", ",");
-        //    questDetailText = questDetailText.Replace("\\n", "\n");
+            //대체 문자
+            string replaceText = quests[qCount].details;
+            replaceText = replaceText.Replace("'", ",");
+            replaceText = replaceText.Replace("\\n", "\n");
+            temp.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = replaceText;
+
+            storage.saveData.questAllCount++;
+
+            //quests = DatabaseManager.instance.GetQuest(qCount - qCompleteCount, qCount);
+            //if (storage.saveData.nowIndex == 1)
+            //{
+            //    //quests = DatabaseManager.instance.GetQuest(1, 1);
+
+            //    string questName = quests[storage.saveData.questNowCount].name;
+            //    string questDetailText = quests[storage.saveData.questNowCount].details[0];
+
+            //    questDetailText = questDetailText.Replace("'", ",");
+            //    questDetailText = questDetailText.Replace("\\n", "\n");
 
 
-        //    questText.text = questName;
-        //    questDetailName.text = questName;
-        //    questDetail.text = questDetailText;
+            //    questText.text = questName;
+            //    questDetailName.text = questName;
+            //    questDetail.text = questDetailText;
 
-        //}
+            //}
 
-        for(int i =0; i<QuestBoxList.transform.childCount; i++)
-        {
+            //for (int i = 0; i < QuestBoxList.transform.childCount; i++)
+            //{
 
+            //}
         }
     }
 }

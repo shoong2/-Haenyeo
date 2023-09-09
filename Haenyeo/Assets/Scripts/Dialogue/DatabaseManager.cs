@@ -18,6 +18,8 @@ public class DatabaseManager : MonoBehaviour
 
     Dictionary<int, Quest> questDic = new Dictionary<int, Quest>();
 
+    public SaveNLoad storage;
+
 
     private void Awake()
     {
@@ -34,9 +36,9 @@ public class DatabaseManager : MonoBehaviour
 
             QuestParser QParser = GetComponent<QuestParser>();
             Quest[] quests = QParser.Parse(csv_QuestFileName);
-            for(int i=0; i<quests.Length; i++)
+            for(int j=0; j<quests.Length; j++)
             {
-                questDic.Add(i + 1, quests[i]);
+                questDic.Add(j + 1, quests[j]);
             }
         }
     }
@@ -53,14 +55,19 @@ public class DatabaseManager : MonoBehaviour
         return dialogueList.ToArray();
     }
 
-    public Quest[] GetQuest(int _StartNum, int _EndNum)
+    public Quest[] GetQuest(int questCount)
     {
         List<Quest> questList = new List<Quest>();
 
-        for(int i=0; i<= _EndNum - _StartNum; i++)
+        for(int i=0; i<questCount; i++)
         {
-            questList.Add(questDic[_StartNum + i]);
+            questList.Add(questDic[storage.saveData.questAllCount +1 + i]);
         }
+
+        //for(int i=0; i<= _EndNum - _StartNum; i++)
+        //{
+        //    questList.Add(questDic[_StartNum + i]);
+        //}
 
         return questList.ToArray();
     }

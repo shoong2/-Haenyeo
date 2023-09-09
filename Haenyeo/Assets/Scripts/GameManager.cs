@@ -168,18 +168,21 @@ public class GameManager : MonoBehaviour
         Debug.Log(scene.name);
         mainCamera = Camera.main;
         canvasComp.worldCamera = mainCamera;
-        if (scene.name != "Room")
+        if (scene.name != "Room" && scene.name != "Beach")
         {
             joystick.SetActive(true);
             joy.JoystickReset();
             //mainCamera = Camera.main;
             //canvasComp.worldCamera = mainCamera;
+
+            //바닷속에서 나왔을 경우
             underSeaUI.SetActive(false);
             player_UnderSea.SetActive(false);
             meter.gameObject.SetActive(false);
             underSea = false;
             timer.gameObject.SetActive(false);
-            if (scene.name != "Sea")
+
+            if (scene.name == "UnderSea")
             {
                 currentHp = maxHp; //현재 hp 최대 hp로 초기화
                 underSea = true;

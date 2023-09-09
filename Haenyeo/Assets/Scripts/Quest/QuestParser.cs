@@ -18,10 +18,12 @@ public class QuestParser : MonoBehaviour
             Quest quest = new Quest();
 
             quest.name = row[5];
-            Debug.Log(row[5]);
-            List<string> detailList = new List<string>();
+            quest.details = row[6];
 
-            detailList.Add(row[6]);
+            Debug.Log(row[5]);
+            //List<string> detailList = new List<string>();
+
+            //detailList.Add(row[6]);
             Debug.Log(row[6]);
 
             do
@@ -50,7 +52,7 @@ public class QuestParser : MonoBehaviour
             //    }
             //}
 
-            quest.details = detailList.ToArray();
+            //quest.details = detailList.ToArray();
 
             questList.Add(quest);
         }

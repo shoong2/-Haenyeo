@@ -9,7 +9,8 @@ public class Quest
     public string name;
 
     [Tooltip("Äù½ºÆ® ³»¿ë")]
-    public string[] details;
+    //public string[] details;
+    public string details;
 
     public bool isQuest = false;
 }

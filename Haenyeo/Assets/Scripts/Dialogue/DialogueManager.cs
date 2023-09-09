@@ -176,8 +176,8 @@ public class DialogueManager : MonoBehaviour
         if(storage.saveData.nowIndex==0)
         {
             GetReward(0);
-            storage.saveData.questAllCount++;
-            quest.ActiveQuest();
+            quest.ActiveQuest(2);
+            //storage.saveData.questAllCount++;
         }
         else if(storage.saveData.nowIndex == 1)
         {
