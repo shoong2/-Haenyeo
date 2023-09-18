@@ -60,28 +60,7 @@ public class QuestManager : MonoBehaviour
 
             storage.saveData.questAllCount++;
 
-            //quests = DatabaseManager.instance.GetQuest(qCount - qCompleteCount, qCount);
-            //if (storage.saveData.nowIndex == 1)
-            //{
-            //    //quests = DatabaseManager.instance.GetQuest(1, 1);
-
-            //    string questName = quests[storage.saveData.questNowCount].name;
-            //    string questDetailText = quests[storage.saveData.questNowCount].details[0];
-
-            //    questDetailText = questDetailText.Replace("'", ",");
-            //    questDetailText = questDetailText.Replace("\\n", "\n");
-
-
-            //    questText.text = questName;
-            //    questDetailName.text = questName;
-            //    questDetail.text = questDetailText;
-
-            //}
-
-            //for (int i = 0; i < QuestBoxList.transform.childCount; i++)
-            //{
-
-            //}
+            
         }
     }
 }

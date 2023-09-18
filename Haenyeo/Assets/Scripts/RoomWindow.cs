@@ -14,6 +14,9 @@ public class RoomWindow : MonoBehaviour
 
     void Start()
     {
+        if (SaveNLoad.instance.saveData.questAllCount > 0)
+            won.SetActive(false);
+
         if ((int)GameManager.instance.state == 0)
         {
             ChangeWindow(0);

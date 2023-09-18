@@ -127,10 +127,10 @@ public class DialogueManager : MonoBehaviour
                // Debug.Log(storage.saveData.nowIndex);
                 if (SetSystemIndex(0, hit, "Won", "Room"))
                 {
-                    Debug.Log("hi?");
                     ShowDialogue(DatabaseManager.instance.GetDialogue(1, 9));
+                 
                 }
-                else if(SetSystemIndex(1,hit,"Won","Beach"))
+                else if(SetSystemIndex(2,hit,"Won","Beach"))
                 {
                     ShowDialogue(DatabaseManager.instance.GetDialogue(10, 14));
                 }
@@ -163,6 +163,20 @@ public class DialogueManager : MonoBehaviour
         
     }
 
+    bool SetSystemIndex(int index, RaycastHit2D hit, string character, string SceneName)
+    {
+        Debug.Log(hit);
+        //if (storage.saveData.nowIndex == index && hit.collider.tag == character
+        //    && SceneManager.GetActiveScene().name == SceneName)
+        if (storage.saveData.questAllCount == index && hit.collider.tag == character
+            && SceneManager.GetActiveScene().name == SceneName)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
     public void EndDialogue()
     {
         isDialogue = false;
@@ -177,6 +191,7 @@ public class DialogueManager : MonoBehaviour
         {
             GetReward(0);
             quest.ActiveQuest(2);
+            GameObject.FindWithTag("Won").gameObject.SetActive(false);
             //storage.saveData.questAllCount++;
         }
         else if(storage.saveData.nowIndex == 1)
@@ -203,17 +218,7 @@ public class DialogueManager : MonoBehaviour
         storage.SaveData();
     }
 
-    bool SetSystemIndex(int index, RaycastHit2D hit, string character, string SceneName)
-    {
-        Debug.Log(hit);
-        if (storage.saveData.nowIndex == index && hit.collider.tag == character
-            && SceneManager.GetActiveScene().name == SceneName)
-        {
-            return true;
-        }
-        else
-            return false;
-    }
+
 
     void GetReward(int index)
     {

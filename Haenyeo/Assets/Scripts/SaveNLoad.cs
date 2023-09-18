@@ -18,12 +18,28 @@ public class SaveData
 
 public class SaveNLoad : MonoBehaviour
 {
+    public static SaveNLoad instance = null;
+
     public SaveData saveData = new SaveData();
 
     string SAVE_DATA_DIRECTORY;
     string SAVE_FILENAME = "/SaveFile.txt";
 
     Inventory theInven;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
 
 
     void Start()
