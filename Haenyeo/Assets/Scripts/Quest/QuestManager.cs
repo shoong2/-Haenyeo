@@ -22,7 +22,26 @@ public class QuestManager : MonoBehaviour
     [SerializeField] SaveNLoad storage;
 
 
+    private void Start()
+    {
+        for(int i= storage.saveData.completeQuest; i<= storage.saveData.questAllCount; i++)
+        {
+            quests = DatabaseManager.instance.GetQuest(storage.saveData.questAllCount);
+            GameObject temp = Instantiate(questBoxPrefab);
+            temp.transform.SetParent(QuestBoxList.transform);
+            temp.transform.localScale = new Vector3(1, 1, 1);
+            temp.transform.GetChild(0).GetComponent<TMP_Text>().text = quests[i].name;
 
+            //0번 메인텍스트, 1번 디테일텍스트
+            temp.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = quests[i].name;
+
+            //대체 문자
+            string replaceText = quests[i].details;
+            replaceText = replaceText.Replace("'", ",");
+            replaceText = replaceText.Replace("\\n", "\n");
+            temp.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = replaceText;
+        }
+    }
 
 
     public void ActiveQuest(int questCount = 1)
@@ -59,8 +78,8 @@ public class QuestManager : MonoBehaviour
             temp.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = replaceText;
 
             storage.saveData.questAllCount++;
+            storage.SaveData();
 
-            
         }
     }
 }

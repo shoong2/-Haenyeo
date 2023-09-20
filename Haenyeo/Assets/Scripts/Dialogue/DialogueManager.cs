@@ -187,15 +187,16 @@ public class DialogueManager : MonoBehaviour
         SettingUI(false);
         StopAllCoroutines();
       
-        if(storage.saveData.nowIndex==0)
+        if(storage.saveData.questAllCount==0)
         {
             GetReward(0);
             quest.ActiveQuest(2);
             GameObject.FindWithTag("Won").gameObject.SetActive(false);
             //storage.saveData.questAllCount++;
         }
-        else if(storage.saveData.nowIndex == 1)
+        else if(storage.saveData.questAllCount == 2)
         {
+            storage.saveData.completeQuest += 2;
             GetReward(1);
         }
         else if(storage.saveData.nowIndex ==2)
@@ -215,6 +216,8 @@ public class DialogueManager : MonoBehaviour
             GetReward(5);
         }
         //storage.saveData.nowIndex++;
+        storage.SaveData();
+
         storage.SaveData();
     }
 
