@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
         for(int i=0; i<t_ReplaceText.Length; i++)
         {
             txt_Dialogue.text += t_ReplaceText[i];
-            yield return new WaitForSeconds(textDelay);
+            yield return new WaitForSecondsRealtime(textDelay);
         }
         isNext = true;
 
