@@ -32,26 +32,23 @@ public class Sea_GameManager : MonoBehaviour
 
     public GameObject[] ship;
 
-    public SaveNLoad data;
     public GameObject yeong;
     public GameObject seo;
     public GameObject yoon;
 
-    int index;
-    private void Awake()
-    {
-        //index = data.saveData.nowIndex;
-        //Debug.Log(index);
-    }
+
+
     void Start()
     {
-        if(GameManager.instance.index >=5)
-        {
-            Debug.Log("tt");
-            yeong.SetActive(false);
-            seo.SetActive(true);
-            yoon.SetActive(true);
-        }
+        Debug.Log(GameManager.instance.previousSceneName);
+        Debug.Log("fuck");
+        //if(GameManager.instance.index >=5)
+        //{
+        //    Debug.Log("tt");
+        //    yeong.SetActive(false);
+        //    seo.SetActive(true);
+        //    yoon.SetActive(true);
+        //}
         playerAnim = player.GetComponent<Animator>();
         if ((int)GameManager.instance.state == 0)
         {
@@ -70,13 +67,18 @@ public class Sea_GameManager : MonoBehaviour
             ChangeDay(2);
         }
 
-        if (GameManager.instance.previousSceneName =="Room")
+        if (GameManager.instance.previousSceneName == "Room")
+        {
+            Debug.Log("active");
             StartCoroutine(StartSea());
+        }
         else
         {
             player.SetActive(true);
             shipAnim.Play("idle", -1);
         }
+
+
 
     }
 
@@ -97,6 +99,7 @@ public class Sea_GameManager : MonoBehaviour
 
     IEnumerator StartSea()
     {
+        divePlayer.SetActive(true);
         playerAnim.SetTrigger("Jump");
         //while(player.transform.position.y>-2f)
         //{
@@ -104,9 +107,9 @@ public class Sea_GameManager : MonoBehaviour
         //    yield return new WaitForSeconds(0.05f);
         //}
         //yield return new WaitUntil(() => !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("Jump"));
-        divePlayer.SetActive(true);
         yield return new WaitForSeconds(waitTime);
         player.SetActive(true);
+        Debug.Log("test");
         shipAnim.Play("idle", -1);
 
     }

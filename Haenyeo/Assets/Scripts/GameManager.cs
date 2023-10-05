@@ -248,8 +248,11 @@ public class GameManager : MonoBehaviour
     public void ResetData()
     {
         storage.saveData.nowIndex = 0;
+        storage.saveData.completeQuest = 0;
+        storage.saveData.questAllCount = 0;
         storage.saveData.isQuest = false;
         storage.SaveData();
+        SceneManager.LoadScene("Room");
     }
 
     void DoubleClick()

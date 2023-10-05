@@ -24,7 +24,7 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        for(int i= storage.saveData.completeQuest; i<= storage.saveData.questAllCount; i++)
+        for(int i= storage.saveData.completeQuest; i< storage.saveData.questAllCount; i++)
         {
             quests = DatabaseManager.instance.GetQuest(storage.saveData.questAllCount);
             GameObject temp = Instantiate(questBoxPrefab);
