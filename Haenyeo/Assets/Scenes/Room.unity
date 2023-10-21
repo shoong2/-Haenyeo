@@ -5718,7 +5718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1566.6667, y: -539.93256}
+  m_AnchoredPosition: {x: 1566.6667, y: -539.70154}
   m_SizeDelta: {x: 552, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574142650
@@ -12335,7 +12335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 353.33334, y: -539.93256}
+  m_AnchoredPosition: {x: 353.33334, y: -539.70154}
   m_SizeDelta: {x: 552, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138850020
@@ -15102,7 +15102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -539.93256}
+  m_AnchoredPosition: {x: 960, y: -539.70154}
   m_SizeDelta: {x: 552, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1475575302
@@ -15149,25 +15149,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1247344529}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1247344534}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: GoKitchen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

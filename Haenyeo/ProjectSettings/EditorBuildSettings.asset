@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Beach.unity
     guid: 0dff9bffd8e22ef41b334ffba3b24bc9
+  - enabled: 1
+    path: Assets/Scenes/Kitchen.unity
+    guid: c26cd1a5a67a28b449b74b0617691cef
   m_configObjects: {}
