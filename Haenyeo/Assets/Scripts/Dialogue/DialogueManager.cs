@@ -38,11 +38,36 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] GameObject questBox;
     [SerializeField] TMP_Text questName;
+
+    [Header("¿øÈ­")]
+    [SerializeField] Image[] charImg;
+
     bool isClickRewardBox = false;
     bool isClickQuestBox = false;
 
     bool multiCoroutine = false;
 
+
+    void ShowDialogueImg(string name,bool active = true)
+    {
+
+        for (int i = 0; i < charImg.Length; i++)
+        {
+            if (active)
+            {
+                if (charImg[i].name == name.ToString())
+                {
+                    charImg[i].gameObject.SetActive(true);
+                }
+                else
+                    charImg[i].gameObject.SetActive(false);
+            }
+            else
+                charImg[i].gameObject.SetActive(false);
+        }
+
+
+    }
     public void ShowDialogue(Dialogue[] p_dialogues)
     {
         isDialogue = true;
@@ -63,6 +88,7 @@ public class DialogueManager : MonoBehaviour
 
         //txt_Dialogue.text = t_ReplaceText;
         txt_Name.text = dialogues[lineCount].name;
+        ShowDialogueImg(txt_Name.text);
         for(int i=0; i<t_ReplaceText.Length; i++)
         {
             txt_Dialogue.text += t_ReplaceText[i];
@@ -186,7 +212,7 @@ public class DialogueManager : MonoBehaviour
         isNext = false;
         SettingUI(false);
         StopAllCoroutines();
-      
+        ShowDialogueImg("stop", false);
         if(storage.saveData.questAllCount==0)
         {
             GetReward(0);
