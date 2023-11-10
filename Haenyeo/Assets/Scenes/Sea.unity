@@ -348,7 +348,7 @@ MonoBehaviour:
   player: {fileID: 530007875}
   divePlayer: {fileID: 1809352673}
   shipAnim: {fileID: 1846701711}
-  waitTime: 2.35
+  waitTime: 3
   skyImg: {fileID: 318361209}
   seaImg: {fileID: 1940510126}
   sky:

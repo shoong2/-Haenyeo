@@ -14,8 +14,12 @@ public class CameraController : MonoBehaviour
     }
     private void LateUpdate()
     {
+        
         Vector3 desiredPosition = new Vector3(transform.position.x, target.position.y, transform.position.z);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+
         transform.position = smoothedPosition;
+        
+
     }
 }

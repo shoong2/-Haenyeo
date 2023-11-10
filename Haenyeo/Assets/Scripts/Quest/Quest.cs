@@ -6,11 +6,13 @@ using UnityEngine;
 public class Quest
 {
     [Tooltip("퀘스트 이름")]
-    public string name;
+    public string[] name;
 
     [Tooltip("퀘스트 내용")]
     //public string[] details;
-    public string details;
+    public string[] details;
+
+    public string questIndex;
 
     public bool isQuest = false;
 }

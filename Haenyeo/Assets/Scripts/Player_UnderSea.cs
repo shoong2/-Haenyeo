@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class Player_UnderSea : Player
 {
     Vector3 targetPosition;
@@ -30,7 +31,7 @@ public class Player_UnderSea : Player
 
     bool click = false;
 
-    bool test = false;
+    bool startSea = false; // 바다에 들어가자마자 y좌표 이상으로 올라와서 씬 이동 방지
 
     public GameObject getBox;
     public TMP_Text getText;
@@ -100,6 +101,8 @@ public class Player_UnderSea : Player
         if (transform.position.y >= 0.5f || transform.position.y <= -35)
         {
             GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = false;
+            if(startSea)
+                GameManager.instance.ChangeScene("Sea");
         }
         else
             GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = true;
@@ -158,7 +161,7 @@ public class Player_UnderSea : Player
         //playerAnim.SetTrigger("Swim");
         playerAnim.SetBool("Move", false);
         restrictY = 1f;
-
+        startSea = true;
     }
 
     

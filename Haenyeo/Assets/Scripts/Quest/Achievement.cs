@@ -7,6 +7,7 @@ using UnityEngine;
 public class Achievement : Quest_
 {
     public override bool IsCancelable => base.IsCancelable;
+    public override bool IsSavable => true;
 
     public override void Cancel()
     {

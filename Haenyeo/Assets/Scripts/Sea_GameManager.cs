@@ -21,7 +21,6 @@ public class Sea_GameManager : MonoBehaviour
 
     //enum State {Idle, Afternoon, Night}
 
-    
 
     public Image skyImg;
     public Image seaImg;
@@ -37,7 +36,20 @@ public class Sea_GameManager : MonoBehaviour
     public GameObject yoon;
 
 
-
+    private void Awake()
+    {
+        playerAnim = player.GetComponent<Animator>();
+        if (GameManager.instance.previousSceneName == "Room")
+        {
+            Debug.Log("active");
+            StartCoroutine(StartSea());
+        }
+        else
+        {
+            player.SetActive(true);
+            shipAnim.SetBool("Start",true);
+        }
+    }
     void Start()
     {
         Debug.Log(GameManager.instance.previousSceneName);
@@ -49,7 +61,6 @@ public class Sea_GameManager : MonoBehaviour
         //    seo.SetActive(true);
         //    yoon.SetActive(true);
         //}
-        playerAnim = player.GetComponent<Animator>();
         if ((int)GameManager.instance.state == 0)
         {
             //skyImg.sprite = sky[(int)State.Idle];
@@ -66,18 +77,6 @@ public class Sea_GameManager : MonoBehaviour
             //skyImg.sprite = sky[(int)State.Night];
             ChangeDay(2);
         }
-
-        if (GameManager.instance.previousSceneName == "Room")
-        {
-            Debug.Log("active");
-            StartCoroutine(StartSea());
-        }
-        else
-        {
-            player.SetActive(true);
-            shipAnim.Play("idle", -1);
-        }
-
 
 
     }
@@ -110,7 +109,7 @@ public class Sea_GameManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         player.SetActive(true);
         Debug.Log("test");
-        shipAnim.Play("idle", -1);
+        shipAnim.SetBool("Start", true);
 
     }
 

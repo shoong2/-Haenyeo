@@ -17,18 +17,43 @@ public class QuestParser : MonoBehaviour
 
             Quest quest = new Quest();
 
-            quest.name = row[5];
-            quest.details = row[6];
+            quest.questIndex = row[0];
+           // quest.name = row[5];
+          //  quest.details = row[6];
 
-            Debug.Log(row[5]);
-            //List<string> detailList = new List<string>();
 
+            List<string> detailList = new List<string>();
+            List<string> nameList = new List<string>();
             //detailList.Add(row[6]);
-            Debug.Log(row[6]);
+
 
             do
             {
-             
+                if (nameList.Count == 0)
+                {
+                    nameList.Add(row[5]);
+                    detailList.Add(row[6]);
+                    Debug.Log("hi");
+                }
+                else if (row[5] == "")
+                {
+                    //nameList.Add(nameList[nameList.Count - 1]);
+                    //detailList.Add(detailList[detailList.Count - 1]);
+                    //Debug.Log(2);
+                
+               
+                }
+                else
+                {
+                    nameList.Add(row[5]);
+                    detailList.Add(row[6]);
+                    Debug.Log(3);
+                }
+
+                //nameList.Add(row[5]);
+                //contextList.Add(row[6]);
+                //Debug.Log(row[6]);
+
                 if (++i < data.Length)
                 {
                     row = data[i].Split(new char[] { ',' });
@@ -38,21 +63,10 @@ public class QuestParser : MonoBehaviour
                     break;
                 }
             }
-            while (row[5].ToString() == "");
+            while (row[0].ToString() == "");
 
-            //while (row[5].ToString() == "")
-            //{
-            //    if (++i < data.Length)
-            //    {
-            //        row = data[i].Split(new char[] { ',' });
-            //    }
-            //    else
-            //    {
-            //        break;
-            //    }
-            //}
-
-            //quest.details = detailList.ToArray();
+            quest.details = detailList.ToArray();
+            quest.name = nameList.ToArray();
 
             questList.Add(quest);
         }

@@ -8,7 +8,7 @@ public class InteractionEvent : MonoBehaviour
 
     public Dialogue[] GetDialogue()
     {
-        dialogue.dialogues = DatabaseManager.instance.GetDialogue((int)dialogue.line.x, (int)dialogue.line.y);
+       // dialogue.dialogues = DatabaseManager.instance.GetDialogue((int)dialogue.line.x, (int)dialogue.line.y);
         return dialogue.dialogues;
     }
 }

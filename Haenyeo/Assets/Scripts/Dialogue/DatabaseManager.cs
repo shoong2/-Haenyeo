@@ -20,6 +20,11 @@ public class DatabaseManager : MonoBehaviour
 
     public SaveNLoad storage;
 
+    //reward
+    [SerializeField] string csv_RewardFileName;
+
+    Dictionary<int, Reward_> rewardDic = new Dictionary<int, Reward_>();
+
 
     private void Awake()
     {
@@ -40,29 +45,44 @@ public class DatabaseManager : MonoBehaviour
             {
                 questDic.Add(j + 1, quests[j]);
             }
+
+            RewardParser RParser = GetComponent<RewardParser>();
+            Reward_[] rewards = RParser.Parse(csv_RewardFileName);
+            for(int q=0; q<rewards.Length; q++)
+            {
+                rewardDic.Add(q + 1, rewards[q]);
+            }
         }
     }
 
-    public Dialogue[] GetDialogue(int _StartNum, int _EndNum)
+    //public Dialogue[] GetDialogue(int _StartNum, int _EndNum)
+    //{
+    //    List<Dialogue> dialogueList = new List<Dialogue>();
+
+    //    for(int i=0; i<=_EndNum -_StartNum; i++)
+    //    {
+    //        dialogueList.Add(dialogueDic[_StartNum + i]);
+    //    }
+
+    //    return dialogueList.ToArray();
+    //}
+
+    public Dialogue[] GetDialogue(int index)
     {
         List<Dialogue> dialogueList = new List<Dialogue>();
-
-        for(int i=0; i<=_EndNum -_StartNum; i++)
-        {
-            dialogueList.Add(dialogueDic[_StartNum + i]);
-        }
-
+        dialogueList.Add(dialogueDic[index+1]);
         return dialogueList.ToArray();
     }
 
     public Quest[] GetQuest(int questCount)
     {
         List<Quest> questList = new List<Quest>();
+        questList.Add(questDic[questCount + 1]);
 
-        for(int i=0; i< storage.saveData.questAllCount+questCount; i++)
-        {
-            questList.Add(questDic[1 + i]);
-        }
+        //for(int i=0; i< storage.saveData.questAllCount+questCount; i++)
+        //{
+        //    questList.Add(questDic[1 + i]);
+        //}
 
         //for(int i=0; i<= _EndNum - _StartNum; i++)
         //{
@@ -70,6 +90,13 @@ public class DatabaseManager : MonoBehaviour
         //}
 
         return questList.ToArray();
+    }
+
+    public Reward_[] GetReward(int index)
+    {
+        List<Reward_> rewardList = new List<Reward_>();
+        rewardList.Add(rewardDic[index + 1]);
+        return rewardList.ToArray();
     }
 
 }
