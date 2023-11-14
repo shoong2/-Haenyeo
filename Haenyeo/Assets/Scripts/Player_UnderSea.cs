@@ -10,7 +10,13 @@ public class Player_UnderSea : Player
     Vector3 tewakTargetPosition;
     Animator playerAnim;
     public float rayLine = 3f;
-    public GameObject seaHP;
+
+    //[Header("HP")]
+    //public GameObject seaHP;
+    //public Image hpSlider;
+    //public float hpX = 2f; //hp x위치
+    //public float maxHp = 10f;
+    //public float currentHp;
     //[SerializeField]
     //GameObject hp;
     //[SerializeField]
@@ -18,11 +24,10 @@ public class Player_UnderSea : Player
     //public float maxHp = 10f;
     //float currentHp;
     //public float hpX =2f;
-
     RaycastHit2D raycast;
 
-    [SerializeField]
-    GameObject toolGuide;
+    //[SerializeField]
+    //GameObject toolGuide;
 
     [SerializeField]
     GameObject[] tools;
@@ -42,6 +47,7 @@ public class Player_UnderSea : Player
         y = 0;
         restrictY = 2f;
         base.Start();
+        //currentHp = maxHp;
         playerAnim = GetComponent<Animator>();
         targetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y);//.y - objectHeight*2f);
         transform.position = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight*2f);
@@ -53,6 +59,10 @@ public class Player_UnderSea : Player
 
     private void Update()
     {
+        //seaHP.transform.position = gameObject.transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0); // hp 따라다니기
+        //currentHp -= Time.deltaTime;
+        //hpSlider.fillAmount = currentHp / maxHp;
+
         Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
         Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
         raycast = Physics2D.Raycast(transform.position, dir, rayLine, LayerMask.GetMask("Item"));
@@ -94,7 +104,7 @@ public class Player_UnderSea : Player
         }
         else
         {
-            toolGuide.SetActive(false);
+            //toolGuide.SetActive(false);
            // raycast.collider.transform.GetComponent<Fish>().canvas.SetActive(false);
         }
 
@@ -112,9 +122,9 @@ public class Player_UnderSea : Player
 
     void GuideSetting(int index, GameObject fish)
     {
-        toolGuide.SetActive(true);
-        toolGuide.transform.position = tools[index].transform.position;
-        toolGuide.transform.parent = tools[index].transform;
+       // toolGuide.SetActive(true);
+        //toolGuide.transform.position = tools[index].transform.position;
+        //toolGuide.transform.parent = tools[index].transform;
         if(click == true)
         {
             if (fish.transform.GetComponent<Fish>().curHp > 0)
@@ -142,10 +152,7 @@ public class Player_UnderSea : Player
 
     public void Attack()
     {
-        if(toolGuide.activeSelf)
-        {
 
-        }
     }
 
 

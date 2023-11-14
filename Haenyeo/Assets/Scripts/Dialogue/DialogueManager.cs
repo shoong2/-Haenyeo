@@ -149,10 +149,10 @@ public class DialogueManager : MonoBehaviour
 
             if(hit.collider !=null)
             {
-                if(hit.collider.tag=="Ship")
-                {
-                    SceneManager.LoadScene("Room");
-                }
+                //if(hit.collider.tag=="Ship")
+                //{
+                //    SceneManager.LoadScene("Room");
+                //}
                // Debug.Log(storage.saveData.nowIndex);
                 if (SetSystemIndex(0, hit, "Won", "Room"))
                 {

@@ -7,6 +7,14 @@ public class ToolManager : MonoBehaviour
 {
     [SerializeField] Image[] tools;
 
+    public GameObject player;
+    Animator playerAnim;
+
+    private void Start()
+    {
+        playerAnim = player.GetComponent<Animator>();
+    }
+
     public void ChangeTool()
     {
         for(int i=0; i< tools.Length; i++)
@@ -25,5 +33,24 @@ public class ToolManager : MonoBehaviour
             else
                 tools[i].gameObject.SetActive(false);
         }
+    }
+
+    public void Hoe()
+    {
+        playerAnim.SetTrigger("Hoe");
+        //click = true;
+    }
+
+    public void Knife()
+    {
+        playerAnim.SetTrigger("Knife");
+        //click = true;
+    }
+
+    public void Pole()
+    {
+        playerAnim.SetTrigger("Pole");
+        //click = true;
+        //playerAnim.SetBool("test", true);
     }
 }

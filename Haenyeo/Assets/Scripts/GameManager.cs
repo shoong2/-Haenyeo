@@ -17,24 +17,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject underSeaUI;
 
-    [SerializeField] TMP_Text meter;
-    float meterNum;
+    //[SerializeField] TMP_Text meter;
+    //float meterNum;
     [SerializeField] GameObject questBox;
     [SerializeField] TMP_Text questText;
     bool isquest = false;
 
-    [SerializeField]
-    GameObject hp;
-    [SerializeField]
-    Image hpSlider;
-    public float maxHp = 10f;
-    public float currentHp;
+    //[SerializeField]
+    //GameObject hp;
+    //[SerializeField]
+    //Image hpSlider;
+    //public float maxHp = 10f;
+    //public float currentHp;
 
-    [SerializeField]
-    GameObject player_UnderSea;
-    SpriteRenderer render;
+    //[SerializeField]
+    //GameObject player_UnderSea;
 
-    public float hpX = 2f;
+    //public float hpX = 2f;
     Canvas canvasComp;
 
     VariableJoystick joy;
@@ -83,7 +82,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         joy = joystick.GetComponent<VariableJoystick>();
-        render = player_UnderSea.GetComponent<SpriteRenderer>();
+        //render = player_UnderSea.GetComponent<SpriteRenderer>();
     }
     private void OnDestroy()
     {
@@ -118,31 +117,33 @@ public class GameManager : MonoBehaviour
 
         if (underSea) //hp 따라다니기
         {
-            if(time<maxTime)
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            SpriteRenderer render = player.GetComponent<SpriteRenderer>();
+            if (time<maxTime)
                 time += Time.deltaTime; //바다에 들어가면 시간 카운트
             //Vector3 hpPos = mainCamera.WorldToScreenPoint(player_UnderSea.transform.position);
-            //hp.transform.position = player_UnderSea.transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0);
+            //hp.transform.position = player.transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0);
             //hpSlider.fillAmount = currentHp / maxHp;
-            currentHp -= Time.deltaTime;
+            //currentHp -= Time.deltaTime;
 
-          //  meterNum = (-(player_UnderSea.transform.position.y - 6f) / 7f);
-            meter.text = meterNum.ToString("F1") +"M";
+            //meterNum = (-(player_UnderSea.transform.position.y - 6f) / 7f);
+            //meter.text = meterNum.ToString("F1") +"M";
 
-            if(!isquest && meterNum>3f)
-            {
-                isquest = true;
-                questText.text = "3M 까지 버티기";
-                questBox.SetActive(true);
-                storage.saveData.isQuest = true;
-                storage.SaveData();
+            //if(!isquest && meterNum>3f)
+            //{
+            //    isquest = true;
+            //    questText.text = "3M 까지 버티기";
+            //    questBox.SetActive(true);
+            //    storage.saveData.isQuest = true;
+            //    storage.SaveData();
                
-            }
+            //}
 
-            if(currentHp <=0)
-            {
-                underSea = false;
-                StartCoroutine(TewakMove());
-            }
+            //if(currentHp <=0)
+            //{
+            //    underSea = false;
+            //    StartCoroutine(TewakMove());
+            //}
         }
 
         //게임 종료
@@ -178,23 +179,23 @@ public class GameManager : MonoBehaviour
             //바닷속에서 나왔을 경우
             underSeaUI.SetActive(false);
            // player_UnderSea.SetActive(false);
-            meter.gameObject.SetActive(false);
+            //meter.gameObject.SetActive(false);
             underSea = false;
             timer.gameObject.SetActive(false);
 
             if (scene.name == "UnderSea")
             {
-                currentHp = maxHp; //현재 hp 최대 hp로 초기화
+                //currentHp = maxHp; //현재 hp 최대 hp로 초기화
                 underSea = true;
-                underSeaUI.SetActive(true);
-                meter.gameObject.SetActive(true);
+                //underSeaUI.SetActive(true);
+                //meter.gameObject.SetActive(true);
                 //player_UnderSea.SetActive(true);
 
-                if (storage.saveData.nowIndex == 6)
-                {
-                    timer.gameObject.SetActive(true);
-                    isquest = true;
-        }
+        //        if (storage.saveData.nowIndex == 6)
+        //        {
+        //            timer.gameObject.SetActive(true);
+        //            isquest = true;
+        //}
             }
 
         }
@@ -204,30 +205,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Tewak()
-    {
-        StartCoroutine(TewakMove());
-    }
-    IEnumerator TewakMove() // 죽었을 때와 같이 쓰기
-    {
-        underSeaUI.SetActive(false);
-        meter.gameObject.SetActive(false);
-        if (!underSea)
-        {
-            player_UnderSea.GetComponent<Animator>().SetTrigger("Die");
-        }
-        else
-            player_UnderSea.GetComponent<Animator>().SetTrigger("Tewak");
-        yield return new WaitForSeconds(1.3f);
-        Vector3 tewakTargetPosition = new Vector2(player_UnderSea.transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
-        while (player_UnderSea.transform.position != tewakTargetPosition)
-        {
-            player_UnderSea.transform.position = Vector3.MoveTowards(player_UnderSea.transform.position, tewakTargetPosition, 3.5f * Time.deltaTime);
-            yield return null;
-        }
-        //SceneManager.LoadScene("Sea");
-        ChangeScene("Sea");
-    }
+    //public void Tewak()
+    //{
+    //    StartCoroutine(TewakMove());
+    //}
+    //IEnumerator TewakMove() // 죽었을 때와 같이 쓰기
+    //{
+    //    GameObject player = GameObject.FindGameObjectWithTag("Player");
+    //    underSeaUI.SetActive(false);
+    //    float nowDistace = UnderSeaGameManager.distance;
+    //   // meter.gameObject.SetActive(false);
+    //    if (!underSea)
+    //    {
+    //        player.GetComponent<Animator>().SetTrigger("Die");
+    //    }
+    //    else
+    //        player.GetComponent<Animator>().SetTrigger("Tewak");
+    //    yield return new WaitForSeconds(1.3f);
+    //    //Vector3 tewakTargetPosition = new Vector2(player_UnderSea.transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
+    //    Vector3 tewakTargetPosition = new Vector2(player.transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
+    //    //while (player_UnderSea.transform.position != tewakTargetPosition)
+    //    while (player.transform.position != tewakTargetPosition)
+    //    {
+    //        player.transform.position = Vector3.MoveTowards(player.transform.position, tewakTargetPosition, nowDistace * Time.deltaTime);
+    //        yield return null;
+    //    }
+    //    //SceneManager.LoadScene("Sea");
+    //    ChangeScene("Sea");
+    //}
 
     public void ChangeScene(string sceneName)
     {

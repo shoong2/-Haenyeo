@@ -997,15 +997,8 @@ MonoBehaviour:
   joystick: {fileID: 21108036}
   canvas_: {fileID: 666889056}
   underSeaUI: {fileID: 1115057721}
-  meter: {fileID: 1641461207}
   questBox: {fileID: 973959103}
   questText: {fileID: 27891712}
-  hp: {fileID: 2147425718}
-  hpSlider: {fileID: 1836333492}
-  maxHp: 70
-  currentHp: 0
-  player_UnderSea: {fileID: 1630241952}
-  hpX: 2
   mainCamera: {fileID: 0}
   phone: {fileID: 361976632}
   previousSceneName: 
@@ -5472,7 +5465,7 @@ GameObject:
   - component: {fileID: 534337693}
   - component: {fileID: 534337692}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ClosetButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5495,8 +5488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
-  m_SizeDelta: {x: 350, y: 192}
+  m_AnchoredPosition: {x: -38, y: 31}
+  m_SizeDelta: {x: 192, y: 226}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &534337692
 MonoBehaviour:
@@ -5528,7 +5521,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 074c011784fbf44499e2d279cf4ee6e8, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 42fd16452a551804fb4ed50e5536b1ff, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -5574,7 +5567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 626621a5361c0f443bef406edf1f4e53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db8b57c96b3cab34d937916165a2f97b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12598,7 +12591,7 @@ GameObject:
   - component: {fileID: 1138812244}
   - component: {fileID: 1138812243}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BedButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12621,8 +12614,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90, y: 0}
-  m_SizeDelta: {x: 350, y: 192}
+  m_AnchoredPosition: {x: -152, y: 190}
+  m_SizeDelta: {x: 192, y: 226}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138812243
 MonoBehaviour:
@@ -12654,7 +12647,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: b447b0ffe513c054ea27c864bda16c84, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 70c8b94bbac024345b9ec56e2fc5d3a5, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -12700,7 +12693,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ef95e31fff710df4b98453b47c416110, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d334c072e146e7c4998c4140f43aafe0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17384,8 +17377,6 @@ MonoBehaviour:
   joy: {fileID: 0}
   speed: 3
   rayLine: 2
-  seaHP: {fileID: 2760602995098725721, guid: f8a32f9a662ee9c4aa244bb966da9e0f, type: 3}
-  toolGuide: {fileID: 1188219548}
   tools:
   - {fileID: 883154623}
   - {fileID: 1671584230}
@@ -21420,7 +21411,7 @@ GameObject:
   - component: {fileID: 2057044964}
   - component: {fileID: 2057044963}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DoorButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21443,8 +21434,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115, y: 213}
-  m_SizeDelta: {x: 350, y: 192}
+  m_AnchoredPosition: {x: 32, y: 251}
+  m_SizeDelta: {x: 192, y: 226}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2057044963
 MonoBehaviour:
@@ -21465,7 +21456,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -21476,7 +21467,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: e7c218b34e5bbe44d82e8131c2fb4ad5, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -21522,7 +21513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5b7fd7f7ae83a6b45a7600be830e4d47, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7123915b0c204194d9a2b2ca061ce25e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
