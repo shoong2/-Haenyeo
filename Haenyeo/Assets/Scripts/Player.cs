@@ -29,12 +29,13 @@ public class Player : MonoBehaviour
     float topEdge;
     float bottomEdge;
 
-   
+    protected Camera camera;
 
     private void Awake()
     {
         //joy = FindObjectOfType<VariableJoystick>();
         playerAnim = GetComponent<Animator>();
+        camera = Camera.main;
     }
 
     virtual protected void Start()
@@ -46,7 +47,7 @@ public class Player : MonoBehaviour
         objectWidth = transform.localScale.x;
         objectHeight = transform.localScale.y;
 
-        joy = FindObjectOfType<VariableJoystick>();
+        //joy = FindObjectOfType<VariableJoystick>();
     }
 
     virtual protected void FixedUpdate()
@@ -72,13 +73,19 @@ public class Player : MonoBehaviour
         //playerAnim.SetTrigger("Idle");
 
         moveVec = rigid.position + new Vector2(x, y) * speed * Time.deltaTime;
-       
+
         //카메라 밖으로 나가지 않도록 제한
 
-        leftEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
-        rightEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
-        topEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
-        bottomEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
+        //leftEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
+        //rightEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
+        //topEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
+        //bottomEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
+
+        leftEdge = camera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
+        rightEdge = camera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
+        topEdge = camera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
+        bottomEdge = camera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
+
 
 
         moveVec = new(Mathf.Clamp(moveVec.x, leftEdge, rightEdge), 

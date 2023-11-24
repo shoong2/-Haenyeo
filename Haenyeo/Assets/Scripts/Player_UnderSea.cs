@@ -11,23 +11,13 @@ public class Player_UnderSea : Player
     Animator playerAnim;
     public float rayLine = 3f;
 
-    //[Header("HP")]
-    //public GameObject seaHP;
-    //public Image hpSlider;
-    //public float hpX = 2f; //hp x위치
-    //public float maxHp = 10f;
-    //public float currentHp;
-    //[SerializeField]
-    //GameObject hp;
-    //[SerializeField]
-    //Image hpSlider;
-    //public float maxHp = 10f;
-    //float currentHp;
-    //public float hpX =2f;
     RaycastHit2D raycast;
 
-    //[SerializeField]
-    //GameObject toolGuide;
+    [Header("Tool")]
+    [SerializeField]
+    GameObject[] toolGuide;
+    public GameObject toolGuideGroup;
+    public ToolManager toolManager;
 
     [SerializeField]
     GameObject[] tools;
@@ -49,9 +39,12 @@ public class Player_UnderSea : Player
         base.Start();
         //currentHp = maxHp;
         playerAnim = GetComponent<Animator>();
-        targetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y);//.y - objectHeight*2f);
-        transform.position = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight*2f);
-        tewakTargetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 3f);
+        //targetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y);//.y - objectHeight*2f);
+        //transform.position = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight*2f);
+        //tewakTargetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 3f);
+        targetPosition = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y);//.y - objectHeight*2f);
+        transform.position = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 2f);
+        tewakTargetPosition = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 3f);
         StartCoroutine(StartUnderSea());
     }
 
@@ -70,6 +63,20 @@ public class Player_UnderSea : Player
 
         if (raycast)
         {
+            toolGuideGroup.SetActive(true);
+            GuideSetting(raycast.collider.tag);
+            if (toolManager.activeToolName == "Knife")
+            {
+                raycast.collider.transform.GetComponent<Fish>().ShowCanvas(gameObject.transform.position.x);
+            }
+            else if (toolManager.activeToolName == raycast.collider.tag)
+            {
+                raycast.collider.transform.GetComponent<Fish>().ShowCanvas(gameObject.transform.position.x);
+            }
+            else
+            {
+                raycast.collider.transform.GetComponent<Fish>().EnableCanvas();
+            }
             //if (!test)
             //{
             //    GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
@@ -77,69 +84,73 @@ public class Player_UnderSea : Player
             //    seahp.transform.position += new Vector3(2, 0, 0);
             //    test = true;
             //}
+            //toolGuideGroup.SetActive(true);
+            //if (raycast.collider.tag == "Knife")
+            //{
 
-            if (raycast.collider.tag == "Knife")
-            {
-            
-                GuideSetting(0, raycast.collider.gameObject);
-                raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
-                //GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
-                //    Quaternion.identity, GameObject.Find("UnderSea").transform);
+            //    GuideSetting(knife, raycast.collider.gameObject);
+            //    raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
+            //    //GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
+            //    //    Quaternion.identity, GameObject.Find("UnderSea").transform);
 
-            }
-            else if (raycast.collider.tag == "Hoe")
-            {
-                GuideSetting(1, raycast.collider.gameObject);
-                raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
-            }
-            else if (raycast.collider.tag == "Pole")
-            {
-                //toolGuide.SetActive(true);
-                //toolGuide.transform.position = tools[2].transform.position;
-                //toolGuide.transform.parent = tools[2].transform;
-                GuideSetting(2, raycast.collider.gameObject);
-                raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
-            }
+            //}
+            //else if (raycast.collider.tag == "Hoe")
+            //{
+            //    GuideSetting(hoe, raycast.collider.gameObject);
+            //    raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
+            //}
+            //else if (raycast.collider.tag == "Pole")
+            //{
+            //    //toolGuide.SetActive(true);
+            //    //toolGuide.transform.position = tools[2].transform.position;
+            //    //toolGuide.transform.parent = tools[2].transform;
+            //    GuideSetting(pole, raycast.collider.gameObject);
+            //    raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
+            //}
             //Debug.Log("det");
         }
         else
         {
-            //toolGuide.SetActive(false);
+            toolGuideGroup.SetActive(false);
            // raycast.collider.transform.GetComponent<Fish>().canvas.SetActive(false);
         }
 
-        if (transform.position.y >= 0.5f || transform.position.y <= -35)
+        if (transform.position.y >= 4f || transform.position.y <= -35)
         {
-            GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = false;
-            if(startSea)
-                GameManager.instance.ChangeScene("Sea");
+            //GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = false;
+            camera.transform.GetComponent<CameraController>().enabled = false;
+            if (startSea)
+                SceneManager.LoadScene("Sea");
         }
         else
-            GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = true;
+            camera.transform.GetComponent<CameraController>().enabled = true;
+        //GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = true;
 
 
     }
 
-    void GuideSetting(int index, GameObject fish)
+    void GuideSetting(string coliderItemName)//, GameObject fish)
     {
-       // toolGuide.SetActive(true);
-        //toolGuide.transform.position = tools[index].transform.position;
-        //toolGuide.transform.parent = tools[index].transform;
-        if(click == true)
+        for (int i = 0; i < toolGuide.Length; i++)
         {
-            if (fish.transform.GetComponent<Fish>().curHp > 0)
-            {
-                fish.transform.GetComponent<Fish>().SetHP();
-                if(fish.transform.GetComponent<Fish>().curHp ==0)
-                {
-                    Destroy(fish.gameObject);
-                    getText.text = "<b>[" + fish.transform.GetComponent<ItemPickUp>().item.itemName + "]</b> 을\n채집했습니다!";
-                    getSprite.sprite = fish.transform.GetComponent<ItemPickUp>().item.itemImage;
-                    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
-                    getBox.SetActive(true);
-                }
-                click = false;
-            }
+            toolGuide[i].SetActive(toolGuide[i].name == coliderItemName);
+        }
+
+        //if (click == true)
+        //{
+        //    if (fish.transform.GetComponent<Fish>().curHp > 0)
+        //    {
+        //        fish.transform.GetComponent<Fish>().SetHP();
+        //        if(fish.transform.GetComponent<Fish>().curHp ==0)
+        //        {
+        //            Destroy(fish.gameObject);
+        //            getText.text = "<b>[" + fish.transform.GetComponent<ItemPickUp>().item.itemName + "]</b> 을\n채집했습니다!";
+        //            getSprite.sprite = fish.transform.GetComponent<ItemPickUp>().item.itemImage;
+        //            inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
+        //            getBox.SetActive(true);
+        //        }
+        //        click = false;
+        //    }
             //else
             //{
             //    getText.text = "<b>[" + fish.transform.GetComponent<ItemPickUp>().item.itemName + "]</b> 을\n채집했습니다!";
@@ -147,7 +158,7 @@ public class Player_UnderSea : Player
             //    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
             //    getBox.SetActive(true);
             //}
-        }
+        //}
     }
 
     public void Attack()
@@ -172,19 +183,19 @@ public class Player_UnderSea : Player
     }
 
     
-    public void Hoe()
+    public void HoeAttack()
     {
         playerAnim.SetTrigger("Hoe");
         click = true;
     }
     
-    public void Knife()
+    public void KnifeAttack()
     {
         playerAnim.SetTrigger("Knife");
         click = true;
     }
 
-    public void Pole()
+    public void PoleAttack()
     {
         playerAnim.SetTrigger("Pole");
         click = true;

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     //public float hpX = 2f;
     Canvas canvasComp;
 
-    VariableJoystick joy;
+    //VariableJoystick joy;
 
     public Camera mainCamera;
 
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        joy = joystick.GetComponent<VariableJoystick>();
+        //joy = joystick.GetComponent<VariableJoystick>();
         //render = player_UnderSea.GetComponent<SpriteRenderer>();
     }
     private void OnDestroy()
@@ -171,8 +171,8 @@ public class GameManager : MonoBehaviour
         canvasComp.worldCamera = mainCamera;
         if (scene.name != "Room" && scene.name != "Beach")
         {
-            joystick.SetActive(true);
-            joy.JoystickReset();
+           // joystick.SetActive(true);
+           // joy.JoystickReset();
             //mainCamera = Camera.main;
             //canvasComp.worldCamera = mainCamera;
 

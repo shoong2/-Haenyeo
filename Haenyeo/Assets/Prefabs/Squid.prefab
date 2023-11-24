@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.19, y: 0.36}
+  m_AnchoredPosition: {x: 1.5, y: 0}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1009875756
@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 4280257142553869060}
   - component: {fileID: 1364229199855824201}
   - component: {fileID: 4525954091353227202}
+  - component: {fileID: 2354489858058155922}
   m_Layer: 7
   m_Name: Squid
   m_TagString: Pole
@@ -266,6 +267,27 @@ MonoBehaviour:
   hp: {fileID: 6008342393596840779}
   maxHP: 3
   curHp: 0
+  hpPos: 1.5
+--- !u!95 &2354489858058155922
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4110708945819132313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec18d2f4a17bc8343943f49876e996f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &4659883111525621917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2760602995098725720, guid: f8a32f9a662ee9c4aa244bb966da9e0f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000009536743
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2760602995098725720, guid: f8a32f9a662ee9c4aa244bb966da9e0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

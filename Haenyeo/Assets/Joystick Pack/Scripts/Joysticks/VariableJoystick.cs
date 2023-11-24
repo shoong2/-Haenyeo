@@ -45,8 +45,10 @@ public class VariableJoystick : Joystick
     {
         if(joystickType != JoystickType.Fixed)
             background.gameObject.SetActive(false);
+       
 
         base.OnPointerUp(eventData);
+      
     }
 
     protected override void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
@@ -59,11 +61,11 @@ public class VariableJoystick : Joystick
         base.HandleInput(magnitude, normalised, radius, cam);
     }
 
-    public void JoystickReset()
-    {
-        ExecuteEvents.Execute<IPointerUpHandler>(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerUpHandler);
-        //handle.anchoredPosition = Vector2.zero;
-    }
+    //public void JoystickReset()
+    //{
+    //    ExecuteEvents.Execute<IPointerUpHandler>(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerUpHandler);
+    //    //handle.anchoredPosition = Vector2.zero;
+    //}
 }
 
 public enum JoystickType { Fixed, Floating, Dynamic }

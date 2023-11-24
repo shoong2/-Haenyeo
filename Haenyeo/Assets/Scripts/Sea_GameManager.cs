@@ -39,7 +39,12 @@ public class Sea_GameManager : MonoBehaviour
     private void Awake()
     {
         playerAnim = player.GetComponent<Animator>();
-        if (GameManager.instance.previousSceneName == "Room")
+        if(GameManager.instance == null)
+        {
+            player.SetActive(true);
+            shipAnim.SetBool("Start", true);
+        }
+        else if (GameManager.instance.previousSceneName == "Room")
         {
             Debug.Log("active");
             StartCoroutine(StartSea());
@@ -52,8 +57,6 @@ public class Sea_GameManager : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(GameManager.instance.previousSceneName);
-        Debug.Log("fuck");
         //if(GameManager.instance.index >=5)
         //{
         //    Debug.Log("tt");
@@ -61,21 +64,24 @@ public class Sea_GameManager : MonoBehaviour
         //    seo.SetActive(true);
         //    yoon.SetActive(true);
         //}
-        if ((int)GameManager.instance.state == 0)
+        if (GameManager.instance != null)
         {
-            //skyImg.sprite = sky[(int)State.Idle];
-            //seaImg.sprite = sea[(int)State.Idle];
-            ChangeDay(0);
-        }
-        else if ((int)GameManager.instance.state == 1)
-        {
-            //skyImg.sprite = sky[(int)State.Afternoon];
-            ChangeDay(1);
-        }
-        else
-        {
-            //skyImg.sprite = sky[(int)State.Night];
-            ChangeDay(2);
+            if ((int)GameManager.instance.state == 0)
+            {
+                //skyImg.sprite = sky[(int)State.Idle];
+                //seaImg.sprite = sea[(int)State.Idle];
+                ChangeDay(0);
+            }
+            else if ((int)GameManager.instance.state == 1)
+            {
+                //skyImg.sprite = sky[(int)State.Afternoon];
+                ChangeDay(1);
+            }
+            else
+            {
+                //skyImg.sprite = sky[(int)State.Night];
+                ChangeDay(2);
+            }
         }
 
 

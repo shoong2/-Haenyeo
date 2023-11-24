@@ -10,6 +10,7 @@ public class Fish : MonoBehaviour
     public float maxHP=3;
     public float curHp;
 
+    public float hpPos = 1.5f;
     void Start()
     {
         curHp = maxHP;
@@ -21,26 +22,22 @@ public class Fish : MonoBehaviour
         
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.tag =="Player")
-    //    {
-    //        canvas.SetActive(true);
-    //    }
-    //}
 
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if(collision.tag=="Player")
-    //    {
-    //        canvas.SetActive(false);
-    //    }
-    //}
-
-    public void ShowCanvas()
+    public void ShowCanvas(float playerXPos)
     {
         canvas.SetActive(true);
+        if(gameObject.transform.position.x > playerXPos)
+        {
+            canvas.transform.localPosition = new Vector2(hpPos,0);
+        }
+        else
+            canvas.transform.localPosition = new Vector2(-hpPos, 0);
     }
+
+    public void EnableCanvas()
+    {
+        canvas.SetActive(false);
+    }    
 
     public void SetHP()
     {

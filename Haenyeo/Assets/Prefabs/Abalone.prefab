@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.62, y: 0.37}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3974991466758223002
@@ -266,6 +266,7 @@ MonoBehaviour:
   hp: {fileID: 3721416019920211773}
   maxHP: 3
   curHp: 0
+  hpPos: 1.5
 --- !u!1001 &2337351395144623339
 PrefabInstance:
   m_ObjectHideFlags: 0
