@@ -56,7 +56,15 @@ public class Player_UnderSea : Player
         //currentHp -= Time.deltaTime;
         //hpSlider.fillAmount = currentHp / maxHp;
 
+
         Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
+        if (toolManager.activeToolName == "Pole")
+        {
+            rayLine = 8f;
+        }
+        else
+            rayLine = 3f;
+
         Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
         raycast = Physics2D.Raycast(transform.position, dir, rayLine, LayerMask.GetMask("Item"));
 

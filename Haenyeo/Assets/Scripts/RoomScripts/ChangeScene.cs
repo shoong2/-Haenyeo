@@ -17,7 +17,12 @@ public class ChangeScene : MonoBehaviour
     public void GoKitchen()
     {
         GameManager.instance.ChangeScene("Kitchen");
-    }    
+    }
+
+    public void GoTitle()
+    {
+        SceneManager.LoadScene("Title");
+    }
 
     public void StartGame()
     {

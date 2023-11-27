@@ -8,8 +8,9 @@ public class Player : MonoBehaviour
 
     public float speed = 1f; //움직임 속도
     float objectWidth;
-    protected float restrictY = 0.68f;
     protected float objectHeight;
+    protected float restrictY = 0.68f;
+    
 
     protected float x;
     protected float y;

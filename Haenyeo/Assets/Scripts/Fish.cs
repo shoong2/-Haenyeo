@@ -10,16 +10,39 @@ public class Fish : MonoBehaviour
     public float maxHP=3;
     public float curHp;
 
+    float objectWidth;
+    float objectHeight;
+
     public float hpPos = 1.5f;
+
+    [Header("¿òÁ÷ÀÓ")]
+    Rigidbody2D rigid;
+    Vector2 moveVec;
+    float leftEdge;
+    float rightEdge;
+    Camera camera;
+    public float speed = 3f;
+
     void Start()
     {
+        camera = Camera.main;
         curHp = maxHP;
+        objectWidth = transform.localScale.x;
+        objectHeight = transform.localScale.y;
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+
+        leftEdge = camera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
+        rightEdge = camera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
     }
 
 
