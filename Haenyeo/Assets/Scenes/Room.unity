@@ -3068,7 +3068,13 @@ MonoBehaviour:
   - {fileID: 172670854}
   audioSourceBgm: {fileID: 172670846}
   playSoundName: []
-  effectSounds: []
+  effectSounds:
+  - name: 
+    clip: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
   bgmSounds: []
 --- !u!82 &172670854
 AudioSource:
