@@ -3772,7 +3772,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1046422901}
         m_TargetAssemblyTypeName: Player_UnderSea, Assembly-CSharp
-        m_MethodName: KnifeAttack
+        m_MethodName: Attack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4642,6 +4642,10 @@ PrefabInstance:
     - target: {fileID: 187538830170559395, guid: 058e5d8c5f1c68a47953e7c412a4a617, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958264996751555025, guid: 058e5d8c5f1c68a47953e7c412a4a617, type: 3}
+      propertyPath: fadeSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7355299324755961761, guid: 058e5d8c5f1c68a47953e7c412a4a617, type: 3}
       propertyPath: m_Name

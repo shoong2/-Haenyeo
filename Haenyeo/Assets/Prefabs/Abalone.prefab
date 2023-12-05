@@ -227,7 +227,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &3364413940740297510
 Rigidbody2D:
@@ -267,6 +267,7 @@ MonoBehaviour:
   maxHP: 3
   curHp: 0
   hpPos: 1.5
+  speed: 3
 --- !u!1001 &2337351395144623339
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
+
    public void GoSea()
     {
         GameManager.instance.ChangeScene("Sea");
@@ -28,4 +29,5 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("Room");
     }
+
 }

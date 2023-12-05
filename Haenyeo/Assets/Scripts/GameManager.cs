@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckPhone()
     {
+        SoundManager.instance.PlaySE("button");
         if (phone.activeSelf)
         {
             phone.SetActive(false);

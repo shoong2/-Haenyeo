@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
     {
         
     }
-
+     
     public void AcquireItem(Item _item, int _count =1)
     {
         if (Item.ItemType.Tool != _item.itemType)

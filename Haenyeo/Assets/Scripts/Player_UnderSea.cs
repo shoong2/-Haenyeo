@@ -12,6 +12,7 @@ public class Player_UnderSea : Player
     public float rayLine = 3f;
 
     RaycastHit2D raycast;
+    Fish fish;
 
     [Header("Tool")]
     [SerializeField]
@@ -25,6 +26,8 @@ public class Player_UnderSea : Player
     [SerializeField] Inventory inven;
 
     bool click = false;
+
+    bool activeAttack = false;
 
     bool startSea = false; // 바다에 들어가자마자 y좌표 이상으로 올라와서 씬 이동 방지
 
@@ -71,19 +74,23 @@ public class Player_UnderSea : Player
 
         if (raycast)
         {
+            fish = raycast.collider.GetComponent<Fish>();
             toolGuideGroup.SetActive(true);
             GuideSetting(raycast.collider.tag);
             if (toolManager.activeToolName == "Knife")
             {
                 raycast.collider.transform.GetComponent<Fish>().ShowCanvas(gameObject.transform.position.x);
+                activeAttack = true; 
             }
             else if (toolManager.activeToolName == raycast.collider.tag)
             {
                 raycast.collider.transform.GetComponent<Fish>().ShowCanvas(gameObject.transform.position.x);
+                activeAttack = true;
             }
             else
             {
                 raycast.collider.transform.GetComponent<Fish>().EnableCanvas();
+                activeAttack = false;
             }
             //if (!test)
             //{
@@ -119,7 +126,12 @@ public class Player_UnderSea : Player
         }
         else
         {
+            if(fish!=null)
+            {
+                fish.EnableCanvas();
+            }
             toolGuideGroup.SetActive(false);
+            activeAttack = false;
            // raycast.collider.transform.GetComponent<Fish>().canvas.SetActive(false);
         }
 
@@ -169,10 +181,6 @@ public class Player_UnderSea : Player
         //}
     }
 
-    public void Attack()
-    {
-
-    }
 
 
     IEnumerator StartUnderSea()
@@ -190,22 +198,52 @@ public class Player_UnderSea : Player
         startSea = true;
     }
 
-    
+    public void Attack()
+    {
+        playerAnim.SetTrigger(toolManager.activeToolName);
+        Debug.Log(toolManager.activeToolName);
+        SoundManager.instance.PlaySE(toolManager.activeToolName);
+        if(activeAttack)
+        {
+            fish.SetHP();
+            if(fish.curHp<=0)
+            {
+                inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
+                fish.Die();
+            }
+            
+
+        }
+
+    }
+
     public void HoeAttack()
     {
         playerAnim.SetTrigger("Hoe");
+        if(activeAttack)
+        {
+            fish.SetHP();
+        }
         click = true;
     }
     
     public void KnifeAttack()
     {
         playerAnim.SetTrigger("Knife");
+        if (activeAttack)
+        {
+            fish.SetHP();
+        }
         click = true;
     }
 
     public void PoleAttack()
     {
         playerAnim.SetTrigger("Pole");
+        if (activeAttack)
+        {
+            fish.SetHP();
+        }
         click = true;
         //playerAnim.SetBool("test", true);
     }

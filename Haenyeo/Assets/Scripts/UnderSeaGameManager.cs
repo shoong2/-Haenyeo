@@ -22,6 +22,7 @@ public class UnderSeaGameManager : MonoBehaviour
     public float maxHp = 10f;
     public float currentHp;
     bool activeHp =true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,8 @@ public class UnderSeaGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         distance = -(player.transform.position.y - 6f);
         distaceText.text = distance.ToString("F1")+"M";
 
@@ -56,6 +59,7 @@ public class UnderSeaGameManager : MonoBehaviour
     }
     IEnumerator TewakMove() // 죽었을 때와 같이 쓰기
     {
+        SoundManager.instance.PlaySE("Tewak");
         if (!activeHp)
         {
             player.GetComponent<Animator>().SetTrigger("Die");
