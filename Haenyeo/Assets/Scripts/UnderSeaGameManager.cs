@@ -59,7 +59,7 @@ public class UnderSeaGameManager : MonoBehaviour
     }
     IEnumerator TewakMove() // 죽었을 때와 같이 쓰기
     {
-        SoundManager.instance.PlaySE("Tewak");
+        //SoundManager.instance.PlaySE("Tewak");
         if (!activeHp)
         {
             player.GetComponent<Animator>().SetTrigger("Die");
@@ -78,7 +78,17 @@ public class UnderSeaGameManager : MonoBehaviour
             player.transform.position = Vector3.MoveTowards(player.transform.position, tewakTargetPosition, distance * Time.deltaTime);
             yield return null;
         }
-        //SceneManager.LoadScene("Sea");
-        GameManager.instance.ChangeScene("Sea");
+        SceneManager.LoadScene("Sea");
+        //GameManager.instance.ChangeScene("Sea");
     }
+
+    public void TimeControl()
+    {
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
+        else
+            Time.timeScale = 0;
+    }
+
+    
 }

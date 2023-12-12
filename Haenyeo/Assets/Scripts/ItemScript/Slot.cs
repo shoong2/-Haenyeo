@@ -36,7 +36,7 @@ public class Slot : MonoBehaviour
         {
             text_Count.text = itemCount.ToString();
             //text_Count.text = "0";
-            text_Count.gameObject.SetActive(false);
+            text_Count.gameObject.SetActive(true);
             
         }
         else

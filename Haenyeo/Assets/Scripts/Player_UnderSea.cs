@@ -202,7 +202,7 @@ public class Player_UnderSea : Player
     {
         playerAnim.SetTrigger(toolManager.activeToolName);
         Debug.Log(toolManager.activeToolName);
-        SoundManager.instance.PlaySE(toolManager.activeToolName);
+        //SoundManager.instance.PlaySE(toolManager.activeToolName);
         if(activeAttack)
         {
             fish.SetHP();
