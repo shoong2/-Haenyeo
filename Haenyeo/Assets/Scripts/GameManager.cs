@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour
     public enum State { Idle, Afternoon, Night };
     public State state = State.Idle;
 
-    //´õºíÅ¬¸¯ Á¾·á
+    //ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     int ClickCount = 0;
 
-    [Header("ÀúÀå¼Ò")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] SaveNLoad storage;
     public int index;
     private void Awake()
@@ -115,12 +115,12 @@ public class GameManager : MonoBehaviour
             state = State.Night;
         }
 
-        if (underSea) //hp µû¶ó´Ù´Ï±â
+        if (underSea) //hp ï¿½ï¿½ï¿½ï¿½Ù´Ï±ï¿½
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             SpriteRenderer render = player.GetComponent<SpriteRenderer>();
             if (time<maxTime)
-                time += Time.deltaTime; //¹Ù´Ù¿¡ µé¾î°¡¸é ½Ã°£ Ä«¿îÆ®
+                time += Time.deltaTime; //ï¿½Ù´Ù¿ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½Ã°ï¿½ Ä«ï¿½ï¿½Æ®
             //Vector3 hpPos = mainCamera.WorldToScreenPoint(player_UnderSea.transform.position);
             //hp.transform.position = player.transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0);
             //hpSlider.fillAmount = currentHp / maxHp;
@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
             //if(!isquest && meterNum>3f)
             //{
             //    isquest = true;
-            //    questText.text = "3M ±îÁö ¹öÆ¼±â";
+            //    questText.text = "3M ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼ï¿½ï¿½";
             //    questBox.SetActive(true);
             //    storage.saveData.isQuest = true;
             //    storage.SaveData();
@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
             //}
         }
 
-        //°ÔÀÓ Á¾·á
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ClickCount++;
@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviour
             //mainCamera = Camera.main;
             //canvasComp.worldCamera = mainCamera;
 
-            //¹Ù´å¼Ó¿¡¼­ ³ª¿ÔÀ» °æ¿ì
+            //ï¿½Ù´ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             underSeaUI.SetActive(false);
            // player_UnderSea.SetActive(false);
             //meter.gameObject.SetActive(false);
@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
 
             if (scene.name == "UnderSea")
             {
-                //currentHp = maxHp; //ÇöÀç hp ÃÖ´ë hp·Î ÃÊ±âÈ­
+                //currentHp = maxHp; //ï¿½ï¿½ï¿½ï¿½ hp ï¿½Ö´ï¿½ hpï¿½ï¿½ ï¿½Ê±ï¿½È­
                 underSea = true;
                 //underSeaUI.SetActive(true);
                 //meter.gameObject.SetActive(true);
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
     //{
     //    StartCoroutine(TewakMove());
     //}
-    //IEnumerator TewakMove() // Á×¾úÀ» ¶§¿Í °°ÀÌ ¾²±â
+    //IEnumerator TewakMove() // ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //{
     //    GameObject player = GameObject.FindGameObjectWithTag("Player");
     //    underSeaUI.SetActive(false);
@@ -236,6 +236,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
+        SoundManager.instance.PlaySE("button");
         previousSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
     }
