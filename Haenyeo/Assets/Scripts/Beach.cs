@@ -6,7 +6,7 @@ public class Beach : MonoBehaviour
 {
     public GameObject[] people;
 
-    //¹éÇÏ³ª, °­Àç¿ø, ÀÌ´Ù¿µ
+    //ï¿½ï¿½ï¿½Ï³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ì´Ù¿ï¿½
     Vector2[] position_1 = new Vector2[]
     {
         new Vector2(-5.12f, -1.11f),
@@ -14,7 +14,7 @@ public class Beach : MonoBehaviour
         new Vector2(2.18f, -1.07f)
     };
 
-    //¹éÇÏ³ª, °­Àç¿ø, ÀÌ´Ù¿µ, °­¹Î¼­
+    //ï¿½ï¿½ï¿½Ï³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ì´Ù¿ï¿½, ï¿½ï¿½ï¿½Î¼ï¿½
     Vector2[] position_2 = new Vector2[]
     {
         new Vector2(-5.87f, -0.76f),
@@ -23,7 +23,7 @@ public class Beach : MonoBehaviour
         new Vector2(3.02f, 1.19f)
     };
 
-    //¹éÇÏ³ª, °­Àç¿ø, ÀÌ´Ù¿µ, °­¹Î¼­, À±¼ö¿¬
+    //ï¿½ï¿½ï¿½Ï³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ì´Ù¿ï¿½, ï¿½ï¿½ï¿½Î¼ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Vector2[] position_3 = new Vector2[]
     {
         new Vector2(-7.64f, -1.33f),
