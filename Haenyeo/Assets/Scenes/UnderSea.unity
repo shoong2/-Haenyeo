@@ -6956,6 +6956,7 @@ GameObject:
   - component: {fileID: 1822855950}
   - component: {fileID: 1822855951}
   - component: {fileID: 1822855952}
+  - component: {fileID: 1822855953}
   m_Layer: 0
   m_Name: UnderSeaGameManager
   m_TagString: Untagged
@@ -7035,6 +7036,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f5b0312d37eb344fbf95f09830786b1, type: 2}
   - {fileID: 11400000, guid: 5be5182df8e7e954695dd646132329ea, type: 2}
   - {fileID: 11400000, guid: 9d2a0266ba68b3041892452f67104509, type: 2}
+--- !u!114 &1822855953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822855948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71c6e7abfe4aa14d89d20a4d56be4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveData:
+    nowIndex: 0
+    isQuest: 0
+    questAllCount: 0
+    completeQuest: 0
+    invenArrayNumber: 
+    invenItemName: []
+    invenItemNumber: 
 --- !u!1 &1863912789
 GameObject:
   m_ObjectHideFlags: 0
