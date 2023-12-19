@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < items.Length; i++)
         {
-            if (items[i].name == _itemName)
+            if (items[i].itemName == _itemName)
                 slots[_arrayNum].AddItem(items[i], _itemNum);
         }
     }
@@ -28,13 +28,14 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         slots = go_SlotsParent.GetComponentsInChildren<Slot>();
-        Debug.Log(slots.Length);
     }
-    void Start()
+
+    private void Start()
     {
-        slots = go_SlotsParent.GetComponentsInChildren<Slot>();
-        Debug.Log(slots.Length);
+        //SaveNLoad.instance.LoadData();
+        Debug.Log("start");
     }
+
 
     // Update is called once per frame
     void Update()
@@ -69,4 +70,5 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
 }

@@ -18,7 +18,7 @@ public class SaveData
 
 public class SaveNLoad : MonoBehaviour
 {
-    public static SaveNLoad instance = null;
+    //public static SaveNLoad instance = null;
 
     public SaveData saveData = new SaveData();
 
@@ -27,33 +27,35 @@ public class SaveNLoad : MonoBehaviour
 
     Inventory theInven;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //        //DontDestroyOnLoad(gameObject);
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
 
-    }
+    //}
 
 
     void Start()
     {
+       // theInven = GetComponent<Inventory>();
         Debug.Log(Application.persistentDataPath);
         SAVE_DATA_DIRECTORY = Application.persistentDataPath + "/Saves/";
 
         if(!Directory.Exists(SAVE_DATA_DIRECTORY))
         {
             Directory.CreateDirectory(SAVE_DATA_DIRECTORY);
-            SaveData();
+            //SaveData();
         }
         else
         {
+            Debug.Log("load");
             LoadData();
         }
 
@@ -61,10 +63,10 @@ public class SaveNLoad : MonoBehaviour
 
     public void SaveData()
     {
-
         theInven = FindObjectOfType<Inventory>();
-
+        //theInven = GetComponent<Inventory>();
         Slot[] slots = theInven.GetSlots();
+        Debug.Log(slots.Length);
         for (int i = 0; i < slots.Length; i++)
         {
             if(slots[i].item != null)
@@ -95,5 +97,10 @@ public class SaveNLoad : MonoBehaviour
                 theInven.LoadToInven(saveData.invenArrayNumber[i], saveData.invenItemName[i], saveData.invenItemNumber[i]);
             }
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveData();
     }
 }

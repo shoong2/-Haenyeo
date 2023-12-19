@@ -23,6 +23,11 @@ public class UnderSeaGameManager : MonoBehaviour
     public float currentHp;
     bool activeHp =true;
 
+    [Header("알림창")]
+    public GameObject window;
+    public TMP_Text itemText;
+    public Image itemImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,5 +95,11 @@ public class UnderSeaGameManager : MonoBehaviour
             Time.timeScale = 0;
     }
 
+    public void CatchWindow(Item item_)
+    {
+        window.SetActive(true);
+        itemText.text = "<b>[" +item_.itemName + "]</b>" + "을\n채집했습니다!";
+        itemImage.sprite = item_.itemImage;
+    }
     
 }

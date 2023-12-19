@@ -34,6 +34,8 @@ public class Player_UnderSea : Player
     public GameObject getBox;
     public TMP_Text getText;
     public Image getSprite;
+
+    UnderSeaGameManager gm;
     protected override void Start()
     {
         Debug.Log("start?");
@@ -208,7 +210,10 @@ public class Player_UnderSea : Player
             fish.SetHP();
             if(fish.curHp<=0)
             {
+                gm = FindObjectOfType<UnderSeaGameManager>();
+                gm.CatchWindow(fish.transform.GetComponent<ItemPickUp>().item);
                 inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
+                
                 fish.Die();
             }
             
