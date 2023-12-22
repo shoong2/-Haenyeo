@@ -106,13 +106,14 @@ public class Sea_GameManager : MonoBehaviour
     {
         divePlayer.SetActive(true);
         playerAnim.SetTrigger("Jump");
+        SoundManager.instance.PlaySE("chardive");
         //while(player.transform.position.y>-2f)
         //{
         //    player.transform.position -= new Vector3(0, 0.1f,0);
         //    yield return new WaitForSeconds(0.05f);
         //}
         //yield return new WaitUntil(() => !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("Jump"));
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(-0.5f);
         player.SetActive(true);
         Debug.Log("test");
         shipAnim.SetBool("Start", true);
