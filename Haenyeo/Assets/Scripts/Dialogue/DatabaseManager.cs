@@ -78,17 +78,6 @@ public class DatabaseManager : MonoBehaviour
     {
         List<Quest> questList = new List<Quest>();
         questList.Add(questDic[questCount + 1]);
-
-        //for(int i=0; i< storage.saveData.questAllCount+questCount; i++)
-        //{
-        //    questList.Add(questDic[1 + i]);
-        //}
-
-        //for(int i=0; i<= _EndNum - _StartNum; i++)
-        //{
-        //    questList.Add(questDic[_StartNum + i]);
-        //}
-
         return questList.ToArray();
     }
 

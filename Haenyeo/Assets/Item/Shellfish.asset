@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b7b5a62df2d654083c76ba7bd4401d, type: 3}
+  m_Name: Shellfish
+  m_EditorClassIdentifier: 
+  itemName: "\uC870\uAC1C"
+  itemType: 2
+  itemImage: {fileID: 21300000, guid: 262c47bee40f4b043b3d77b1fee25a4e, type: 3}
+  itemPrefab: {fileID: 8947281049065272465, guid: 41a8777e39247eb479cb932258aa3077, type: 3}
+  weaponType: 

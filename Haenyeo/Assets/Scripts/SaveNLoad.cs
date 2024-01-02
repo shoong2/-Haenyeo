@@ -27,19 +27,6 @@ public class SaveNLoad : MonoBehaviour
 
     Inventory theInven;
 
-    //private void Awake()
-    //{
-    //    if (instance == null)
-    //    {
-    //        instance = this;
-    //        //DontDestroyOnLoad(gameObject);
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-
-    //}
 
 
     void Start()
