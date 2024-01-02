@@ -14,8 +14,12 @@ public class RoomWindow : MonoBehaviour
 
     void Start()
     {
-        if (SaveNLoad.instance.saveData.questAllCount > 0)
+        //if (SaveNLoad.instance.saveData.questAllCount > 0)
+        //    won.SetActive(false);
+        SaveNLoad save = FindObjectOfType<SaveNLoad>();
+        if (save.saveData.nowIndex > 0)
             won.SetActive(false);
+
 
         if ((int)GameManager.instance.state == 0)
         {

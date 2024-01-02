@@ -266,6 +266,7 @@ MonoBehaviour:
   hp: {fileID: 3721416019920211773}
   maxHP: 3
   curHp: 0
+  fadeSpeed: 0.1
   hpPos: 1.5
   speed: 3
 --- !u!1001 &2337351395144623339

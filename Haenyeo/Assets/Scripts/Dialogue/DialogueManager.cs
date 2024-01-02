@@ -77,6 +77,7 @@ public class DialogueManager : MonoBehaviour
         txt_Name.text = "";
 
         dialogues = p_dialogues;
+        Debug.Log(dialogues.Length);
         StartCoroutine(Typewriter());
     }
 
@@ -88,9 +89,7 @@ public class DialogueManager : MonoBehaviour
         t_ReplaceText = t_ReplaceText.Replace("'", ",");
         t_ReplaceText = t_ReplaceText.Replace("\\n", "\n");
 
-        //txt_Dialogue.text = t_ReplaceText;
         txt_Name.text = dialogues[lineCount].name[contextCount];
-        Debug.Log(txt_Name.text);
         ShowDialogueImg(txt_Name.text);
         for(int i=0; i<t_ReplaceText.Length; i++)
         {
@@ -141,51 +140,15 @@ public class DialogueManager : MonoBehaviour
 
   
 
-        if (Input.GetMouseButtonDown(0) && !isDialogue)
+        if (Input.GetMouseButtonDown(0) && !isDialogue) //대화 클릭
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
+            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f, LayerMask.GetMask("NPC"));
 
-            if(hit.collider !=null)
+            if(hit)
             {
-                //if(hit.collider.tag=="Ship")
-                //{
-                //    SceneManager.LoadScene("Room");
-                //}
-               // Debug.Log(storage.saveData.nowIndex);
-                if (SetSystemIndex(0, hit, "Won", "Room"))
-                {
-                    ShowDialogue(DatabaseManager.instance.GetDialogue(0));
-                 
-                }
-                //else if(SetSystemIndex(2,hit,"Won","Beach"))
-                //{
-                //    ShowDialogue(DatabaseManager.instance.GetDialogue(10, 14));
-                //}
-                //else if(SetSystemIndex(2,hit,"Yeong", "Sea"))
-                //{
-                //    ShowDialogue(DatabaseManager.instance.GetDialogue(15,15)); //장비 업그레이드
-                //    storage.saveData.isQuest = false;
-                //    storage.SaveData();
-                //}
-                //else if(SetSystemIndex(3,hit,"Won","Sea")) //수집퀘스트
-                //{
-                //    ShowDialogue(DatabaseManager.instance.GetDialogue(16, 16));
-                //    GameManager.instance.time = 30;
-                //}
-                //else if (SetSystemIndex(4, hit, "Won", "Sea")) //수집완료
-                //{
-                //    ShowDialogue(DatabaseManager.instance.GetDialogue(17, 17));
-                //}
-                //else if (SetSystemIndex(5, hit, "Won", "Sea")) //자기 퀘스트
-                //{
-                //    ShowDialogue(DatabaseManager.instance.GetDialogue(18,28));
-                //}
-                //hit.transform.GetComponent<InteractionEvent>().GetDialogue();
-                //SettingUI(true);
-                //ShowDialogue(hit.transform.GetComponent<InteractionEvent>().GetDialogue());
-
+                ShowDialogue(DatabaseManager.instance.GetDialogue(storage.saveData.nowIndex));
             }
         }
 
@@ -194,9 +157,6 @@ public class DialogueManager : MonoBehaviour
 
     bool SetSystemIndex(int index, RaycastHit2D hit, string character, string SceneName)
     {
-        Debug.Log(hit);
-        //if (storage.saveData.nowIndex == index && hit.collider.tag == character
-        //    && SceneManager.GetActiveScene().name == SceneName)
         if (storage.saveData.questAllCount == index && hit.collider.tag == character
             && SceneManager.GetActiveScene().name == SceneName)
         {
@@ -216,79 +176,23 @@ public class DialogueManager : MonoBehaviour
         SettingUI(false);
         StopAllCoroutines();
         ShowDialogueImg("stop", false);
-        if(storage.saveData.questAllCount==0)
-        {
-            reward.GetReward(0);
-            quest.Active(0);
-            GameObject.FindWithTag("Won").gameObject.SetActive(false);
-            //storage.saveData.questAllCount++;
-        }
-        else if(storage.saveData.questAllCount == 2)
-        {
-            storage.saveData.completeQuest += 2;
-           // GetReward(1);
-        }
-        else if(storage.saveData.nowIndex ==2)
-        {
-           // GetReward(2);
-        }
-        else if (storage.saveData.nowIndex == 3)
-        {
-           // GetReward(3);
-        }
-        else if (storage.saveData.nowIndex == 4)
-        {
-            //GetReward(4);
-        }
-        else if (storage.saveData.nowIndex == 5)
-        {
-           // GetReward(5);
-        }
-        //storage.saveData.nowIndex++;
-        storage.SaveData();
 
-        storage.SaveData();
+       // reward.GetReward(storage.saveData.nowIndex);
+        quest.Active(storage.saveData.nowIndex);
+        
+
+        //if(storage.saveData.questAllCount==0)
+        //{
+        //    reward.GetReward(0);
+        //    quest.Active(0);
+        //    GameObject.FindWithTag("Won").gameObject.SetActive(false);
+        //    //storage.saveData.questAllCount++;
+        //}
+
     }
 
 
 
-    //void GetReward(int index)
-    //{
-    //    if(index ==0)
-    //    {
-    //        StartCoroutine(ShowRewardBox(new string[] {"초보 해녀의 고무옷", "초보 해녀의 수경", "초보 해녀의 오리발"},index));
-    //        StartCoroutine(ShowQuestBox(new string[] { "해녀복 착용하기", "바다로 가보기" }));
-    //    }
-    //    else if(index ==1)
-    //    {
-    //        isClickRewardBox = false;
-    //        StartCoroutine(ShowRewardBox(new string[] {"초보 해녀의 칼", "초보 해녀의 호미", "초보 해녀의 작살" },index));
-    //        StartCoroutine(ShowQuestBox(new string[] { "도구 착용하기", "바다에서 3m까지 버티기" }));
-    //    }
-    //    else if(index ==2)
-    //    {
-    //        isClickRewardBox = false;
-    //        StartCoroutine(ShowRewardBox(new string[] { "초보 해녀의 칼", "초보 해녀의 호미", "초보 해녀의 작살" },index));
-    //    }
-    //    else if(index ==3)
-    //    {
-    //        multiCoroutine = true;
-    //        StartCoroutine(ShowQuestBox(new string[] { "기본 재료 수집하기" }));
-    //    }
-    //    else if (index == 4)
-    //    {
-    //        multiCoroutine = true;
-    //        StartCoroutine(ShowQuestBox(new string[] { "집으로 가서 잠자기" }));
-    //    }
-    //    else if (index == 5)
-    //    {
-    //        multiCoroutine = true;
-    //        StartCoroutine(ShowQuestBox(new string[] { "잠수 실력을 입증하자" }));
-    //    }
-
-    //    storage.saveData.nowIndex++;
-
-    //}
 
     IEnumerator ShowRewardBox(string[] name, int index)
     {

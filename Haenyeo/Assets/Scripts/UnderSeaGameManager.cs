@@ -23,6 +23,11 @@ public class UnderSeaGameManager : MonoBehaviour
     public float currentHp;
     bool activeHp =true;
 
+    [Header("알림창")]
+    public GameObject window;
+    public TMP_Text itemText;
+    public Image itemImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +64,7 @@ public class UnderSeaGameManager : MonoBehaviour
     }
     IEnumerator TewakMove() // 죽었을 때와 같이 쓰기
     {
-        SoundManager.instance.PlaySE("Tewak");
+        //SoundManager.instance.PlaySE("Tewak");
         if (!activeHp)
         {
             player.GetComponent<Animator>().SetTrigger("Die");
@@ -69,7 +74,7 @@ public class UnderSeaGameManager : MonoBehaviour
 
         activeHp = false;
         seaHP.SetActive(false);
-        yield return new WaitForSeconds(1.3f);
+      //  yield return new WaitForSeconds(1.3f);
         //Vector3 tewakTargetPosition = new Vector2(player_UnderSea.transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
         Vector3 tewakTargetPosition = new Vector2(player.transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
         //while (player_UnderSea.transform.position != tewakTargetPosition)
@@ -78,7 +83,23 @@ public class UnderSeaGameManager : MonoBehaviour
             player.transform.position = Vector3.MoveTowards(player.transform.position, tewakTargetPosition, distance * Time.deltaTime);
             yield return null;
         }
-        //SceneManager.LoadScene("Sea");
-        GameManager.instance.ChangeScene("Sea");
+        SceneManager.LoadScene("Sea");
+        //GameManager.instance.ChangeScene("Sea");
     }
+
+    public void TimeControl()
+    {
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
+        else
+            Time.timeScale = 0;
+    }
+
+    public void CatchWindow(Item item_)
+    {
+        window.SetActive(true);
+        itemText.text = "<b>[" +item_.itemName + "]</b>" + "을\n채집했습니다!";
+        itemImage.sprite = item_.itemImage;
+    }
+    
 }

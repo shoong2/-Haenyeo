@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.Find("UnderSea_Player").transform;
+        //target = GameObject.Find("UnderSea_Player").transform;
     }
     private void LateUpdate()
     {
@@ -18,7 +18,8 @@ public class CameraController : MonoBehaviour
         Vector3 desiredPosition = new Vector3(transform.position.x, target.position.y, transform.position.z);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
 
-        transform.position = smoothedPosition;
+        if(target.transform.position.y<=0 || transform.position.y <=0)
+            transform.position = smoothedPosition;
         
 
     }

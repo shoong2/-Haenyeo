@@ -11,6 +11,8 @@ public class Slot : MonoBehaviour
 
     [SerializeField]
     TMP_Text text_Count;
+    [SerializeField]
+    GameObject countImage;
 
     //[SerializeField]
     //GameObject go_CountImage; // 아이템 카운트 이미지 필요할 경우 활성화
@@ -36,11 +38,12 @@ public class Slot : MonoBehaviour
         {
             text_Count.text = itemCount.ToString();
             //text_Count.text = "0";
-            text_Count.gameObject.SetActive(false);
+            countImage.SetActive(true);
             
         }
         else
         {
+            countImage.SetActive(false);
             text_Count.text = "0";
         }
         SetColor(1);
@@ -69,7 +72,7 @@ public class Slot : MonoBehaviour
         SetColor(0);
 
         text_Count.text = "0";
-        text_Count.gameObject.SetActive(false);
+        //text_Count.gameObject.SetActive(false);
 
     }
 }

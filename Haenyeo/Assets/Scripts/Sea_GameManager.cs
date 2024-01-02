@@ -113,7 +113,8 @@ public class Sea_GameManager : MonoBehaviour
         //    yield return new WaitForSeconds(0.05f);
         //}
         //yield return new WaitUntil(() => !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("Jump"));
-        yield return new WaitForSeconds(-0.5f);
+        yield return new WaitForSeconds(waitTime);
+        //yield return new WaitForSeconds(-0.5f);
         player.SetActive(true);
         Debug.Log("test");
         shipAnim.SetBool("Start", true);

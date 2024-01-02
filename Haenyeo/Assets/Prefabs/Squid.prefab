@@ -267,7 +267,9 @@ MonoBehaviour:
   hp: {fileID: 6008342393596840779}
   maxHP: 3
   curHp: 0
+  fadeSpeed: 0.1
   hpPos: 1.5
+  speed: 3
 --- !u!95 &2354489858058155922
 Animator:
   serializedVersion: 5
