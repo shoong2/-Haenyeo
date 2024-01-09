@@ -46,6 +46,13 @@ public class QuestManager : MonoBehaviour
     {
         quests = DatabaseManager.instance.GetQuest(index);
         Debug.Log(quests[index].name.Length);
+
+        if (index == 0)
+        {
+            Debug.Log("1212");
+            GameObject.FindWithTag("Won").gameObject.SetActive(false);
+        }
+
         for (int i = 0; i < quests[index].name.Length; i++)
         {
             questBox[i].SetActive(true);
@@ -60,26 +67,8 @@ public class QuestManager : MonoBehaviour
             questDetailList[i].transform.GetChild(0).GetComponent<TMP_Text>().text = quests[index].name[i];
             questDetailList[i].transform.GetChild(1).GetComponent<TMP_Text>().text = replaceText;
 
-            if(index ==0)
-            {
-                GameObject.FindWithTag("Won").gameObject.SetActive(false);
-            }
+            
             storage.saveData.nowIndex++;
-
-            // GameObject temp = Instantiate(questBoxPrefab);
-            //Debug.Log("instance");
-            //temp.transform.SetParent(QuestBoxList.transform);
-            //temp.transform.localScale = new Vector3(1, 1, 1);
-            //temp.transform.GetChild(0).GetComponent<TMP_Text>().text = quests[index].name[i];
-
-            //0번 메인텍스트, 1번 디테일텍스트
-            // temp.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = quests[index].name[i];
-
-            //대체 문자
-            // string replaceText = quests[index].details[i];
-            // replaceText = replaceText.Replace("'", ",");
-            // replaceText = replaceText.Replace("\\n", "\n");
-            //temp.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = replaceText;
         }
 
 

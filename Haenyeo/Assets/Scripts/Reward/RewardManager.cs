@@ -4,18 +4,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class RewardManager : MonoBehaviour
 {
-    //[Header("리워드 이름")]
-    //[SerializeField] TMP_Text rewardNameText;
-
-    //[Header("리워드 알림")]
-    //[SerializeField] TMP_Text rewardContest;
-
     [SerializeField] GameObject notiList;
     [SerializeField] GameObject rewardBox;
 
     Reward_[] rewards;
+
+    public Item[] rewardItems;
+
     public void GetReward(int index)
     {
         rewards = DatabaseManager.instance.GetReward(index);
@@ -30,6 +29,16 @@ public class RewardManager : MonoBehaviour
 
             rBox.transform.GetChild(0).GetComponent<TMP_Text>().text = rewards[index].rewardItem[i];
             rBox.transform.GetChild(1).GetComponent<TMP_Text>().text = rewards[index].rewardContexts[i];
+
+            for (int j = 0; j < rewardItems.Length; j++)
+            {
+                if(rewards[index].rewardItem[i].ToString() == rewardItems[j].itemName)
+                {
+                    Debug.Log(rewards[index].rewardItem[i].ToString());
+                    Debug.Log(rewardItems[j].itemName);
+                    rBox.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = rewardItems[j].itemImage;
+                }
+            }
         }
     }
 }

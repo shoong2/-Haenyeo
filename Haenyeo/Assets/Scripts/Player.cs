@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     float leftEdge;
     float rightEdge;
-    float topEdge;
+    protected float topEdge;
     float bottomEdge;
 
     protected Camera camera;

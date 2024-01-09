@@ -9,8 +9,10 @@ public class UnderSeaGameManager : MonoBehaviour
 {
     public GameObject player;
 
+    [Header("Distance")]
     public TMP_Text distaceText;
     float distance;
+    public float num; //오차 줄이기 숫자
 
     SpriteRenderer render;
     Camera camera;
@@ -28,6 +30,7 @@ public class UnderSeaGameManager : MonoBehaviour
     public TMP_Text itemText;
     public Image itemImage;
 
+    float playerStartPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,14 +38,14 @@ public class UnderSeaGameManager : MonoBehaviour
         currentHp = maxHp;
         camera = Camera.main;
         render = player.GetComponent<SpriteRenderer>();
+        playerStartPos = player.transform.position.y;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        distance = -(player.transform.position.y - 6f);
+        distance = -(player.transform.position.y - playerStartPos)/9;
         distaceText.text = distance.ToString("F1")+"M";
 
         seaHP.transform.position = player.transform.position + new Vector3(render.flipX ? -hpX : hpX, 0 , 0); // hp 따라다니기
