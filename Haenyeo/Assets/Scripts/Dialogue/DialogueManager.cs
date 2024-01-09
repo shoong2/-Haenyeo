@@ -131,6 +131,7 @@ public class DialogueManager : MonoBehaviour
                         }
                         else
                         {
+                            Debug.Log("two?");
                             EndDialogue();
                         }
                     }
@@ -177,7 +178,7 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         ShowDialogueImg("stop", false);
 
-       // reward.GetReward(storage.saveData.nowIndex);
+        reward.GetReward(storage.saveData.nowIndex);
         quest.Active(storage.saveData.nowIndex);
         
 
@@ -191,56 +192,6 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-
-
-
-    IEnumerator ShowRewardBox(string[] name, int index)
-    {
-        for(int i=0; i<name.Length; i++)
-        {
-            Debug.Log(name[i]);
-            Debug.Log(i);
-            itemName.text = name[i];
-            if((index == 0) ||index ==1)
-            {
-                Debug.Log("ddd");
-                if(index==0)
-                    itemBox.sprite = itemSprite[i];
-                else
-                    itemBox.sprite = itemSprite[3+i];
-                itemDetail.text = "'" + name[i] + "'" + " À» È¹µæÇß½À´Ï´Ù!";
-            }
-            else if(index == 2)
-            {
-                itemBox.sprite = itemSprite[3+i];
-                itemDetail.text = "'" + name[i] + "'" + " ÀÇ\n´É·ÂÄ¡°¡ »ó½ÂÇß½À´Ï´Ù!";
-            }
-            else
-                itemDetail.text = "'" + name[i] + "'" + " À» È¹µæÇß½À´Ï´Ù!";
-            rewardBox.SetActive(true);
-
-            if (i != name.Length - 1)
-                yield return new WaitUntil(() => isClickRewardBox);
-            
-            isClickRewardBox = false;
-        }
-        multiCoroutine = true;
-        yield return null;
-    }
-
-    IEnumerator ShowQuestBox(string[] quest)
-    {
-        yield return new WaitUntil(() => multiCoroutine && isClickRewardBox);
-        for (int i = 0; i < quest.Length; i++)
-        {
-            questName.text = quest[i];
-            questBox.SetActive(true);
-            if (i != quest.Length - 1)
-                yield return new WaitUntil(() => isClickQuestBox);
-            isClickQuestBox = false;
-        }
-        multiCoroutine = false;
-    }
 
     public void ClickRewardBox()
     {

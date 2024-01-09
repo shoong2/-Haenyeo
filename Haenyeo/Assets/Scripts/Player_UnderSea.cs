@@ -38,7 +38,6 @@ public class Player_UnderSea : Player
     UnderSeaGameManager gm;
     protected override void Start()
     {
-        Debug.Log("start?");
         y = 0;
         restrictY = 2f;
         base.Start();
@@ -94,37 +93,7 @@ public class Player_UnderSea : Player
                 raycast.collider.transform.GetComponent<Fish>().EnableCanvas();
                 activeAttack = false;
             }
-            //if (!test)
-            //{
-            //    GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
-            //      Quaternion.identity, GameObject.Find("UnderSea").transform);
-            //    seahp.transform.position += new Vector3(2, 0, 0);
-            //    test = true;
-            //}
-            //toolGuideGroup.SetActive(true);
-            //if (raycast.collider.tag == "Knife")
-            //{
-
-            //    GuideSetting(knife, raycast.collider.gameObject);
-            //    raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
-            //    //GameObject seahp = Instantiate(seaHP, raycast.collider.transform.position,
-            //    //    Quaternion.identity, GameObject.Find("UnderSea").transform);
-
-            //}
-            //else if (raycast.collider.tag == "Hoe")
-            //{
-            //    GuideSetting(hoe, raycast.collider.gameObject);
-            //    raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
-            //}
-            //else if (raycast.collider.tag == "Pole")
-            //{
-            //    //toolGuide.SetActive(true);
-            //    //toolGuide.transform.position = tools[2].transform.position;
-            //    //toolGuide.transform.parent = tools[2].transform;
-            //    GuideSetting(pole, raycast.collider.gameObject);
-            //    raycast.collider.transform.GetComponent<Fish>().ShowCanvas();
-            //}
-            //Debug.Log("det");
+           
         }
         else
         {
@@ -139,14 +108,15 @@ public class Player_UnderSea : Player
 
         if (transform.position.y >= 4f || transform.position.y <= -35)
         {
-            //GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = false;
             camera.transform.GetComponent<CameraController>().enabled = false;
-            if (startSea)
+            //if(startSea)
+            // SceneManager.LoadScene("Sea");
+            if (transform.position.y == topEdge)
                 SceneManager.LoadScene("Sea");
         }
         else
             camera.transform.GetComponent<CameraController>().enabled = true;
-        //GameManager.instance.mainCamera.transform.GetComponent<CameraController>().enabled = true;
+
 
 
     }
@@ -158,29 +128,6 @@ public class Player_UnderSea : Player
             toolGuide[i].SetActive(toolGuide[i].name == coliderItemName);
         }
 
-        //if (click == true)
-        //{
-        //    if (fish.transform.GetComponent<Fish>().curHp > 0)
-        //    {
-        //        fish.transform.GetComponent<Fish>().SetHP();
-        //        if(fish.transform.GetComponent<Fish>().curHp ==0)
-        //        {
-        //            Destroy(fish.gameObject);
-        //            getText.text = "<b>[" + fish.transform.GetComponent<ItemPickUp>().item.itemName + "]</b> 을\n채집했습니다!";
-        //            getSprite.sprite = fish.transform.GetComponent<ItemPickUp>().item.itemImage;
-        //            inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
-        //            getBox.SetActive(true);
-        //        }
-        //        click = false;
-        //    }
-            //else
-            //{
-            //    getText.text = "<b>[" + fish.transform.GetComponent<ItemPickUp>().item.itemName + "]</b> 을\n채집했습니다!";
-            //    getSprite.sprite = fish.transform.GetComponent<ItemPickUp>().item.itemImage;
-            //    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
-            //    getBox.SetActive(true);
-            //}
-        //}
     }
 
 
