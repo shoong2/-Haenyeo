@@ -74,42 +74,5 @@ public class QuestManager : MonoBehaviour
 
     }
 
-    //public void ActiveQuest(int questCount = 1)
-    //{
-    //    quests = DatabaseManager.instance.GetQuest(questCount);
 
-    //    for (int i = 0; i < questCount; i++)
-    //    {
-    //        int qCount = storage.saveData.questAllCount;
-    //        int qCompleteCount = storage.saveData.completeQuest;
-
-    //        //while(QuestBoxList.transform.childCount != qCount - qCompleteCount)
-    //        //{
-    //        //    GameObject temp = Instantiate(questBoxPrefab);
-    //        //    Debug.Log("instance");
-    //        //    temp.transform.SetParent(QuestBoxList.transform);
-    //        //    temp.transform.localScale = new Vector3(1, 1, 1);
-
-    //        //}
-
-    //        GameObject temp = Instantiate(questBoxPrefab);
-    //        Debug.Log("instance");
-    //        temp.transform.SetParent(QuestBoxList.transform);
-    //        temp.transform.localScale = new Vector3(1, 1, 1);
-    //        temp.transform.GetChild(0).GetComponent<TMP_Text>().text = quests[qCount].name;
-
-    //        //0번 메인텍스트, 1번 디테일텍스트
-    //        temp.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = quests[qCount].name;
-
-    //        //대체 문자
-    //        string replaceText = quests[qCount].details;
-    //        replaceText = replaceText.Replace("'", ",");
-    //        replaceText = replaceText.Replace("\\n", "\n");
-    //        temp.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = replaceText;
-
-    //        storage.saveData.questAllCount++;
-    //        storage.SaveData();
-
-    //    }
-    //}
 }

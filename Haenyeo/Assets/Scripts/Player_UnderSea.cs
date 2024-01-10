@@ -56,11 +56,6 @@ public class Player_UnderSea : Player
 
     private void Update()
     {
-        //seaHP.transform.position = gameObject.transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0); // hp 따라다니기
-        //currentHp -= Time.deltaTime;
-        //hpSlider.fillAmount = currentHp / maxHp;
-
-
         Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
         if (toolManager.activeToolName == "Pole")
         {
