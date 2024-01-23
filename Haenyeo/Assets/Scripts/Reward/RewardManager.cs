@@ -32,10 +32,11 @@ public class RewardManager : MonoBehaviour
 
             for (int j = 0; j < rewardItems.Length; j++)
             {
+                Debug.Log(rewards[index].rewardItem[i].ToString());
                 if(rewards[index].rewardItem[i].ToString() == rewardItems[j].itemName)
                 {
-                    Debug.Log(rewards[index].rewardItem[i].ToString());
-                    Debug.Log(rewardItems[j].itemName);
+                    //Debug.Log(rewards[index].rewardItem[i].ToString());
+                    //Debug.Log(rewardItems[j].itemName);
                     rBox.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = rewardItems[j].itemImage;
                 }
             }

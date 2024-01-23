@@ -18,26 +18,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject underSeaUI;
 
-    //[SerializeField] TMP_Text meter;
-    //float meterNum;
     [SerializeField] GameObject questBox;
     [SerializeField] TMP_Text questText;
     bool isquest = false;
 
-    //[SerializeField]
-    //GameObject hp;
-    //[SerializeField]
-    //Image hpSlider;
-    //public float maxHp = 10f;
-    //public float currentHp;
-
-    //[SerializeField]
-    //GameObject player_UnderSea;
-
-    //public float hpX = 2f;
     Canvas canvasComp;
 
-    //VariableJoystick joy;
 
     public Camera mainCamera;
 
@@ -80,11 +66,7 @@ public class GameManager : MonoBehaviour
        
     }
 
-    private void Start()
-    {
-        //joy = joystick.GetComponent<VariableJoystick>();
-        //render = player_UnderSea.GetComponent<SpriteRenderer>();
-    }
+
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -98,10 +80,7 @@ public class GameManager : MonoBehaviour
             questTime -= Time.deltaTime;
             timer.text = ((int)questTime).ToString() + "s";
         }
-        //if(time>=maxTime)
-        //{
-        //    time = 0;
-        //}
+
 
         if (time <= maxTime / 3)
         {
@@ -116,38 +95,16 @@ public class GameManager : MonoBehaviour
             state = State.Night;
         }
 
-        if (underSea) //hp ����ٴϱ�
+        if (underSea) 
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             SpriteRenderer render = player.GetComponent<SpriteRenderer>();
             if (time<maxTime)
                 time += Time.deltaTime; //�ٴٿ� ���� �ð� ī��Ʈ
-            //Vector3 hpPos = mainCamera.WorldToScreenPoint(player_UnderSea.transform.position);
-            //hp.transform.position = player.transform.position + new Vector3(render.flipX ? -2f : 1 * hpX, 0, 0);
-            //hpSlider.fillAmount = currentHp / maxHp;
-            //currentHp -= Time.deltaTime;
 
-            //meterNum = (-(player_UnderSea.transform.position.y - 6f) / 7f);
-            //meter.text = meterNum.ToString("F1") +"M";
-
-            //if(!isquest && meterNum>3f)
-            //{
-            //    isquest = true;
-            //    questText.text = "3M ���� ��Ƽ��";
-            //    questBox.SetActive(true);
-            //    storage.saveData.isQuest = true;
-            //    storage.SaveData();
-               
-            //}
-
-            //if(currentHp <=0)
-            //{
-            //    underSea = false;
-            //    StartCoroutine(TewakMove());
-            //}
         }
 
-        //���� ����
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ClickCount++;
@@ -172,31 +129,14 @@ public class GameManager : MonoBehaviour
         canvasComp.worldCamera = mainCamera;
         if (scene.name != "Room" && scene.name != "Beach")
         {
-           // joystick.SetActive(true);
-           // joy.JoystickReset();
-            //mainCamera = Camera.main;
-            //canvasComp.worldCamera = mainCamera;
-
-            //�ٴ�ӿ��� ������ ���
             underSeaUI.SetActive(false);
-           // player_UnderSea.SetActive(false);
-            //meter.gameObject.SetActive(false);
+
             underSea = false;
             timer.gameObject.SetActive(false);
 
             if (scene.name == "UnderSea")
             {
-                //currentHp = maxHp; //���� hp �ִ� hp�� �ʱ�ȭ
                 underSea = true;
-                //underSeaUI.SetActive(true);
-                //meter.gameObject.SetActive(true);
-                //player_UnderSea.SetActive(true);
-
-        //        if (storage.saveData.nowIndex == 6)
-        //        {
-        //            timer.gameObject.SetActive(true);
-        //            isquest = true;
-        //}
             }
 
         }
@@ -205,35 +145,6 @@ public class GameManager : MonoBehaviour
             joystick.SetActive(false);  
         }
     }
-
-    //public void Tewak()
-    //{
-    //    StartCoroutine(TewakMove());
-    //}
-    //IEnumerator TewakMove() // �׾��� ���� ���� ����
-    //{
-    //    GameObject player = GameObject.FindGameObjectWithTag("Player");
-    //    underSeaUI.SetActive(false);
-    //    float nowDistace = UnderSeaGameManager.distance;
-    //   // meter.gameObject.SetActive(false);
-    //    if (!underSea)
-    //    {
-    //        player.GetComponent<Animator>().SetTrigger("Die");
-    //    }
-    //    else
-    //        player.GetComponent<Animator>().SetTrigger("Tewak");
-    //    yield return new WaitForSeconds(1.3f);
-    //    //Vector3 tewakTargetPosition = new Vector2(player_UnderSea.transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
-    //    Vector3 tewakTargetPosition = new Vector2(player.transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
-    //    //while (player_UnderSea.transform.position != tewakTargetPosition)
-    //    while (player.transform.position != tewakTargetPosition)
-    //    {
-    //        player.transform.position = Vector3.MoveTowards(player.transform.position, tewakTargetPosition, nowDistace * Time.deltaTime);
-    //        yield return null;
-    //    }
-    //    //SceneManager.LoadScene("Sea");
-    //    ChangeScene("Sea");
-    //}
 
     public void ChangeScene(string sceneName)
     {

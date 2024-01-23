@@ -77,8 +77,6 @@ public class UnderSeaGameManager : MonoBehaviour
 
         activeHp = false;
         seaHP.SetActive(false);
-      //  yield return new WaitForSeconds(1.3f);
-        //Vector3 tewakTargetPosition = new Vector2(player_UnderSea.transform.position.x, mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
         Vector3 tewakTargetPosition = new Vector2(player.transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + 3f);
         //while (player_UnderSea.transform.position != tewakTargetPosition)
         while (player.transform.position != tewakTargetPosition)
