@@ -31,9 +31,6 @@ public class Player_UnderSea : Player
 
     bool startSea = false; // 바다에 들어가자마자 y좌표 이상으로 올라와서 씬 이동 방지
 
-    public GameObject getBox;
-    public TMP_Text getText;
-    public Image getSprite;
 
     UnderSeaGameManager gm;
     protected override void Start()

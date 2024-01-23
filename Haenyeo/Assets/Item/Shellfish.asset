@@ -16,4 +16,6 @@ MonoBehaviour:
   itemType: 2
   itemImage: {fileID: 21300000, guid: 262c47bee40f4b043b3d77b1fee25a4e, type: 3}
   itemPrefab: {fileID: 8947281049065272465, guid: 41a8777e39247eb479cb932258aa3077, type: 3}
+  per: 70
+  spawnTime: 120
   weaponType: 

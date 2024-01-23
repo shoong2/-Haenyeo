@@ -9,6 +9,8 @@ public class Item : ScriptableObject
     public ItemType itemType; // 아이템의 유형
     public Sprite itemImage; // 아이템의 이미지
     public GameObject itemPrefab; //아이템의 프리팹
+    public int per;  // 출현 확률
+    public int spawnTime; // 스폰시간
 
     public string weaponType;
 
