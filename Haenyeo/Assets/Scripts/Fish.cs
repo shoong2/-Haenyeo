@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public class Fish : MonoBehaviour
 {
+    public UnityEvent onFishDead;
+
     public GameObject canvas;
 
     public Image hp;
@@ -83,6 +86,8 @@ public class Fish : MonoBehaviour
 
     public void Die()
     {
+        onFishDead.Invoke();
+
         EnableCanvas();
         StartCoroutine(FadeOut());
        // Destroy(gameObject);

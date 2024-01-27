@@ -151,7 +151,8 @@ public class Player_UnderSea : Player
             {
                 gm = FindObjectOfType<UnderSeaGameManager>();
                 gm.CatchWindow(fish.transform.GetComponent<ItemPickUp>().item);
-                inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
+                if(fish!=null)
+                    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
                 
                 fish.Die();
             }
@@ -161,35 +162,35 @@ public class Player_UnderSea : Player
 
     }
 
-    public void HoeAttack()
-    {
-        playerAnim.SetTrigger("Hoe");
-        if(activeAttack)
-        {
-            fish.SetHP();
-        }
-        click = true;
-    }
+    //public void HoeAttack()
+    //{
+    //    playerAnim.SetTrigger("Hoe");
+    //    if(activeAttack)
+    //    {
+    //        fish.SetHP();
+    //    }
+    //    click = true;
+    //}
     
-    public void KnifeAttack()
-    {
-        playerAnim.SetTrigger("Knife");
-        if (activeAttack)
-        {
-            fish.SetHP();
-        }
-        click = true;
-    }
+    //public void KnifeAttack()
+    //{
+    //    playerAnim.SetTrigger("Knife");
+    //    if (activeAttack)
+    //    {
+    //        fish.SetHP();
+    //    }
+    //    click = true;
+    //}
 
-    public void PoleAttack()
-    {
-        playerAnim.SetTrigger("Pole");
-        if (activeAttack)
-        {
-            fish.SetHP();
-        }
-        click = true;
-        //playerAnim.SetBool("test", true);
-    }
+    //public void PoleAttack()
+    //{
+    //    playerAnim.SetTrigger("Pole");
+    //    if (activeAttack)
+    //    {
+    //        fish.SetHP();
+    //    }
+    //    click = true;
+    //    //playerAnim.SetBool("test", true);
+    //}
 
 }
