@@ -43,7 +43,7 @@ public class SaveNLoad : MonoBehaviour
         else
         {
             Debug.Log("load");
-            LoadData();
+            //LoadData();
         }
 
     }

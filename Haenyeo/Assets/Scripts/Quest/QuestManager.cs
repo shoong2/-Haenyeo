@@ -45,33 +45,37 @@ public class QuestManager : MonoBehaviour
     public void Active(int index)
     {
         quests = DatabaseManager.instance.GetQuest(index);
-        Debug.Log(quests[index].name.Length);
-
-        if (index == 0)
+        if (quests[0].name != null)
         {
-            Debug.Log("1212");
-            GameObject.FindWithTag("Won").gameObject.SetActive(false);
+
+
+            if (index == 0)
+            {
+                GameObject.FindWithTag("Won").gameObject.SetActive(false);
+            }
+
+            for (int i = 0; i < quests[0].name.Length; i++)
+            {
+                questBox[i].SetActive(true);
+                //questBox[i].transform.GetChild(0).GetComponent<TMP_Text>().text = quests[index].name[i];
+                questBox[i].transform.GetChild(0).GetComponent<TMP_Text>().text = quests[0].name[i];
+
+
+                //대체 문자
+                //string replaceText = quests[index].details[i];
+                string replaceText = quests[0].details[i];
+                replaceText = replaceText.Replace("'", ",");
+                replaceText = replaceText.Replace("\\n", "\n");
+
+                //questDetailList[i].transform.GetChild(0).GetComponent<TMP_Text>().text = quests[index].name[i];
+                questDetailList[i].transform.GetChild(0).GetComponent<TMP_Text>().text = quests[0].name[i];
+                questDetailList[i].transform.GetChild(1).GetComponent<TMP_Text>().text = replaceText;
+
+
+
+            }
         }
-
-        for (int i = 0; i < quests[index].name.Length; i++)
-        {
-            questBox[i].SetActive(true);
-            questBox[i].transform.GetChild(0).GetComponent<TMP_Text>().text = quests[index].name[i];
-
-
-            //대체 문자
-            string replaceText = quests[index].details[i];
-            replaceText = replaceText.Replace("'", ",");
-            replaceText = replaceText.Replace("\\n", "\n");
-
-            questDetailList[i].transform.GetChild(0).GetComponent<TMP_Text>().text = quests[index].name[i];
-            questDetailList[i].transform.GetChild(1).GetComponent<TMP_Text>().text = replaceText;
-
-            
-            storage.saveData.nowIndex++;
-        }
-
-
+        storage.saveData.nowIndex++;
     }
 
 

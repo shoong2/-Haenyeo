@@ -19,7 +19,7 @@ public class RewardManager : MonoBehaviour
     {
         rewards = DatabaseManager.instance.GetReward(index);
         Debug.Log("here");
-        Debug.Log(rewards[index].rewardContexts.Length);
+        //Debug.Log(rewards[index].rewardContexts.Length);
         for(int i=0; i<rewards[index].rewardContexts.Length; i++)
         {
             GameObject rBox = Instantiate(rewardBox);

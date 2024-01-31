@@ -131,7 +131,6 @@ public class DialogueManager : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("two?");
                             EndDialogue();
                         }
                     }
@@ -178,17 +177,9 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         ShowDialogueImg("stop", false);
 
-        reward.GetReward(storage.saveData.nowIndex);
+        //reward.GetReward(storage.saveData.nowIndex); //끝날 때마다 전부 리워드가 있는 것이 아니라 수정 필요
         quest.Active(storage.saveData.nowIndex);
         
-
-        //if(storage.saveData.questAllCount==0)
-        //{
-        //    reward.GetReward(0);
-        //    quest.Active(0);
-        //    GameObject.FindWithTag("Won").gameObject.SetActive(false);
-        //    //storage.saveData.questAllCount++;
-        //}
 
     }
 

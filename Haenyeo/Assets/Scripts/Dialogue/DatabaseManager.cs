@@ -43,7 +43,8 @@ public class DatabaseManager : MonoBehaviour
             Quest[] quests = QParser.Parse(csv_QuestFileName);
             for(int j=0; j<quests.Length; j++)
             {
-                questDic.Add(j + 1, quests[j]);
+                questDic.Add(int.Parse(quests[j].questIndex), quests[j]);
+
             }
 
             RewardParser RParser = GetComponent<RewardParser>();
@@ -77,7 +78,8 @@ public class DatabaseManager : MonoBehaviour
     public Quest[] GetQuest(int questCount)
     {
         List<Quest> questList = new List<Quest>();
-        questList.Add(questDic[questCount + 1]);
+        if(questDic.ContainsKey(questCount))
+            questList.Add(questDic[questCount]);
         return questList.ToArray();
     }
 
