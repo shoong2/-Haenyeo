@@ -30,4 +30,8 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("Room");
     }
 
+    public void GoMiniGame()
+    {
+        SceneManager.LoadScene("MiniGame");
+    }
 }

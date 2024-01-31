@@ -2449,9 +2449,6 @@ MonoBehaviour:
   toolManager: {fileID: 1822855951}
   tools: []
   inven: {fileID: 996046742}
-  getBox: {fileID: 0}
-  getText: {fileID: 0}
-  getSprite: {fileID: 0}
 --- !u!50 &1046422902
 Rigidbody2D:
   serializedVersion: 4
