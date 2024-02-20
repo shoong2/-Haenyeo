@@ -78,8 +78,10 @@ public class DatabaseManager : MonoBehaviour
     public Quest[] GetQuest(int questCount)
     {
         List<Quest> questList = new List<Quest>();
-        if(questDic.ContainsKey(questCount))
+        if (questDic.ContainsKey(questCount))
             questList.Add(questDic[questCount]);
+
+
         return questList.ToArray();
     }
 

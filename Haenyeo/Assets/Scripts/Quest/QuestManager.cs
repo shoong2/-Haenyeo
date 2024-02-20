@@ -45,9 +45,8 @@ public class QuestManager : MonoBehaviour
     public void Active(int index)
     {
         quests = DatabaseManager.instance.GetQuest(index);
-        if (quests[0].name != null)
+        if (quests.Length!=0)
         {
-
 
             if (index == 0)
             {

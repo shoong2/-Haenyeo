@@ -40,9 +40,6 @@ public class Player_UnderSea : Player
         base.Start();
         //currentHp = maxHp;
         playerAnim = GetComponent<Animator>();
-        //targetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y);//.y - objectHeight*2f);
-        //transform.position = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight*2f);
-        //tewakTargetPosition = new Vector2(transform.position.x, GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 3f);
         targetPosition = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y);//.y - objectHeight*2f);
         transform.position = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 2f);
         tewakTargetPosition = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 3f);
@@ -161,36 +158,5 @@ public class Player_UnderSea : Player
         }
 
     }
-
-    //public void HoeAttack()
-    //{
-    //    playerAnim.SetTrigger("Hoe");
-    //    if(activeAttack)
-    //    {
-    //        fish.SetHP();
-    //    }
-    //    click = true;
-    //}
-    
-    //public void KnifeAttack()
-    //{
-    //    playerAnim.SetTrigger("Knife");
-    //    if (activeAttack)
-    //    {
-    //        fish.SetHP();
-    //    }
-    //    click = true;
-    //}
-
-    //public void PoleAttack()
-    //{
-    //    playerAnim.SetTrigger("Pole");
-    //    if (activeAttack)
-    //    {
-    //        fish.SetHP();
-    //    }
-    //    click = true;
-    //    //playerAnim.SetBool("test", true);
-    //}
 
 }
