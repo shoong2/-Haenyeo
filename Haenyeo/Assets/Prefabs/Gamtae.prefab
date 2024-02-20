@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1922088438619434693}
   - component: {fileID: 3132764484807047672}
   - component: {fileID: 1637959126087326449}
+  - component: {fileID: 653492306}
   m_Layer: 7
   m_Name: Gamtae
   m_TagString: Hoe
@@ -207,6 +208,21 @@ MonoBehaviour:
   fadeSpeed: 0.1
   hpPos: 1.5
   speed: 3
+--- !u!114 &653492306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496083782716849876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76234dbb2980aaa44a3dd0726073e073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleR: 3
+  deg: 0
+  objSpeed: 0.5
 --- !u!1 &4028929019273183645
 GameObject:
   m_ObjectHideFlags: 0

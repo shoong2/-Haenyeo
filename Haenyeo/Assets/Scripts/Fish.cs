@@ -30,7 +30,9 @@ public class Fish : MonoBehaviour
 
     SpriteRenderer renderer;
 
-    void Start()
+    public bool left = false;
+
+    protected virtual void Start()
     {
         camera = Camera.main;
         curHp = maxHP;
@@ -40,35 +42,35 @@ public class Fish : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
-
         leftEdge = camera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
         rightEdge = camera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
+
+        moveVec = new(Mathf.Clamp(moveVec.x, leftEdge, rightEdge), transform.position.y);
+       // rigid.MovePosition(moveVec);
     }
 
 
-    public void ShowCanvas(float playerXPos)
+    virtual public void ShowCanvas(float playerXPos)
     {
         if (curHp > 0)
         {
             canvas.SetActive(true);
-            if (gameObject.transform.position.x > playerXPos)
+            if (gameObject.transform.position.x > playerXPos) // 더 오른쪽에 있는 경우
             {
+                left = false;
                 canvas.transform.localPosition = new Vector2(hpPos, 0);
             }
             else
+            {
+                left = true;
                 canvas.transform.localPosition = new Vector2(-hpPos, 0);
+            }
         }
     }
 
-    public void EnableCanvas()
+    virtual public void EnableCanvas()
     {
         canvas.SetActive(false);
     }    
@@ -93,22 +95,10 @@ public class Fish : MonoBehaviour
        // Destroy(gameObject);
     }
 
-    //void FadeOut()
-    //{
-    //    while(renderer.color.a >0)
-    //    {
-    //        renderer.color= new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - Time.deltaTime * fadeSpeed);
-    //    }
-        
-    //}
+
 
     IEnumerator FadeOut()
     {
-        //for(int i=10; i>=0; i--)
-        //{
-        //    float f = i / 10f;
-        //    Color c = renderer.material.co
-        //}
         while (renderer.color.a > 0)
         {
             renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a -  fadeSpeed);

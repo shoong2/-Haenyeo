@@ -77,11 +77,6 @@ public class Player : MonoBehaviour
 
         //카메라 밖으로 나가지 않도록 제한
 
-        //leftEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
-        //rightEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
-        //topEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
-        //bottomEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
-
         leftEdge = camera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
         rightEdge = camera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
         topEdge = camera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
