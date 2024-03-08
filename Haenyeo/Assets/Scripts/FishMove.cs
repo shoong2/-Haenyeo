@@ -21,7 +21,7 @@ public class FishMove : Fish
     {
         mark.SetActive(true);
         base.ShowCanvas(playerXPos);
-      
+        
         if (left)
         {
             mark.transform.localPosition = Vector2.right;
@@ -29,7 +29,8 @@ public class FishMove : Fish
         else
             mark.transform.localPosition = -Vector2.right;
 
-        StartCoroutine(ReverseMove(left));
+
+           StartCoroutine(ReverseMove(left));
        // Invoke("ReverseMove", 0.5f);
         
     }

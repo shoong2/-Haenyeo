@@ -10,6 +10,7 @@ public class Player_UnderSea : Player
     Vector3 tewakTargetPosition;
     Animator playerAnim;
     public float rayLine = 3f;
+    public float poleRayLine;
 
     RaycastHit2D raycast;
     Fish fish;
@@ -50,56 +51,59 @@ public class Player_UnderSea : Player
 
     private void Update()
     {
-        Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
-        if (toolManager.activeToolName == "Pole")
-        {
-            rayLine = 8f;
-        }
-        else
-            rayLine = 3f;
+        //Vector3 dir = render.flipX ? Vector3.right : Vector3.left;
+        //if (toolManager.activeToolName == "Pole")
+        //{
+        //    rayLine = poleRayLine;
+        //    raycast = Physics2D.CircleCast(transform.position, rayLine,Vector3.zero , 1, LayerMask.GetMask("Piscse"));
+        //    Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
+        //}
+        //else
+        //{
+        //    rayLine = 3f;
 
-        Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
-        raycast = Physics2D.Raycast(transform.position, dir, rayLine, LayerMask.GetMask("Item"));
+        //    Debug.DrawRay(rigid.position, dir * rayLine, Color.red);
+        //    raycast = Physics2D.Raycast(transform.position, dir, rayLine, LayerMask.GetMask("Item") + LayerMask.GetMask("Piscse"));
+        //}
 
 
-        if (raycast)
-        {
-            fish = raycast.collider.GetComponent<Fish>();
-            toolGuideGroup.SetActive(true);
-            GuideSetting(raycast.collider.tag);
-            if (toolManager.activeToolName == "Knife")
-            {
-                raycast.collider.transform.GetComponent<Fish>().ShowCanvas(gameObject.transform.position.x);
-                activeAttack = true; 
-            }
-            else if (toolManager.activeToolName == raycast.collider.tag)
-            {
-                raycast.collider.transform.GetComponent<Fish>().ShowCanvas(gameObject.transform.position.x);
-                activeAttack = true;
-            }
-            else
-            {
-                raycast.collider.transform.GetComponent<Fish>().EnableCanvas();
-                activeAttack = false;
-            }
-           
-        }
-        else
-        {
-            if(fish!=null)
-            {
-                fish.EnableCanvas();
-            }
-            toolGuideGroup.SetActive(false);
-            activeAttack = false;
-           // raycast.collider.transform.GetComponent<Fish>().canvas.SetActive(false);
-        }
+
+        //if (raycast)
+        //{
+        //    fish = raycast.collider.GetComponent<Fish>();
+        //    toolGuideGroup.SetActive(true);
+        //    GuideSetting(raycast.collider.tag);
+        //    if (toolManager.activeToolName == "Knife")
+        //    {
+        //        raycast.collider.transform.GetComponent<Fish>().ShowCanvas(gameObject.transform.position.x);
+        //        activeAttack = true;
+        //    }
+        //    else if (toolManager.activeToolName == raycast.collider.tag)
+        //    {
+        //        raycast.collider.transform.GetComponent<Fish>().ShowCanvas(gameObject.transform.position.x);
+        //        activeAttack = true;
+        //    }
+        //    else
+        //    {
+        //        raycast.collider.transform.GetComponent<Fish>().EnableCanvas();
+        //        activeAttack = false;
+        //    }
+
+        //}
+        //else
+        //{
+        //    if(fish!=null)
+        //    {
+        //        fish.EnableCanvas();
+               
+        //    }
+        //    toolGuideGroup.SetActive(false);
+        //    activeAttack = false;
+        //}
 
         if (transform.position.y >= 4f || transform.position.y <= -35)
         {
             camera.transform.GetComponent<CameraController>().enabled = false;
-            //if(startSea)
-            // SceneManager.LoadScene("Sea");
             if (transform.position.y == topEdge)
                 SceneManager.LoadScene("Sea");
         }
@@ -110,27 +114,32 @@ public class Player_UnderSea : Player
 
     }
 
-    void GuideSetting(string coliderItemName)//, GameObject fish)
+    private void OnDrawGizmos()
     {
-        for (int i = 0; i < toolGuide.Length; i++)
-        {
-            toolGuide[i].SetActive(toolGuide[i].name == coliderItemName);
-        }
+        Gizmos.color = Color.yellow;
 
+        Gizmos.DrawWireSphere(transform.position, rayLine);
     }
+
+    //void GuideSetting(string coliderItemName)//, GameObject fish)
+    //{
+    //    for (int i = 0; i < toolGuide.Length; i++)
+    //    {
+    //        toolGuide[i].SetActive(toolGuide[i].name == coliderItemName);
+    //    }
+
+    //}
 
 
 
     IEnumerator StartUnderSea()
     {
-        //currentHp = maxHp;
         while (transform.position != targetPosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, 2f * Time.deltaTime);
             yield return null;
         }
         yield return new WaitForSeconds(0.5f);
-        //playerAnim.SetTrigger("Swim");
         playerAnim.SetBool("Move", false);
         restrictY = 1f;
         startSea = true;
@@ -153,8 +162,6 @@ public class Player_UnderSea : Player
                 
                 fish.Die();
             }
-            
-
         }
 
     }

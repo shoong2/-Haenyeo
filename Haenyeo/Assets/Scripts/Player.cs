@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
     protected float y;
     protected bool restrict = true;
 
-    protected Rigidbody2D rigid; 
+    public Rigidbody2D rigid; 
 
     Vector2 moveVec; 
 
-    protected SpriteRenderer render; //좌우반전 스프라이트 렌더러
+    public SpriteRenderer render; //좌우반전 스프라이트 렌더러
 
     Animator playerAnim;
     //protected Camera mainCamera;

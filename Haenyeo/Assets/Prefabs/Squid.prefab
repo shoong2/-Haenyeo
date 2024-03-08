@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1009875756}
   - component: {fileID: 1009875755}
   - component: {fileID: 1009875754}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: HPCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 3307546771930320198}
   - component: {fileID: 4791500117798265307}
   - component: {fileID: 7333186853387213012}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 2387074977394175658}
   - component: {fileID: 9001762702850759342}
   - component: {fileID: 4216136288223946905}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Mark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 1364229199855824201}
   - component: {fileID: 2354489858058155922}
   - component: {fileID: 1999786263}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Squid
   m_TagString: Pole
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2034576669506894988, guid: f8a32f9a662ee9c4aa244bb966da9e0f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2760602995098725720, guid: f8a32f9a662ee9c4aa244bb966da9e0f, type: 3}
       propertyPath: m_Pivot.x
@@ -596,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2760602995098725721, guid: f8a32f9a662ee9c4aa244bb966da9e0f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2760602995098725721, guid: f8a32f9a662ee9c4aa244bb966da9e0f, type: 3}
       propertyPath: m_IsActive
