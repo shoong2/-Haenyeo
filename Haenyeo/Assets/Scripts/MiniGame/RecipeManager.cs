@@ -7,6 +7,7 @@ public class RecipeManager : MonoBehaviour
 {
     public GameObject iconPrefab; // 아이콘의 프리팹
     public Transform iconParent; // 아이콘들을 배치할 부모 객체
+    public Info info; // Info 스크립트 참조
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,14 @@ public class RecipeManager : MonoBehaviour
         // 레시피 아이템을 클릭하는 이벤트를 추가
         Button recipeItemButton = GameObject.Find("RecipeItem").GetComponent<Button>();
         recipeItemButton.onClick.AddListener(ShowIcons);
+        recipeItemButton.onClick.AddListener(()=>{info.gameObject.SetActive(true);});
+
+        // Info 스크립트의 참조를 할당합니다.
+        //info = GameObject.Find("infoR").GetComponent<Info>();
+        if (info == null)
+        {
+            Debug.LogError("Info 스크립트를 찾을 수 없습니다.");
+        }
     }
 
     // 아이콘들을 활성화하고 위치를 설정하는 함수
@@ -38,6 +47,9 @@ public class RecipeManager : MonoBehaviour
 
         // 아이콘들을 활성화
         SetIconsActive(true);
+
+        // Info의 정보 업데이트
+        info.UpdateInfoText();
     }
 
     // 아이콘을 생성하고 위치를 설정하는 함수
