@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -63,7 +63,7 @@ public class RecipeInput : MonoBehaviour
 
     void AddSeafoodItem(string iconName, Vector3 iconPosition, ref int itemCount, string recipeNum) 
     {
-        Debug.Log("Click");
+       // Debug.Log("Click");
 
         // 갯수 증가
         itemCount++;
