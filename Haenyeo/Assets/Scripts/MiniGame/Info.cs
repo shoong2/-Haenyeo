@@ -38,7 +38,6 @@ public class Info : MonoBehaviour
         // 정보 텍스트를 업데이트합니다.
         UpdateInfoText(combinedInfoA, combinedInfoB, combinedInfoC);
         Debug.Log("이것이 출력된다면 UpdateInfoText는 정상");
-        Debug.Log(combinedInfoA);
     }
 
     // 정보를 업데이트하는 함수

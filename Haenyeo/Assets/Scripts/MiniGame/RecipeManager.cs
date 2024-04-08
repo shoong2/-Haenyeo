@@ -85,7 +85,7 @@ public class RecipeManager : MonoBehaviour
         Crust_tuto_C_Button.SetActive(true);
 
         // remove 버튼들은 처음에는 비활성화
-        SetRemoveButtonsActive(false);
+        //SetRemoveButtonsActive(false);
     }
 
     // remove 버튼들을 활성화하는 함수
@@ -96,6 +96,15 @@ public class RecipeManager : MonoBehaviour
 
         // 선택한 remove 버튼을 활성화
         removeIcons[removeIndex].SetActive(true);
+
+        // 선택한 remove 버튼을 제외하고 비활성화
+        for (int i = 0; i < removeIcons.Length; i++)
+        {
+            if (i != removeIndex)
+            {
+                removeIcons[i].SetActive(false);
+            }
+        }
     }
 
     // 레시피 아이템을 클릭했을 때 호출되는 함수
@@ -121,6 +130,3 @@ public class RecipeManager : MonoBehaviour
         newIcon.transform.localPosition = position;
     }
 }
-
-
-

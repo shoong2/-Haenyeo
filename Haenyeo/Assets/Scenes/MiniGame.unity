@@ -3999,6 +3999,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8970103558936808782, guid: 8010a2da1c0edaa47869252711309507, type: 3}
+      propertyPath: fishButton
+      value: 
+      objectReference: {fileID: 1801743533}
+    - target: {fileID: 8970103558936808782, guid: 8010a2da1c0edaa47869252711309507, type: 3}
       propertyPath: iconParent
       value: 
       objectReference: {fileID: 1106358776}
@@ -4010,6 +4014,18 @@ PrefabInstance:
       propertyPath: textParent
       value: 
       objectReference: {fileID: 654380342}
+    - target: {fileID: 8970103558936808782, guid: 8010a2da1c0edaa47869252711309507, type: 3}
+      propertyPath: removeButton1
+      value: 
+      objectReference: {fileID: 386674361}
+    - target: {fileID: 8970103558936808782, guid: 8010a2da1c0edaa47869252711309507, type: 3}
+      propertyPath: removeButton2
+      value: 
+      objectReference: {fileID: 527535944}
+    - target: {fileID: 8970103558936808782, guid: 8010a2da1c0edaa47869252711309507, type: 3}
+      propertyPath: removeButton3
+      value: 
+      objectReference: {fileID: 192280157}
     - target: {fileID: 8970103558936808782, guid: 8010a2da1c0edaa47869252711309507, type: 3}
       propertyPath: itemCountTextPrefab
       value: 
