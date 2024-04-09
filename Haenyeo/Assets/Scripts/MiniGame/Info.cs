@@ -15,13 +15,16 @@ public class Info : MonoBehaviour
     private int numC = 3; // seafood3의 갯수
 
     // Start is called before the first frame update
-    void Start()
-    {
-        // Canvas 오브젝트를 시작으로 하위 오브젝트 찾기
+    private void Awake() {
         Transform canvasTransform = GameObject.Find("Canvas").transform;
         infoTextA = canvasTransform.Find("infoR/info_numA").GetComponent<TMP_Text>();
         infoTextB = canvasTransform.Find("infoR/info_numB").GetComponent<TMP_Text>();
         infoTextC = canvasTransform.Find("infoR/info_numC").GetComponent<TMP_Text>();
+    }
+    void Start()
+    {
+        // Canvas 오브젝트를 시작으로 하위 오브젝트 찾기
+
 
         // 정보 텍스트 업데이트
         UpdateInfoText();
@@ -49,6 +52,7 @@ public class Info : MonoBehaviour
             infoTextA.text = combinedInfoA;
             infoTextB.text = combinedInfoB;
             infoTextC.text = combinedInfoC;
+            Debug.Log("hi");
         }
         else
         {

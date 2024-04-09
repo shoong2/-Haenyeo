@@ -39,8 +39,8 @@ public class RecipeManager : MonoBehaviour
 
         // 레시피 아이템을 클릭하는 이벤트를 추가
         Button recipeItemButton = GameObject.Find("RecipeItem").GetComponent<Button>();
-        recipeItemButton.onClick.AddListener(ShowIcons);
         recipeItemButton.onClick.AddListener(()=>{info.gameObject.SetActive(true);});
+        recipeItemButton.onClick.AddListener(ShowIcons);
         recipeItemButton.onClick.AddListener(EnableCrustTutoButtons);
 
         // Info 스크립트의 참조를 할당합니다.
@@ -119,7 +119,7 @@ public class RecipeManager : MonoBehaviour
         SetIconsActive(true);
 
         // Info의 정보 업데이트
-        info.UpdateInfoText();
+        //info.UpdateInfoText();
     }
 
     // 아이콘을 생성하고 위치를 설정하는 함수
