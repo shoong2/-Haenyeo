@@ -11,7 +11,7 @@ public class Start_cook : MonoBehaviour
     public TMP_Text TimeCount; // TimeCount 텍스트 참조
     public Button cookButton; // CookButton 참조
     public GameObject resultImage; // Result_image GameObject 참조
-    public GameObject timeImage; // "bad" 이미지 참조
+    public GameObject timeImage; // "timeover" 이미지 참조
 
     private const float MoveRange = 3.5f; // 이동 범위
 
@@ -51,7 +51,7 @@ public class Start_cook : MonoBehaviour
             }
         }*/
         
-        resultImage = GameObject.Find("Result_image");
+        resultImage = GameObject.Find("Canvas3/Result_image");
         // "Result_image" 아래의 "bad" 이미지 GameObject 찾기
         if (resultImage != null) {
             timeImage = resultImage.transform.Find("timeover").gameObject;

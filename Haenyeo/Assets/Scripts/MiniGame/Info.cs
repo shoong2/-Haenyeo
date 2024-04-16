@@ -16,7 +16,7 @@ public class Info : MonoBehaviour
 
     // Start is called before the first frame update
     private void Awake() {
-        Transform canvasTransform = GameObject.Find("Canvas").transform;
+        Transform canvasTransform = GameObject.Find("Canvas2").transform;
         infoTextA = canvasTransform.Find("infoR/info_numA").GetComponent<TMP_Text>();
         infoTextB = canvasTransform.Find("infoR/info_numB").GetComponent<TMP_Text>();
         infoTextC = canvasTransform.Find("infoR/info_numC").GetComponent<TMP_Text>();
