@@ -16,7 +16,7 @@ public class DatabaseManager : MonoBehaviour
     //퀘스트 테스트
     [SerializeField] string csv_QuestFileName;
 
-    Dictionary<int, Quest> questDic = new Dictionary<int, Quest>();
+    Dictionary<int, Quest_> questDic = new Dictionary<int, Quest_>();
 
     public SaveNLoad storage;
 
@@ -40,7 +40,7 @@ public class DatabaseManager : MonoBehaviour
             isFinish = true;
 
             QuestParser QParser = GetComponent<QuestParser>();
-            Quest[] quests = QParser.Parse(csv_QuestFileName);
+            Quest_[] quests = QParser.Parse(csv_QuestFileName);
             for(int j=0; j<quests.Length; j++)
             {
                 questDic.Add(int.Parse(quests[j].questIndex), quests[j]);
@@ -75,9 +75,9 @@ public class DatabaseManager : MonoBehaviour
         return dialogueList.ToArray();
     }
 
-    public Quest[] GetQuest(int questCount)
+    public Quest_[] GetQuest(int questCount)
     {
-        List<Quest> questList = new List<Quest>();
+        List<Quest_> questList = new List<Quest_>();
         if (questDic.ContainsKey(questCount))
             questList.Add(questDic[questCount]);
 

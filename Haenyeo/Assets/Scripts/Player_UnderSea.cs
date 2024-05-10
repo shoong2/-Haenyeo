@@ -9,8 +9,8 @@ public class Player_UnderSea : Player
     Vector3 targetPosition;
     Vector3 tewakTargetPosition;
     Animator playerAnim;
-    public float rayLine = 3f;
-    public float poleRayLine;
+    //public float rayLine = 3f;
+    //public float poleRayLine;
 
     RaycastHit2D raycast;
     Fish fish;
@@ -24,7 +24,7 @@ public class Player_UnderSea : Player
     [SerializeField]
     GameObject[] tools;
 
-    [SerializeField] Inventory inven;
+   // [SerializeField] Inventory inven;
 
     bool click = false;
 
@@ -33,7 +33,7 @@ public class Player_UnderSea : Player
     bool startSea = false; // 바다에 들어가자마자 y좌표 이상으로 올라와서 씬 이동 방지
 
 
-    UnderSeaGameManager gm;
+   // UnderSeaGameManager gm;
     protected override void Start()
     {
         y = 0;
@@ -42,7 +42,7 @@ public class Player_UnderSea : Player
         //currentHp = maxHp;
         playerAnim = GetComponent<Animator>();
         targetPosition = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y);//.y - objectHeight*2f);
-        transform.position = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 2f);
+        transform.position = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y); //+ objectHeight * 2f);
         tewakTargetPosition = new Vector2(transform.position.x, camera.ViewportToWorldPoint(new Vector3(0, 1f, 0)).y + objectHeight * 3f);
         StartCoroutine(StartUnderSea());
     }
@@ -114,12 +114,12 @@ public class Player_UnderSea : Player
 
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
 
-        Gizmos.DrawWireSphere(transform.position, rayLine);
-    }
+    //    Gizmos.DrawWireSphere(transform.position, rayLine);
+    //}
 
     //void GuideSetting(string coliderItemName)//, GameObject fish)
     //{
@@ -145,25 +145,25 @@ public class Player_UnderSea : Player
         startSea = true;
     }
 
-    public void Attack()
-    {
-        playerAnim.SetTrigger(toolManager.activeToolName);
-        Debug.Log(toolManager.activeToolName);
-        //SoundManager.instance.PlaySE(toolManager.activeToolName);
-        if(activeAttack)
-        {
-            fish.SetHP();
-            if(fish.curHp<=0)
-            {
-                gm = FindObjectOfType<UnderSeaGameManager>();
-                gm.CatchWindow(fish.transform.GetComponent<ItemPickUp>().item);
-                if(fish!=null)
-                    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
+    //public void Attack()
+    //{
+    //    playerAnim.SetTrigger(toolManager.activeToolName);
+    //    Debug.Log(toolManager.activeToolName);
+    //    //SoundManager.instance.PlaySE(toolManager.activeToolName);
+    //    if(activeAttack)
+    //    {
+    //        fish.SetHP();
+    //        if(fish.curHp<=0)
+    //        {
+    //            gm = FindObjectOfType<UnderSeaGameManager>();
+    //            gm.CatchWindow(fish.transform.GetComponent<ItemPickUp>().item);
+    //            if(fish!=null)
+    //                inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
                 
-                fish.Die();
-            }
-        }
+    //            fish.Die();
+    //        }
+    //    }
 
-    }
+    //}
 
 }

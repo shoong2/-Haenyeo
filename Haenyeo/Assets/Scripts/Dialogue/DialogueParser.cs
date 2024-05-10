@@ -36,12 +36,12 @@ public class DialogueParser : MonoBehaviour
                 else if (row[5] == "")
                 {
                     nameList.Add(nameList[nameList.Count - 1]);
-                    Debug.Log(2);
+                    //Debug.Log(2);
                 }
                 else
                 {
                     nameList.Add(row[5]);
-                    Debug.Log(3);
+                    //Debug.Log(3);
                 }
 
                 //nameList.Add(row[5]);

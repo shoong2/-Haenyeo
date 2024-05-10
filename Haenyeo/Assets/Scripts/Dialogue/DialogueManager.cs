@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
+    //public UnityEngine.Events.UnityEvent endDialogue;
+
     [SerializeField] GameObject go_DialogueBar;
     //[SerializeField] GameObject go_DialogueNameBar;
 
@@ -34,9 +36,9 @@ public class DialogueManager : MonoBehaviour
     [Header("알림창")]
     [SerializeField] GameObject rewardBox;
     [SerializeField] Image itemBox;
-    [SerializeField] Sprite[] itemSprite;
-    [SerializeField] TMP_Text itemName;
-    [SerializeField] TMP_Text itemDetail;
+    //[SerializeField] Sprite[] itemSprite;
+    //[SerializeField] TMP_Text itemName;
+    //[SerializeField] TMP_Text itemDetail;
 
     [SerializeField] GameObject questBox;
     [SerializeField] TMP_Text questName;
@@ -49,6 +51,12 @@ public class DialogueManager : MonoBehaviour
 
     bool multiCoroutine = false;
 
+    QuestReporter[] reporters;
+
+    private void Start()
+    {
+        reporters = GetComponents<QuestReporter>();
+    }
 
     void ShowDialogueImg(string name,bool active = true)
     {
@@ -178,9 +186,15 @@ public class DialogueManager : MonoBehaviour
         ShowDialogueImg("stop", false);
 
         //reward.GetReward(storage.saveData.nowIndex); //끝날 때마다 전부 리워드가 있는 것이 아니라 수정 필요
-        quest.Active(storage.saveData.nowIndex);
-        
+        //quest.Active(storage.saveData.nowIndex);
 
+        //endDialogue.Invoke();
+        foreach (QuestReporter report in reporters)
+        {
+            Debug.Log("test");
+            report.Report();
+        }
+       
     }
 
 

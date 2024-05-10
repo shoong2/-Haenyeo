@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Knife : Tool
 {
+
+    public float knifeRaySize;
     public override void Init()
     {
-        data.rayLine = 3f;
+        data.rayLine = knifeRaySize;
         data.toolName = "Knife";
     }
 
@@ -15,5 +17,10 @@ public class Knife : Tool
         Debug.DrawRay(player.transform.position, dir * data.rayLine, Color.red);
         raycast = Physics2D.Raycast(player.transform.position, dir, data.rayLine, LayerMask.GetMask("Item") + LayerMask.GetMask("Piscse"));
         activeAttack = true;
+    }
+
+    public override void ToolAttack()
+    {
+        fish.SetHP();
     }
 }

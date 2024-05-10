@@ -81,6 +81,7 @@ public class Fish : MonoBehaviour
         if(curHp ==0)
         {
             Debug.Log("Die");
+            onFishDead.Invoke();
         }
         else
             hp.fillAmount = curHp / maxHP;

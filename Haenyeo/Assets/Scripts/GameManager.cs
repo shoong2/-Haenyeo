@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     int ClickCount = 0;
 
     [Header("�����")]
-    [SerializeField] SaveNLoad storage;
+    public SaveNLoad storage;
     public int index;
     private void Awake()
     {
@@ -97,10 +97,10 @@ public class GameManager : MonoBehaviour
 
         if (underSea) 
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            SpriteRenderer render = player.GetComponent<SpriteRenderer>();
+            //GameObject player = GameObject.FindGameObjectWithTag("Player");
+           // SpriteRenderer render = player.GetComponent<SpriteRenderer>();
             if (time<maxTime)
-                time += Time.deltaTime; //�ٴٿ� ���� �ð� ī��Ʈ
+                time += Time.deltaTime;
 
         }
 
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         
-        index = storage.saveData.nowIndex;
+        //index = storage.saveData.nowIndex;
         Debug.Log(scene.name);
         mainCamera = Camera.main;
         canvasComp.worldCamera = mainCamera;
@@ -136,7 +136,13 @@ public class GameManager : MonoBehaviour
 
             if (scene.name == "UnderSea")
             {
+                UnderSeaGameManager underGM = FindAnyObjectByType<UnderSeaGameManager>();
                 underSea = true;
+                underGM.storage = this.storage;
+                //if(index ==1)
+                //{
+                //    underGM.startQuestIndex_1 = true;
+                //}
             }
 
         }
@@ -144,6 +150,7 @@ public class GameManager : MonoBehaviour
         {
             joystick.SetActive(false);  
         }
+
     }
 
     public void ChangeScene(string sceneName)

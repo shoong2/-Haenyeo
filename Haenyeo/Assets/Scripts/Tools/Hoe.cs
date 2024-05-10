@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Hoe : Tool
 {
+    public float hoeRaySize;
     public override void Init()
     {
-        data.rayLine = 3f;
+        data.rayLine = hoeRaySize;
         data.toolName = "Hoe";
     }
 
@@ -15,5 +16,10 @@ public class Hoe : Tool
         Debug.DrawRay(player.rigid.position, dir * data.rayLine, Color.red);
         raycast = Physics2D.Raycast(player.transform.position, dir, data.rayLine, LayerMask.GetMask("Item") + LayerMask.GetMask("Piscse"));
         activeAttack = true;
+    }
+
+    public override void ToolAttack()
+    {
+        fish.SetHP();
     }
 }

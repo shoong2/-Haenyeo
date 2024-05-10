@@ -9,7 +9,6 @@ public class ToolManager : MonoBehaviour
     public Image[] tools;
     public GameObject[] toolGuide; //툴 가이드 자식
     public GameObject toolGuideGroup; //툴가이드 부모객체
-    Button[] toolButton;
 
     [Header("Tools")]
     public Tool[] myTool; //툴
@@ -24,16 +23,26 @@ public class ToolManager : MonoBehaviour
     public UnderSeaGameManager gm;
     public Inventory inven;
 
-    private void Start()
+    public bool getFishQuest = false;
+
+
+    private void Awake()
     {
         playerAnim = player.GetComponent<Animator>();
         gm = FindObjectOfType<UnderSeaGameManager>();
+        currentTool = FindAnyObjectByType<Tool>();
         activeToolName = tools[0].name;
         FindToolName(activeToolName);
 
-        for (int i = 0; i < tools.Length; i++)
-        {
+    }
 
+    private void Start()
+    {
+        for (int i = 0; i < tools.Length; i++)
+        {        
+            Tool emp = myTool[i];
+            Button btn = tools[i].GetComponent<Button>();
+            btn.onClick.AddListener(() => emp.Attack(playerAnim, gm, inven, getFishQuest));        
         }
     }
 
@@ -60,18 +69,20 @@ public class ToolManager : MonoBehaviour
                           
         }
         FindToolName(activeToolName);
+        //currentTool.SelectRay(activeToolName);
     }
 
     void FindToolName(string name)
     {
         for (int i = 0; i < myTool.Length; i++)
         {
-            if (myTool[i].name == name)
+            if (myTool[i].GetType().ToString() == name)
             {
                 myTool[i].Init();
                 currentTool = myTool[i];
             }
         }
+
     }
 
     private void Update()
@@ -79,24 +90,8 @@ public class ToolManager : MonoBehaviour
         dir = player.render.flipX ? Vector3.right : Vector3.left;
         currentTool.SetRaycast(dir, player);
         currentTool.GetRaycast(toolGuideGroup, player, toolGuide);
+        //Debug.Log(currentTool.activeAttack);
     }
 
-    //public void Hoe()
-    //{
-    //    playerAnim.SetTrigger("Hoe");
-    //    //click = true;
-    //}
 
-    //public void Knife()
-    //{
-    //    playerAnim.SetTrigger("Knife");
-    //    //click = true;
-    //}
-
-    //public void Pole()
-    //{
-    //    playerAnim.SetTrigger("Pole");
-    //    //click = true;
-    //    //playerAnim.SetBool("test", true);
-    //}
 }

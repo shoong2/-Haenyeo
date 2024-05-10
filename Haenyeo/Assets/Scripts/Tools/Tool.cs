@@ -15,59 +15,72 @@ public abstract class Tool : MonoBehaviour
     public Data data;
 
     protected RaycastHit2D raycast;
+    protected RaycastHit2D poleRaycast;
+    //RaycastHit2D currentRay;
     protected Vector3 dir;
 
 
     //public GameObject[] toolGuide;
-    protected bool activeAttack = false;
-    protected Fish fish;
+    public bool activeAttack = false;
+    public Fish fish;
 
+    //레이 설정
     public abstract void SetRaycast(Vector3 dir, Player player);
     public abstract void Init();
+    public abstract void ToolAttack();
 
-    public void Attack(Animator playerAnim, UnderSeaGameManager gm, Inventory inven)
+
+
+    //공격
+    public void Attack(Animator playerAnim, UnderSeaGameManager gm, Inventory inven, bool runningQuest)
     {
         playerAnim.SetTrigger(data.toolName);
         if (activeAttack)
         {
-            fish.SetHP();
+            ToolAttack();
             if (fish.curHp <= 0)
             {
                 gm.CatchWindow(fish.transform.GetComponent<ItemPickUp>().item);
                 if (fish != null)
-                    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item);
+                    inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item, runningQuest);
 
                 fish.Die();
             }
         }
     }
 
-    public void AttachFish(Player player)
+    //물고기에 붙었을 때
+    public virtual void AttachFish(Player player,  RaycastHit2D ray)
     {
-        raycast.collider.transform.GetComponent<Fish>().ShowCanvas(player.transform.position.x);
+        ray.collider.transform.GetComponent<Fish>().ShowCanvas(player.transform.position.x);
     }
 
-    public void GetRaycast(GameObject toolGuideGroup, Player player, GameObject[] toolGuide)
+    //레이 작동
+    public virtual void GetRaycast(GameObject toolGuideGroup, Player player, GameObject[] toolGuide)
     {
         if (raycast)
         {
             fish = raycast.collider.GetComponent<Fish>();
             GuideSetting(raycast.collider.tag,toolGuideGroup, toolGuide);
-            AttachFish(player);
+            AttachFish(player, raycast);
         }
         else
         {
             if (fish != null)
             {
                 fish.EnableCanvas();
+                if(!poleRaycast)
+                    activeAttack = false;
 
             }
             toolGuideGroup.SetActive(false);
-            activeAttack = false;
+            
+            
         }
     }
 
-    void GuideSetting(string coliderItemName, GameObject toolGuideGroup, GameObject[] toolGuide)
+
+    public void GuideSetting(string coliderItemName, GameObject toolGuideGroup, GameObject[] toolGuide)
     {
         toolGuideGroup.SetActive(true);
         for (int i = 0; i < toolGuide.Length; i++)

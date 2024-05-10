@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
         //mainCamera = Camera.main;
         objectWidth = transform.localScale.x;
         objectHeight = transform.localScale.y;
+      
 
         //joy = FindObjectOfType<VariableJoystick>();
     }

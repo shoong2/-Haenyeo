@@ -37,13 +37,8 @@ public class Inventory : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
      
-    public void AcquireItem(Item _item, int _count =1)
+    public void AcquireItem(Item _item, bool quest,int _count =1)
     {
         if (Item.ItemType.Tool != _item.itemType)
         {

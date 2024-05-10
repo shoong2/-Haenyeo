@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 3364413940740297510}
   - component: {fileID: 1958264996751555025}
   - component: {fileID: 520817404}
+  - component: {fileID: -8753800126138444061}
   m_Layer: 7
   m_Name: Abalone
   m_TagString: Knife
@@ -265,7 +266,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onFishDead:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8753800126138444061}
+        m_TargetAssemblyTypeName: QuestReporter, Assembly-CSharp
+        m_MethodName: Report
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   canvas: {fileID: 3813481100297458304}
   hp: {fileID: 3721416019920211773}
   maxHP: 3
@@ -273,6 +286,7 @@ MonoBehaviour:
   fadeSpeed: 0.1
   hpPos: 1.5
   speed: 3
+  left: 0
 --- !u!95 &520817404
 Animator:
   serializedVersion: 5
@@ -293,6 +307,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-8753800126138444061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7355299324755961761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf2ad55443133d4f9f8a1c009657664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: a4015bb9c43591c4cbdb3f8d0f2a0c60, type: 2}
+  target: {fileID: 11400000, guid: 4f0c5f140715eb9458e2cf221af261de, type: 2}
+  successCount: 1
+  colliderTags: []
+  sceneName: 
 --- !u!1001 &2337351395144623339
 PrefabInstance:
   m_ObjectHideFlags: 0

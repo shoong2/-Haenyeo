@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FishMove : Fish
 {
@@ -10,15 +11,61 @@ public class FishMove : Fish
     public float reverseMoveSpeed = 1f;
 
     SpriteRenderer render;
+
+    public float sinSpeed = 2.0f; // 이동 속도
+    public float frequency = 1.0f; // sin 함수 주기
+    public float amplitude = 1.0f; // sin 함수 진폭
+    private Vector3 startPos;
+
+    bool move = true;
+
+    float time;
+
     protected override void Start()
     {
         base.Start();
 
         rigid = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
+        startPos = transform.position;
+    }
+
+    private void Update()
+    {
+        float a = Time.time - time;
+        if (move)
+        {
+            //Debug.Log(a);
+            float yOffset = Mathf.Sin(a * frequency) * amplitude;
+
+            startPos += transform.right * Time.deltaTime * sinSpeed;
+            transform.position = startPos + transform.up * yOffset;//transform.up; //* yOffset;
+        }
+        
+
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        if (pos.x < 0)
+        {
+            rigid.velocity = Vector2.zero;
+            render.flipX = false;
+            if (sinSpeed < 0)
+                sinSpeed *= -1f;
+
+        }
+        if (pos.x > 1)
+        {
+            rigid.velocity = Vector2.zero;
+            render.flipX = true;
+            sinSpeed *= -1f;
+        }
+
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
+
+
     }
     public override void ShowCanvas(float playerXPos)
     {
+        move = false;
         mark.SetActive(true);
         base.ShowCanvas(playerXPos);
         
@@ -28,9 +75,10 @@ public class FishMove : Fish
         }
         else
             mark.transform.localPosition = -Vector2.right;
+        
+        StartCoroutine(ReverseMove(left));
 
 
-           StartCoroutine(ReverseMove(left));
        // Invoke("ReverseMove", 0.5f);
         
     }
@@ -56,6 +104,14 @@ public class FishMove : Fish
     
         yield return new WaitForSeconds(reverseMoveSpeed);
         rigid.velocity = Vector2.zero;
+        startPos = transform.position;
+        move = true;
+        test();
     }
 
+
+    void test()
+    {
+        time = Time.time;
+    }
 }
