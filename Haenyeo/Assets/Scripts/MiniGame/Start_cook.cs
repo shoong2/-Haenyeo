@@ -38,36 +38,22 @@ public class Start_cook : MonoBehaviour
         // 시작 위치 저장
         barStartPosition = MiniGame_bar.transform.position;
         verBarStartPosition = MiniGame_ver_bar.transform.position;
-
-        // 비활성화된 GameObject 찾기
-        /*GameObject[] results = Resources.FindObjectsOfTypeAll<GameObject>();
-        foreach (GameObject go in results) {
-            if (go.name == "Result_image") {
-                // 찾았습니다! 이제 여기서 필요한 작업을 수행합니다.
-                // 예: GameObject 비활성화
-                resultImage = go;
-                resultImage.SetActive(false);
-                break;
-            }
-        }*/
-        
         resultImage = GameObject.Find("Canvas3/Result_image");
-        // "Result_image" 아래의 "bad" 이미지 GameObject 찾기
+        // "Result_image" 아래의 "timeover" 이미지 GameObject 찾기
         if (resultImage != null) {
             timeImage = resultImage.transform.Find("timeover").gameObject;
         } else {
             Debug.LogError("Failed to find 'Result_image' GameObject.");
         }
+
+        // 씬이 시작될 때 카운트 다운 시작
+        StartCoroutine(StartCountdown());
     }
 
     void CookButton_Click()
     {
         if (!isMoving) // 이동 중이 아닌 경우에만 실행
         {
-            if (!isCounting) // 카운트가 진행 중이 아닌 경우
-            {
-                StartCoroutine(StartCountdown()); // 30초 카운트 다운 시작
-            }
             isMoving = true; // 이동 시작
         }
         else // 이동 중인 경우
@@ -79,7 +65,7 @@ public class Start_cook : MonoBehaviour
     IEnumerator StartCountdown()
     {
         isCounting = true; // 카운트가 시작됨을 표시
-        int timeLeft = 5;
+        int timeLeft = 30;
         while (timeLeft >= 0)
         {
             TimeCount.text = timeLeft.ToString(); // 시간을 텍스트에 표시
@@ -89,12 +75,12 @@ public class Start_cook : MonoBehaviour
         isCounting = false; // 카운트가 종료됨을 표시
         cookButton.interactable = false; // CookButton 비활성화
 
-        // "bad" 이미지 활성화
+        // "timeover" 이미지 활성화
         if (timeImage != null) {
             timeImage.SetActive(true);
-            Debug.Log("Found bad image: " + (timeImage != null));
+            Debug.Log("Found timeover image: " + (timeImage != null));
         } else {
-            Debug.LogError("Failed to find 'bad' image GameObject.");
+            Debug.LogError("Failed to find 'timeover' image GameObject.");
         }
 
         // 카운트가 종료되면 MiniGame_bar와 MiniGame_ver_bar를 멈추도록 설정
