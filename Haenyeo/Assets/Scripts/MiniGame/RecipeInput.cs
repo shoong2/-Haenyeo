@@ -11,7 +11,7 @@ public class RecipeInput : MonoBehaviour
     public GameObject itemCountTextPrefab; // 갯수를 표시할 UI 텍스트의 프리팹
     public Transform textParent; // 텍스트들을 배치할 부모 객체
 
-    private Dictionary<string, int> itemCountDictionary = new Dictionary<string, int>(); // 각 아이템의 갯수를 저장할 딕셔너리
+    public Dictionary<string, int> itemCountDictionary = new Dictionary<string, int>(); // 각 아이템의 갯수를 저장할 딕셔너리
     public Button removeButton1;
     public Button removeButton2;
     public Button removeButton3;

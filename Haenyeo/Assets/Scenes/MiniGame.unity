@@ -695,7 +695,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 145916861}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1611257879}
+        m_TargetAssemblyTypeName: Start_cook, Assembly-CSharp
+        m_MethodName: test
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &145916861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3882,8 +3894,10 @@ MonoBehaviour:
   MiniGame_ver_bar: {fileID: 630035870}
   TimeCount: {fileID: 1445219213}
   cookButton: {fileID: 145916860}
-  resultImage: {fileID: 1712695060}
-  timeImage: {fileID: 0}
+  timeImage: {fileID: 1987479932}
+  greatImage: {fileID: 1528094852}
+  goodImage: {fileID: 874929846}
+  badImage: {fileID: 619374492}
   barMoveSpeed: 0.01
   verBarMoveSpeed: 0.018
 --- !u!1 &1613133731
