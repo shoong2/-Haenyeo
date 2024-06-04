@@ -47,10 +47,17 @@ public class Start_cook : MonoBehaviour
 
     void StartCooking()
     {
+        
+        Debug.Log(SeafoodManagerNew.Instance.seafoodCountDict["recipe_numA"]);
         if (isCounting) // 카운트가 진행 중일 때만 실행
         {
             isMoving = !isMoving; // 이동 상태 토글
             Debug.Log("StartCooking: isMoving set to " + isMoving);
+
+            if (!isMoving) // 멈추었을 때 판정 수행
+            {
+                CheckCookingResult();
+            }
         }
     }
 
@@ -82,10 +89,9 @@ public class Start_cook : MonoBehaviour
         // 카운트가 종료되면 MiniGame_bar와 MiniGame_ver_bar를 멈추도록 설정
         isMoving = false;
     }
-    bool a = true;
+
     void Update()
     {
-        //Debug.Log("!!!!!");
         if (isMoving)
         {
             // 바 이동
@@ -103,95 +109,55 @@ public class Start_cook : MonoBehaviour
                 verBarMoveSpeed *= -1;
             }
             MiniGame_ver_bar.transform.Translate(Vector3.right * verBarMoveSpeed);
-
-            // 충돌 감지
-            if (MiniGame_bar.transform.position.x >= MiniGame_ver_bar.transform.position.x - 0.5f &&
-                MiniGame_bar.transform.position.x <= MiniGame_ver_bar.transform.position.x + 0.5f)
-            {
-                // 필요한 재료와 넣은 재료의 일치 여부 확인
-                Dictionary<string, int> seafoodCountDict = SeafoodManagerNew.Instance.seafoodCountDict;
-                int seafood1Count = seafoodCountDict["seafood1"];
-                int seafood2Count = seafoodCountDict["seafood2"];
-                int seafood3Count = seafoodCountDict["seafood3"];
-                int recipe_numACount = FindObjectOfType<RecipeInput>().itemCountDictionary["Recipe_numA"]; //SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numA");
-                int recipe_numBCount = FindObjectOfType<RecipeInput>().itemCountDictionary["Recipe_numB"];//SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numB");
-                int recipe_numCCount = FindObjectOfType<RecipeInput>().itemCountDictionary["Recipe_numC"];//SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numC");
-
-                if (seafood1Count == recipe_numACount &&
-                    seafood2Count == recipe_numBCount &&
-                    seafood3Count == recipe_numCCount)
-                {
-                    if (MiniGame_bar.transform.localPosition.x - MiniGame_bar.GetComponent<RectTransform>().rect.width/2 >= MiniGame_ver_bar.transform.localPosition.x  &&
-                        MiniGame_bar.transform.localPosition.x + MiniGame_bar.GetComponent<RectTransform>().rect.width/2<= MiniGame_ver_bar.transform.localPosition.x )
-                    {
-                        // Great 이미지 활성화
-                        //StartCoroutine(ShowResultImage(greatImage));
-                        Debug.Log("______________________________Great");
-                    }
-                    else
-                    {
-                        // Good 이미지 활성화
-                        //StartCoroutine(ShowResultImage(goodImage));
-                        Debug.Log("Good*******************************");
-                    }
-                }
-                else
-                {
-                    if (MiniGame_bar.transform.position.x >= MiniGame_ver_bar.transform.position.x - 0.5f &&
-                        MiniGame_bar.transform.position.x <= MiniGame_ver_bar.transform.position.x + 0.5f)
-                    {
-                        // Bad 이미지 활성화
-                        //StartCoroutine(ShowResultImage(badImage));
-                        Debug.Log("bad");
-                    }
-                }
-            
-            }
         }
     }
-    public void test() 
-    {
-            // 충돌 감지
-            if (MiniGame_bar.transform.position.x >= MiniGame_ver_bar.transform.position.x - 0.5f &&
-                MiniGame_bar.transform.position.x <= MiniGame_ver_bar.transform.position.x + 0.5f)
-            {
-                // 필요한 재료와 넣은 재료의 일치 여부 확인
-                Dictionary<string, int> seafoodCountDict = SeafoodManagerNew.Instance.seafoodCountDict;
-                int seafood1Count = seafoodCountDict["seafood1"];
-                int seafood2Count = seafoodCountDict["seafood2"];
-                int seafood3Count = seafoodCountDict["seafood3"];
-                int recipe_numACount = SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numA");
-                int recipe_numBCount = SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numB");
-                int recipe_numCCount = SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numC");
 
-                if (seafood1Count == recipe_numACount &&
-                    seafood2Count == recipe_numBCount &&
-                    seafood3Count == recipe_numCCount)
-                {
-                    if (MiniGame_bar.transform.position.x >= MiniGame_ver_bar.transform.position.x - 0.5f &&
-                        MiniGame_bar.transform.position.x <= MiniGame_ver_bar.transform.position.x + 0.5f)
-                    {
-                        // Great 이미지 활성화
-                        StartCoroutine(ShowResultImage(greatImage));
-                    }
-                    else
-                    {
-                        // Good 이미지 활성화
-                        StartCoroutine(ShowResultImage(goodImage));
-                    }
-                }
-                else
-                {
-                    if (MiniGame_bar.transform.position.x >= MiniGame_ver_bar.transform.position.x - 0.5f &&
-                        MiniGame_bar.transform.position.x <= MiniGame_ver_bar.transform.position.x + 0.5f)
-                    {
-                        // Bad 이미지 활성화
-                        StartCoroutine(ShowResultImage(badImage));
-                    }
-                }
-            
+    void CheckCookingResult()
+    {
+        // 필요한 재료와 넣은 재료의 일치 여부 확인
+        Dictionary<string, int> seafoodCountDict = SeafoodManagerNew.Instance.seafoodCountDict;
+        int seafood1Count = seafoodCountDict["seafood1"];
+        int seafood2Count = seafoodCountDict["seafood2"];
+        int seafood3Count = seafoodCountDict["seafood3"];
+        int recipe_numACount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numA"];//SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numA");
+        int recipe_numBCount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numB"];//SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numB");
+        int recipe_numCCount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numC"];//SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numC");
+        
+        Debug.Log(seafood1Count == recipe_numACount);
+        Debug.Log(seafood1Count);
+        Debug.Log(recipe_numACount);
+        Debug.Log(seafood2Count == recipe_numBCount);
+        Debug.Log(seafood3Count == recipe_numCCount);
+        bool isRecipeCorrect = seafood1Count == recipe_numACount &&
+                               seafood2Count == recipe_numBCount &&
+                               seafood3Count == recipe_numCCount;
+
+        bool isInVerBarRange = MiniGame_bar.transform.localPosition.x + MiniGame_bar.GetComponent<RectTransform>().rect.width / 2 > MiniGame_ver_bar.transform.localPosition.x &&
+                               MiniGame_bar.transform.localPosition.x - MiniGame_bar.GetComponent<RectTransform>().rect.width / 2 <= MiniGame_ver_bar.transform.localPosition.x;
+
+        if (isRecipeCorrect)
+        {
+            if (isInVerBarRange)
+            {
+                // Great 이미지 활성화
+                StartCoroutine(ShowResultImage(greatImage));
+                Debug.Log("Great");
             }
+            else
+            {
+                // Good 이미지 활성화
+                StartCoroutine(ShowResultImage(goodImage));
+                Debug.Log("Good");
+            }
+        }
+        else
+        {
+            // Bad 이미지 활성화
+            StartCoroutine(ShowResultImage(badImage));
+            Debug.Log("Bad");
+        }
     }
+
     IEnumerator ShowResultImage(GameObject image)
     {
         image.SetActive(true);

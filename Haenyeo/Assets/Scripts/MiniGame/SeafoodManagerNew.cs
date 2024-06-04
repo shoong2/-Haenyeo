@@ -19,6 +19,9 @@ public class SeafoodManagerNew : MonoBehaviour
             seafoodCountDict.Add("seafood1", 1);
             seafoodCountDict.Add("seafood2", 2);
             seafoodCountDict.Add("seafood3", 3);
+            seafoodCountDict.Add("recipe_numA", 0);
+            seafoodCountDict.Add("recipe_numB", 0);
+            seafoodCountDict.Add("recipe_numC", 0);
 
             Debug.Log("SeafoodManagerNew Awake: Initialized seafood counts.");
         }
@@ -41,7 +44,7 @@ public class SeafoodManagerNew : MonoBehaviour
         }
     }
 
-    public void UpdateSeafoodCount(string seafoodName, int count)
+     void UpdateSeafoodCount(string seafoodName, int count)
     {
         if (seafoodCountDict.ContainsKey(seafoodName))
         {

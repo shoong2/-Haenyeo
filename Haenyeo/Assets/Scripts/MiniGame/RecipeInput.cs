@@ -11,7 +11,7 @@ public class RecipeInput : MonoBehaviour
     public GameObject itemCountTextPrefab; // 갯수를 표시할 UI 텍스트의 프리팹
     public Transform textParent; // 텍스트들을 배치할 부모 객체
 
-    public Dictionary<string, int> itemCountDictionary = new Dictionary<string, int>(); // 각 아이템의 갯수를 저장할 딕셔너리
+    //public Dictionary<string, int> itemCountDictionary = new Dictionary<string, int>(); // 각 아이템의 갯수를 저장할 딕셔너리
     public Button removeButton1;
     public Button removeButton2;
     public Button removeButton3;
@@ -24,19 +24,19 @@ public class RecipeInput : MonoBehaviour
         SetIconsActive(false);
 
         // 초기에 모든 텍스트를 0으로 설정
-        UpdateItemCountText("Recipe_numA", 0);
-        UpdateItemCountText("Recipe_numB", 0);
-        UpdateItemCountText("Recipe_numC", 0);
+        UpdateItemCountText("recipe_numA", 0);
+        UpdateItemCountText("recipe_numB", 0);
+        UpdateItemCountText("recipe_numC", 0);
 
         // 해산물 버튼들에 대한 이벤트를 추가
-        AddSeafoodButtonEvent("Crust_tuto_A", "Icon_a", new Vector3(-91, 211, 0), "Recipe_numA");
-        AddSeafoodButtonEvent("Crust_tuto_B", "Icon_b", new Vector3(81, 208, 0), "Recipe_numB");
-        AddSeafoodButtonEvent("Crust_tuto_C", "Icon_c", new Vector3(-91, 36, 0), "Recipe_numC");
+        AddSeafoodButtonEvent("Crust_tuto_A", "Icon_a", new Vector3(-91, 211, 0), "recipe_numA");
+        AddSeafoodButtonEvent("Crust_tuto_B", "Icon_b", new Vector3(81, 208, 0), "recipe_numB");
+        AddSeafoodButtonEvent("Crust_tuto_C", "Icon_c", new Vector3(-91, 36, 0), "recipe_numC");
 
         // remove 버튼들에 대한 이벤트 추가
-        AddRemoveButtonEvents(removeButton1, "Recipe_numA");
-        AddRemoveButtonEvents(removeButton2, "Recipe_numB");
-        AddRemoveButtonEvents(removeButton3, "Recipe_numC");
+        AddRemoveButtonEvents(removeButton1, "recipe_numA");
+        AddRemoveButtonEvents(removeButton2, "recipe_numB");
+        AddRemoveButtonEvents(removeButton3, "recipe_numC");
 
         // Fish_Button 활성화
         fishButton.SetActive(true);
@@ -53,7 +53,7 @@ public class RecipeInput : MonoBehaviour
 
     void AddSeafoodButtonEvent(string buttonName, string iconName, Vector3 iconPosition, string recipeNum)
     {
-        itemCountDictionary.Add(recipeNum, 0); // 초기 아이템 갯수를 0으로 설정
+        //SeafoodManagerNew.Instance.seafoodCountDict.Add(recipeNum, 0); // 초기 아이템 갯수를 0으로 설정 -> 추가가 되버림..
 
         Button seafoodButton = GameObject.Find(buttonName).GetComponent<Button>();
         seafoodButton.onClick.AddListener(() => AddSeafoodItem(iconName, iconPosition, recipeNum));
@@ -61,10 +61,12 @@ public class RecipeInput : MonoBehaviour
 
     void AddSeafoodItem(string iconName, Vector3 iconPosition, string recipeNum) 
     {
-        itemCountDictionary[recipeNum]++; // 아이템 갯수 증가
+        SeafoodManagerNew.Instance.seafoodCountDict[recipeNum]++;
+         // 아이템 갯수 증가
+        Debug.Log(SeafoodManagerNew.Instance.seafoodCountDict[recipeNum]);
 
         // 텍스트 업데이트
-        UpdateItemCountText(recipeNum, itemCountDictionary[recipeNum]);
+        UpdateItemCountText(recipeNum, SeafoodManagerNew.Instance.seafoodCountDict[recipeNum]);
 
         // 아이콘 활성화
         SetIconsActive(true);
@@ -73,11 +75,11 @@ public class RecipeInput : MonoBehaviour
     // 아이템을 제거하고 갯수를 감소시키는 메서드
     private void RemoveItem(string recipeNum)
     {
-        if (itemCountDictionary[recipeNum] > 0)
+        if (SeafoodManagerNew.Instance.seafoodCountDict[recipeNum] > 0)
         {
-            itemCountDictionary[recipeNum]--; // 아이템 갯수 감소
-            UpdateItemCountText(recipeNum, itemCountDictionary[recipeNum]); // 텍스트 업데이트
-            Debug.Log("Item count decreased: " + itemCountDictionary[recipeNum]);
+            SeafoodManagerNew.Instance.seafoodCountDict[recipeNum]--; // 아이템 갯수 감소
+            UpdateItemCountText(recipeNum, SeafoodManagerNew.Instance.seafoodCountDict[recipeNum]); // 텍스트 업데이트
+            Debug.Log("Item count decreased: " + SeafoodManagerNew.Instance.seafoodCountDict[recipeNum]);
         }
         else
         {
