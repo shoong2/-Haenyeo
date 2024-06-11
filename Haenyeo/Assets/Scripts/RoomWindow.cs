@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class RoomWindow : MonoBehaviour
 {
+    public UnityEvent onBed;
+
     public GameObject[] windows;
     public GameObject won;
     public Image panel; // 페이드인/아웃 효과를 적용할 Panel
@@ -55,7 +58,7 @@ public class RoomWindow : MonoBehaviour
         StartCoroutine(FadeOut());
         windows[0].SetActive(true);
         windows[2].SetActive(false);
-        
+        onBed.Invoke();
     }
 
    

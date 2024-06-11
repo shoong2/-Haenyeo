@@ -11,7 +11,7 @@ public class UnderSeaGameManager : MonoBehaviour
 
     [Header("Distance")]
     public TMP_Text distaceText;
-    float distance;
+    public float distance;
     public float num; //오차 줄이기 숫자
 
     SpriteRenderer render;
@@ -31,6 +31,9 @@ public class UnderSeaGameManager : MonoBehaviour
     public Image itemImage;
 
     float playerStartPos;
+    public float upSideSpeed;
+   // public bool startQuestIndex_1 = false;
+    public SaveNLoad storage;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,15 +41,23 @@ public class UnderSeaGameManager : MonoBehaviour
         currentHp = maxHp;
         camera = Camera.main;
         render = player.GetComponent<SpriteRenderer>();
-        playerStartPos = player.transform.position.y;
-
+        playerStartPos = player.transform.position.y + player.transform.localScale.y/10;
+        Debug.Log(playerStartPos);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(player.transform.position.y - playerStartPos);
         distance = -(player.transform.position.y - playerStartPos)/9;
         distaceText.text = distance.ToString("F1")+"M";
+        
+        if(storage && storage.saveData.nowIndex==1 && distance>=3)
+        {
+            storage.saveData.nowIndex++;
+            QuestManager.completeQuest = true;
+            Debug.Log("complete quest1");
+        }    
 
         seaHP.transform.position = player.transform.position + new Vector3(render.flipX ? -hpX : hpX, 0 , 0); // hp 따라다니기
         //currentHp -= Time.deltaTime;
@@ -81,7 +92,7 @@ public class UnderSeaGameManager : MonoBehaviour
         //while (player_UnderSea.transform.position != tewakTargetPosition)
         while (player.transform.position != tewakTargetPosition)
         {
-            player.transform.position = Vector3.MoveTowards(player.transform.position, tewakTargetPosition, distance * Time.deltaTime);
+            player.transform.position = Vector3.MoveTowards(player.transform.position, tewakTargetPosition, upSideSpeed * Time.deltaTime);
             yield return null;
         }
         SceneManager.LoadScene("Sea");

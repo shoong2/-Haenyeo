@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 public class Beach : MonoBehaviour
 {
+
+    public UnityEvent onScene;
     public GameObject[] people;
 
     //���ϳ�, �����, �̴ٿ�
@@ -40,13 +43,18 @@ public class Beach : MonoBehaviour
             people[i].gameObject.SetActive(true);
             people[i].transform.localPosition= position_2[i];
         }
+
+        foreach (var quest in QuestSystem.Instance.ActiveQuests) 
+        {
+            Debug.Log(1);
+            if (quest.ContainsTarget("GoBeach"))
+            {
+                onScene.Invoke();
+                break;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void MoveSea()
     {

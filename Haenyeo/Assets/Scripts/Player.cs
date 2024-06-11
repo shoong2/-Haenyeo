@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
     protected float y;
     protected bool restrict = true;
 
-    protected Rigidbody2D rigid; 
+    public Rigidbody2D rigid; 
 
     Vector2 moveVec; 
 
-    protected SpriteRenderer render; //좌우반전 스프라이트 렌더러
+    public SpriteRenderer render; //좌우반전 스프라이트 렌더러
 
     Animator playerAnim;
     //protected Camera mainCamera;
@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
         //mainCamera = Camera.main;
         objectWidth = transform.localScale.x;
         objectHeight = transform.localScale.y;
+      
 
         //joy = FindObjectOfType<VariableJoystick>();
     }
@@ -76,11 +77,6 @@ public class Player : MonoBehaviour
         moveVec = rigid.position + new Vector2(x, y) * speed * Time.deltaTime;
 
         //카메라 밖으로 나가지 않도록 제한
-
-        //leftEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
-        //rightEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
-        //topEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, restrictY, 0)).y - objectHeight / 2;
-        //bottomEdge = GameManager.instance.mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + objectHeight / 2;
 
         leftEdge = camera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + objectWidth / 2;
         rightEdge = camera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - objectWidth / 2;
