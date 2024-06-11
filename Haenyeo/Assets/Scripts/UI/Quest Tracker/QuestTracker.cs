@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class QuestTracker : MonoBehaviour
 {
     [SerializeField]
@@ -30,13 +31,20 @@ public class QuestTracker : MonoBehaviour
 
     public void Setup(Quest targetQuest, Color titleColor)
     {
+        Debug.Log(titleColor);
         this.targetQuest = targetQuest;
+        
+        if (targetQuest.DisplayName != "")
+        {
+            Debug.Log("display");
+            //questTitleText.text = targetQuest.Category == null ?
+            //    targetQuest.DisplayName :
+            //    $"{targetQuest.DisplayName}";
 
-        questTitleText.text = targetQuest.Category == null ?
-            targetQuest.DisplayName :
-            $"[{ targetQuest.Category.DisplayName}]{ targetQuest.DisplayName}";
+                //$"[{ targetQuest.Category.DisplayName}]{ targetQuest.DisplayName}";
 
-        questTitleText.color = titleColor;
+            //questTitleText.color = titleColor;
+        }
 
         targetQuest.onNewTaskGroup += UpdateTaskDescriptos;
         targetQuest.onCompleted += DestroySelf;
@@ -60,11 +68,14 @@ public class QuestTracker : MonoBehaviour
     {
         foreach(var task in currentTaskGroup.Tasks)
         {
-            var taskDescriptor = Instantiate(taskDescriptorPrefab, transform);
-            taskDescriptor.UpdateText(task);
-            task.onSuccessChanged += UpdateText;
+            if (task.CodeName != "dialogue")
+            {
+                var taskDescriptor = Instantiate(taskDescriptorPrefab, transform);
+                taskDescriptor.UpdateText(task);
+                task.onSuccessChanged += UpdateText;
 
-            taskDescriptorsByTask.Add(task, taskDescriptor);
+                taskDescriptorsByTask.Add(task, taskDescriptor);
+            }
         }
 
         if(prevTaskGroup !=  null)

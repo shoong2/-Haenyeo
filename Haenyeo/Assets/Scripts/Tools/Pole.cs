@@ -52,10 +52,6 @@ public class Pole : Tool
     public override void ToolAttack()
     {
         fish.SetHP();
-        //Vector3 fishPos = fish.transform.position;
-        //Vector3 direction = FindAnyObjectByType<Player>().transform.position - fishPos;
-
-        //sh.GetComponent<Rigidbody2D>().AddForce(direction.normalized * 10f * Time.fixedDeltaTime);
         StartCoroutine(AttractCoroutine());
         Debug.Log("Pole");
     }

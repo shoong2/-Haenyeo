@@ -106,6 +106,9 @@ public class Quest : ScriptableObject
         if (IsComplete)
             return;
 
+        if (category == "DIALOGUE")  //여기서 대화 인덱스 업데이트
+            GameManager.instance.storage.saveData.nowIndex++;
+
         CurrentTaskGroup.RecieveReport(category, target, successCount);
 
         if (CurrentTaskGroup.IsAllTaskComplete)
@@ -119,8 +122,6 @@ public class Quest : ScriptableObject
             else
             {
                 var prevTaskGroup = taskGroups[currentTaskGroupIndex++];
-                if (category == "DIALOGUE")
-                    GameManager.instance.storage.saveData.nowIndex++;
                 prevTaskGroup.End();
                 CurrentTaskGroup.Start();
                 onNewTaskGroup?.Invoke(this, CurrentTaskGroup, prevTaskGroup);
@@ -132,6 +133,7 @@ public class Quest : ScriptableObject
 
     public void Complete()
     {
+        Debug.Log("Check");
         CheckIsRunning();
 
         foreach (var taskGroup in taskGroups)

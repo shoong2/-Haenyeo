@@ -86,6 +86,7 @@ public class QuestSystem : MonoBehaviour
 
     public Quest Register(Quest quest)
     {
+        Debug.Log("register!!!");
         var newQuest = quest.Clone();
 
         if(newQuest is Achievement)

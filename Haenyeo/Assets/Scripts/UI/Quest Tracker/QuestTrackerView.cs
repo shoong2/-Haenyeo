@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class QuestTrackerView : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class QuestTrackerView : MonoBehaviour
 
     [SerializeField]
     CategoryColor[] categoryColors;
+
 
     private void Start()
     {
@@ -27,8 +29,13 @@ public class QuestTrackerView : MonoBehaviour
 
     void CreateQuestTracker(Quest quest)
     {
+        Debug.Log("create ui");
         var categoryColor = categoryColors.FirstOrDefault(x => x.category == quest.Category);
-        var color = categoryColor.category == null ? Color.white : categoryColor.color;
+        var color = categoryColor.category == null ? Color.white : Color.black;//categoryColor.color;
+
+        Debug.Log(categoryColor.category);
+        //foreach(var task in quest.CurrentTaskGroup.Tasks)
+        //    if(task.CodeName!="dialogue")
         Instantiate(questTrackerPrefab, transform).Setup(quest, color);
     }
 

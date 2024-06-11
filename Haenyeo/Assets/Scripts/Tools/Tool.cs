@@ -44,7 +44,7 @@ public abstract class Tool : MonoBehaviour
                 if (fish != null)
                     inven.AcquireItem(fish.transform.GetComponent<ItemPickUp>().item, runningQuest);
 
-                fish.Die();
+                //fish.Die();
             }
         }
     }

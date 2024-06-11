@@ -51,11 +51,12 @@ public class DialogueManager : MonoBehaviour
 
     bool multiCoroutine = false;
 
-    QuestReporter[] reporters;
+    //QuestReporter[] reporters;
+    QuestReporter reporter;
 
     private void Start()
     {
-        reporters = GetComponents<QuestReporter>();
+        //reporters = GetComponents<QuestReporter>();
     }
 
     void ShowDialogueImg(string name,bool active = true)
@@ -154,12 +155,33 @@ public class DialogueManager : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f, LayerMask.GetMask("NPC"));
 
-            if(hit)
+            //QuestSystem.Instance.ActiveQuests
+
+
+            if (hit)
             {
-                ShowDialogue(DatabaseManager.instance.GetDialogue(storage.saveData.nowIndex));
+
+                foreach (var quest in QuestSystem.Instance.ActiveQuests)
+                {
+                    Debug.Log(quest.CurrentTaskGroup);
+                    Debug.Log(quest.CurrentTaskGroup.ContainsTarget(hit.collider.tag));
+                    Debug.Log(hit.collider.tag);
+                    if (quest.CurrentTaskGroup.ContainsTarget(hit.collider.tag))
+                    {
+                        reporter = hit.collider.gameObject.GetComponent<QuestReporter>();
+                        ShowDialogue(DatabaseManager.instance.GetDialogue(storage.saveData.nowIndex));
+                    }
+                       // Debug.Log("Success");
+
+                }
+              
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            contextCount = dialogues[lineCount].contexts.Length - 2;
+        }
         
     }
 
@@ -185,15 +207,8 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         ShowDialogueImg("stop", false);
 
-        //reward.GetReward(storage.saveData.nowIndex); //끝날 때마다 전부 리워드가 있는 것이 아니라 수정 필요
-        //quest.Active(storage.saveData.nowIndex);
+        reporter.Report();
 
-        //endDialogue.Invoke();
-        foreach (QuestReporter report in reporters)
-        {
-            Debug.Log("test");
-            report.Report();
-        }
        
     }
 

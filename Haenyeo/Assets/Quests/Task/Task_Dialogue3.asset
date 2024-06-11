@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: {fileID: 11400000, guid: 86cbd00f18f933b4a912cca33aa1a795, type: 2}
   codeName: dialogue
-  description: talk with dayoung
+  description: talk with Jaewon
   action: {fileID: 11400000, guid: 9075c95b25fb0a041aa5c83c156a80b7, type: 2}
   needSuccessToComplete: 1
   initialSuccessValue: {fileID: 0}
   CanReceiveReportsDuringCompletion: 0
   targets:
-  - {fileID: 11400000, guid: 4de7d34d4c52518479d58da7acdf786a, type: 2}
+  - {fileID: 11400000, guid: 0b51b368f51bd5c4e84a4eb1286c1d7a, type: 2}

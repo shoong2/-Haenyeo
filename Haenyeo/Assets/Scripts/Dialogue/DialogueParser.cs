@@ -31,7 +31,6 @@ public class DialogueParser : MonoBehaviour
                 if (nameList.Count == 0)
                 {
                     nameList.Add(row[5]);
-                    Debug.Log("hi");
                 }
                 else if (row[5] == "")
                 {

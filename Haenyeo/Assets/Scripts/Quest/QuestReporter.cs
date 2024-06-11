@@ -17,10 +17,17 @@ public class QuestReporter : MonoBehaviour
     [SerializeField]
     string sceneName;
 
-    private void Start()
-    {
-        ReportIfPassCondition(SceneManager.GetActiveScene().name);
-    }
+    //private void Start()
+    //{
+    //    foreach (var quest in QuestSystem.Instance.ActiveQuests) //모든 reporter들이 작동해서 오류
+    //    {
+    //        if (quest.ContainsTarget("GoBeach"))
+    //        {
+    //            ReportIfPassCondition(SceneManager.GetActiveScene().name);
+    //        }
+    //    }
+            
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,8 +41,8 @@ public class QuestReporter : MonoBehaviour
 
     public void Report()
     {
-       // Debug.Log(target.name);
         QuestSystem.Instance.ReceiveReport(category, target, successCount);
+        Debug.Log(000000000000);
     }
 
     void ReportIfPassCondition(Component other)

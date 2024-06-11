@@ -80,8 +80,10 @@ public class Fish : MonoBehaviour
         curHp-= damage;
         if(curHp ==0)
         {
-            Debug.Log("Die");
             onFishDead.Invoke();
+            Debug.Log("Die");
+            EnableCanvas();
+            StartCoroutine(FadeOut());
         }
         else
             hp.fillAmount = curHp / maxHP;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Task_Move to 3M
   m_EditorClassIdentifier: 
   category: {fileID: 11400000, guid: 412477bc5d156f540948533e935b47b0, type: 2}
-  codeName: go to 3m
+  codeName: location
   description: "3m \uAE4C\uC9C0 \uBC84\uD2F0\uAE30"
   action: {fileID: 11400000, guid: 9075c95b25fb0a041aa5c83c156a80b7, type: 2}
   needSuccessToComplete: 1

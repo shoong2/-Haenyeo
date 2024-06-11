@@ -17,10 +17,4 @@ public class DontDestroy : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-            Debug.Log("2222222");
-      
-    }
 }

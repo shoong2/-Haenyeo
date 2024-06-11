@@ -51,7 +51,7 @@ public class TaskDescriptor : MonoBehaviour
     {
         Debug.Log(task.Category);
         //return $"<color=#{textColorCode}>¡Ü{task.Description} <color=#{successCountColorCode}>{task.CurrentSuccess}</color>/{task.NeedSuccessToComplete}</color>";
-        if (task.Category != "DIALOGUE")
+        if (task.Category != "DIALOGUE" && task.Category!="LOCATION")
             return $"<color=#{textColorCode}>¡Ü{task.Description} <color=#{successCountColorCode}>{task.CurrentSuccess}</color>/{task.NeedSuccessToComplete}</color>";
         else
             return $"<color=#{textColorCode}>¡Ü{task.Description}</color>";

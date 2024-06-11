@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: {fileID: 11400000, guid: 86cbd00f18f933b4a912cca33aa1a795, type: 2}
   codeName: dialogue
-  description: talk with Jaewon
+  description: "\uC7AC\uC6D0\uC774 \uB300\uD654"
   action: {fileID: 11400000, guid: 9075c95b25fb0a041aa5c83c156a80b7, type: 2}
   needSuccessToComplete: 1
   initialSuccessValue: {fileID: 0}
