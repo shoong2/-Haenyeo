@@ -22,6 +22,7 @@ public class SeafoodManagerNew : MonoBehaviour
             seafoodCountDict.Add("recipe_numA", 0);
             seafoodCountDict.Add("recipe_numB", 0);
             seafoodCountDict.Add("recipe_numC", 0);
+            seafoodCountDict.Add("recipe_numD", 0); // 새로운 레시피 추가
 
             Debug.Log("SeafoodManagerNew Awake: Initialized seafood counts.");
         }
@@ -56,6 +57,7 @@ public class SeafoodManagerNew : MonoBehaviour
             Debug.LogWarning("Seafood not found in the dictionary: " + seafoodName);
         }
     }
+
 }
 
 

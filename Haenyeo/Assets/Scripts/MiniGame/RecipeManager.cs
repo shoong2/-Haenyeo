@@ -119,7 +119,7 @@ public class RecipeManager : MonoBehaviour
         SetIconsActive(true);
 
         // Info의 정보 업데이트
-        //info.UpdateInfoText();
+        info.UpdateInfoText();
     }
 
     // 아이콘을 생성하고 위치를 설정하는 함수

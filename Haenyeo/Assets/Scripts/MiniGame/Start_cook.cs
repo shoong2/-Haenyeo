@@ -6,25 +6,27 @@ using TMPro;
 
 public class Start_cook : MonoBehaviour
 {
-    public GameObject MiniGame_bar; // 바 오브젝트
-    public GameObject MiniGame_ver_bar; // 영역 오브젝트
-    public TMP_Text TimeCount; // 시간 카운트 텍스트
-    public Button cookButton; // 요리하기 버튼
-    public GameObject timeImage; // 타임오버 이미지
-    public GameObject greatImage; // Great 이미지
-    public GameObject goodImage; // Good 이미지
-    public GameObject badImage; // Bad 이미지
+    public GameObject MiniGame_bar;
+    public GameObject MiniGame_ver_bar;
+    public TMP_Text TimeCount;
+    public Button cookButton;
+    public GameObject timeImage;
+    public GameObject greatImage;
+    public GameObject goodImage;
+    public GameObject badImage;
 
-    private const float MoveRange = 3.5f; // 이동 범위
-    public float barMoveSpeed = 0.05f; // 바 이동 속도
-    public float verBarMoveSpeed = 0.01f; // 영역 이동 속도
+    private const float MoveRange = 3.5f;
+    public float barMoveSpeed = 0.05f;
+    public float verBarMoveSpeed = 0.01f;
 
-    private bool isMoving = false; // 이동 여부
-    private bool isCounting = false; // 카운트다운 여부
+    private bool isMoving = false;
+    private bool isCounting = false;
+
+    private Info infoScript;
+    private SeafoodManagerNew seafoodManager;
 
     void Start()
     {
-        // 오브젝트 초기화
         TimeCount = GameObject.Find("TimeCount").GetComponent<TMP_Text>();
         cookButton = GameObject.Find("MiniGame_CookButton").GetComponent<Button>();
         timeImage = GameObject.Find("Canvas3/Result_image/timeover");
@@ -32,29 +34,28 @@ public class Start_cook : MonoBehaviour
         goodImage = GameObject.Find("Canvas3/Result_image/good");
         greatImage = GameObject.Find("Canvas3/Result_image/great");
 
-        // 요리하기 버튼에 클릭 이벤트 추가
         cookButton.onClick.AddListener(StartCooking);
 
-        // 이미지들을 비활성화
         timeImage.SetActive(false);
         greatImage.SetActive(false);
         goodImage.SetActive(false);
         badImage.SetActive(false);
 
-        // 씬이 시작될 때 카운트 다운 시작
         StartCoroutine(StartCountdown());
+
+        infoScript = FindObjectOfType<Info>();
+        seafoodManager = SeafoodManagerNew.Instance;
     }
 
     void StartCooking()
     {
-        
         Debug.Log(SeafoodManagerNew.Instance.seafoodCountDict["recipe_numA"]);
-        if (isCounting) // 카운트가 진행 중일 때만 실행
+        if (isCounting)
         {
-            isMoving = !isMoving; // 이동 상태 토글
+            isMoving = !isMoving;
             Debug.Log("StartCooking: isMoving set to " + isMoving);
 
-            if (!isMoving) // 멈추었을 때 판정 수행
+            if (!isMoving)
             {
                 CheckCookingResult();
             }
@@ -63,19 +64,18 @@ public class Start_cook : MonoBehaviour
 
     IEnumerator StartCountdown()
     {
-        isCounting = true; // 카운트가 시작됨을 표시
+        isCounting = true;
         int timeLeft = 60;
         while (timeLeft >= 0)
         {
-            TimeCount.text = timeLeft.ToString(); // 시간을 텍스트에 표시
-            Debug.Log("Countdown: " + timeLeft); // 디버그 로그 추가
-            yield return new WaitForSeconds(1); // 1초 대기
+            TimeCount.text = timeLeft.ToString();
+            Debug.Log("Countdown: " + timeLeft);
+            yield return new WaitForSeconds(1);
             timeLeft--;
         }
-        isCounting = false; // 카운트가 종료됨을 표시
-        cookButton.interactable = false; // CookButton 비활성화
+        isCounting = false;
+        cookButton.interactable = false;
 
-        // "timeover" 이미지 활성화
         if (timeImage != null)
         {
             timeImage.SetActive(true);
@@ -86,7 +86,6 @@ public class Start_cook : MonoBehaviour
             Debug.LogError("Failed to find 'timeover' image GameObject.");
         }
 
-        // 카운트가 종료되면 MiniGame_bar와 MiniGame_ver_bar를 멈추도록 설정
         isMoving = false;
     }
 
@@ -94,7 +93,6 @@ public class Start_cook : MonoBehaviour
     {
         if (isMoving)
         {
-            // 바 이동
             float newBarX = MiniGame_bar.transform.position.x + barMoveSpeed;
             if (newBarX < -MoveRange - 2f || newBarX > MoveRange - 2f)
             {
@@ -102,7 +100,6 @@ public class Start_cook : MonoBehaviour
             }
             MiniGame_bar.transform.Translate(Vector3.right * barMoveSpeed);
 
-            // 영역 이동
             float newVerBarX = MiniGame_ver_bar.transform.position.x + verBarMoveSpeed;
             if (newVerBarX < -MoveRange - 2f || newVerBarX > MoveRange - 2f)
             {
@@ -114,14 +111,13 @@ public class Start_cook : MonoBehaviour
 
     void CheckCookingResult()
     {
-        // 필요한 재료와 넣은 재료의 일치 여부 확인
         Dictionary<string, int> seafoodCountDict = SeafoodManagerNew.Instance.seafoodCountDict;
         int seafood1Count = seafoodCountDict["seafood1"];
         int seafood2Count = seafoodCountDict["seafood2"];
         int seafood3Count = seafoodCountDict["seafood3"];
-        int recipe_numACount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numA"];//SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numA");
-        int recipe_numBCount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numB"];//SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numB");
-        int recipe_numCCount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numC"];//SeafoodManagerNew.Instance.GetSeafoodCount("recipe_numC");
+        int recipe_numACount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numA"];
+        int recipe_numBCount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numB"];
+        int recipe_numCCount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numC"];
         
         Debug.Log(seafood1Count == recipe_numACount);
         Debug.Log(seafood1Count);
@@ -139,23 +135,23 @@ public class Start_cook : MonoBehaviour
         {
             if (isInVerBarRange)
             {
-                // Great 이미지 활성화
                 StartCoroutine(ShowResultImage(greatImage));
                 Debug.Log("Great");
             }
             else
             {
-                // Good 이미지 활성화
                 StartCoroutine(ShowResultImage(goodImage));
                 Debug.Log("Good");
             }
         }
         else
         {
-            // Bad 이미지 활성화
             StartCoroutine(ShowResultImage(badImage));
             Debug.Log("Bad");
         }
+
+        ResetRecipeAndHideInfo();
+        Debug.Log("CheckCookingResult completed, ResetRecipeAndHideInfo called");
     }
 
     IEnumerator ShowResultImage(GameObject image)
@@ -163,5 +159,33 @@ public class Start_cook : MonoBehaviour
         image.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         image.SetActive(false);
+    }
+
+    void ResetRecipeAndHideInfo()
+    {
+        if (infoScript == null)
+        {
+        infoScript = FindObjectOfType<Info>();
+        }
+
+        if (infoScript != null)
+        {
+            infoScript.HideInfoText();
+            Debug.Log("Attempting to hide info texts and reset recipe counts");
+        }
+        else
+        {
+            Debug.LogError("Info script not found");
+        }
+
+        if (cookButton != null)
+        {
+            cookButton.interactable = false;
+            Debug.Log("MiniGame_CookButton disabled");
+        }
+        else
+        {
+            Debug.LogError("MiniGame_CookButton not found");
+        }
     }
 }
