@@ -49,7 +49,7 @@ public class Start_cook : MonoBehaviour
 
     void StartCooking()
     {
-        Debug.Log(SeafoodManagerNew.Instance.seafoodCountDict["recipe_numA"]);
+        Debug.Log(seafoodManager.seafoodCountDict["recipe_numA"]);
         if (isCounting)
         {
             isMoving = !isMoving;
@@ -111,13 +111,13 @@ public class Start_cook : MonoBehaviour
 
     void CheckCookingResult()
     {
-        Dictionary<string, int> seafoodCountDict = SeafoodManagerNew.Instance.seafoodCountDict;
+        Dictionary<string, int> seafoodCountDict = seafoodManager.seafoodCountDict;
         int seafood1Count = seafoodCountDict["seafood1"];
         int seafood2Count = seafoodCountDict["seafood2"];
         int seafood3Count = seafoodCountDict["seafood3"];
-        int recipe_numACount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numA"];
-        int recipe_numBCount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numB"];
-        int recipe_numCCount = SeafoodManagerNew.Instance.seafoodCountDict["recipe_numC"];
+        int recipe_numACount = seafoodManager.seafoodCountDict["recipe_numA"];
+        int recipe_numBCount = seafoodManager.seafoodCountDict["recipe_numB"];
+        int recipe_numCCount = seafoodManager.seafoodCountDict["recipe_numC"];
         
         Debug.Log(seafood1Count == recipe_numACount);
         Debug.Log(seafood1Count);
@@ -165,7 +165,7 @@ public class Start_cook : MonoBehaviour
     {
         if (infoScript == null)
         {
-        infoScript = FindObjectOfType<Info>();
+            infoScript = FindObjectOfType<Info>();
         }
 
         if (infoScript != null)
@@ -177,6 +177,9 @@ public class Start_cook : MonoBehaviour
         {
             Debug.LogError("Info script not found");
         }
+
+        // Reset recipe counts
+        seafoodManager.ResetRecipeCounts();
 
         if (cookButton != null)
         {

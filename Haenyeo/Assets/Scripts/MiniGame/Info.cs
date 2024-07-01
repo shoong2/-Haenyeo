@@ -21,7 +21,7 @@ public class Info : MonoBehaviour
                 infoTextA = infoRTransform.Find("info_numA")?.GetComponent<TMP_Text>();
                 infoTextB = infoRTransform.Find("info_numB")?.GetComponent<TMP_Text>();
                 infoTextC = infoRTransform.Find("info_numC")?.GetComponent<TMP_Text>();
-                
+
                 if (infoTextA == null || infoTextB == null || infoTextC == null)
                 {
                     Debug.LogError("One or more info texts not found");
@@ -89,11 +89,8 @@ public class Info : MonoBehaviour
             Debug.LogError("One or more info texts are null");
         }
 
-        // recipe_num 값들도 미출력 처리
-        SeafoodManagerNew seafoodManager = SeafoodManagerNew.Instance;
-        seafoodManager.seafoodCountDict["recipe_numA"] = 0;
-        seafoodManager.seafoodCountDict["recipe_numB"] = 0;
-        seafoodManager.seafoodCountDict["recipe_numC"] = 0;
+        // Reset recipe counts in SeafoodManagerNew
+        SeafoodManagerNew.Instance.ResetRecipeCounts();
         Debug.Log("Recipe counts reset to 0");
 
         showInfo = false;

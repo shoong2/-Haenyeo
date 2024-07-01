@@ -45,7 +45,7 @@ public class SeafoodManagerNew : MonoBehaviour
         }
     }
 
-     void UpdateSeafoodCount(string seafoodName, int count)
+    public void UpdateSeafoodCount(string seafoodName, int count)
     {
         if (seafoodCountDict.ContainsKey(seafoodName))
         {
@@ -58,10 +58,12 @@ public class SeafoodManagerNew : MonoBehaviour
         }
     }
 
+    public void ResetRecipeCounts()
+    {
+        seafoodCountDict["recipe_numA"] = 0;
+        seafoodCountDict["recipe_numB"] = 0;
+        seafoodCountDict["recipe_numC"] = 0;
+        seafoodCountDict["recipe_numD"] = 0; // 새로운 레시피가 추가된 경우, 이에 맞게 초기화 추가 필요
+        Debug.Log("Recipe counts reset to 0");
+    }
 }
-
-
-
-
-
-
