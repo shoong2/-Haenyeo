@@ -42,7 +42,6 @@ public class QuestReporter : MonoBehaviour
     public void Report()
     {
         QuestSystem.Instance.ReceiveReport(category, target, successCount);
-        Debug.Log(000000000000);
     }
 
     void ReportIfPassCondition(Component other)

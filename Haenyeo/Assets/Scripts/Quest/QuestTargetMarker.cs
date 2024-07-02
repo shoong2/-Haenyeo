@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class QuestTargetMarker : MonoBehaviour
 {
+    //TryAddTargetQuest 함수에서 퀘스트에 있는 모든 타겟을 조회할 때 비활성화 돼있는 재원도 조회가 돼서
+    //분리시켜서 할 방법 생각하기
+
+
     [SerializeField]
     TaskTarget target;
     [SerializeField]
