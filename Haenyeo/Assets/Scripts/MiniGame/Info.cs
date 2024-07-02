@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Info : MonoBehaviour
 {
     private TMP_Text infoTextA;
     private TMP_Text infoTextB;
     private TMP_Text infoTextC;
+    Transform infoRTransform;
     private bool showInfo = true;
+    public GameObject recipeInfo;
 
     private void Awake()
     {
         Transform canvasTransform = GameObject.Find("Canvas2").transform;
         if (canvasTransform != null)
         {
-            Transform infoRTransform = canvasTransform.Find("infoR");
+             infoRTransform = canvasTransform.Find("infoR");
             if (infoRTransform != null)
             {
                 infoTextA = infoRTransform.Find("info_numA")?.GetComponent<TMP_Text>();
@@ -76,12 +79,14 @@ public class Info : MonoBehaviour
     }
 
     public void HideInfoText()
-    {
+    {   
+        recipeInfo.SetActive(false);
         if (infoTextA != null && infoTextB != null && infoTextC != null)
         {
-            infoTextA.text = "";
-            infoTextB.text = "";
-            infoTextC.text = "";
+            infoRTransform.gameObject.SetActive(false);
+            // infoTextA.text = "";
+            // infoTextB.text = "";
+            // infoTextC.text = "";
             Debug.Log("Info texts hidden");
         }
         else

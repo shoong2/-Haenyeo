@@ -69,7 +69,7 @@ public class RecipeInput : MonoBehaviour
         UpdateItemCountText(recipeNum, SeafoodManagerNew.Instance.seafoodCountDict[recipeNum]);
 
         // 아이콘 활성화
-        SetIconsActive(true);
+         SetIconsActive(true);
     }
 
     // 아이템을 제거하고 갯수를 감소시키는 메서드
