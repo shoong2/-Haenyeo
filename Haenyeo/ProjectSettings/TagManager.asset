@@ -10,10 +10,11 @@ TagManager:
   - Pole
   - Ship
   - Yoon
+  - Won
   - Yeong
   - Seo
-  - Jaewon
-  - Dayeong
+  - SeafoodIcon
+  - InactiveObject
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Player
   - Item
   - NPC
-  - Fish
-  - Piscse
+  - 
+  - 
   - 
   - 
   - 
