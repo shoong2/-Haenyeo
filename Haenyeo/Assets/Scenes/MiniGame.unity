@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 171655890}
   - component: {fileID: 171655889}
   - component: {fileID: 171655888}
+  - component: {fileID: 171655891}
   m_Layer: 5
   m_Name: Fish_Window_B
   m_TagString: Untagged
@@ -548,7 +549,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 360599421}
+      - m_Target: {fileID: 171655891}
         m_TargetAssemblyTypeName: ClickFish, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -598,6 +599,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171655886}
   m_CullTransparentMesh: 1
+--- !u!114 &171655891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171655886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4837e5470d1b5a64abc9229f246cad87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fish_Window_B: {fileID: 171655886}
+  Fish_Window: {fileID: 2123838914}
 --- !u!1 &192280153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1058,7 @@ GameObject:
   - component: {fileID: 291885733}
   - component: {fileID: 291885732}
   - component: {fileID: 291885731}
+  - component: {fileID: 291885734}
   m_Layer: 5
   m_Name: Recipe_Window_B
   m_TagString: Untagged
@@ -1114,7 +1130,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1588666402}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClickRecipe, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -1164,6 +1180,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291885729}
   m_CullTransparentMesh: 1
+--- !u!114 &291885734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291885729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f07416c814ff34d82bdf3a0732fcbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Recipe_Window_B: {fileID: 291885729}
+  Recipe_Window: {fileID: 1617007119}
 --- !u!1 &306719305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1288,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 360599420}
-  - component: {fileID: 360599421}
   m_Layer: 0
   m_Name: ClickFish
   m_TagString: Untagged
@@ -1281,20 +1310,6 @@ Transform:
   m_Father: {fileID: 604224803}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &360599421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 360599419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4837e5470d1b5a64abc9229f246cad87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Fish_Window_B: {fileID: 171655886}
-  Fish_Window: {fileID: 2123838914}
 --- !u!1 &386674357
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,7 +4160,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1588666401}
-  - component: {fileID: 1588666402}
   m_Layer: 0
   m_Name: ClickRecipe
   m_TagString: Untagged
@@ -4168,20 +4182,6 @@ Transform:
   m_Father: {fileID: 604224803}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1588666402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588666400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14f07416c814ff34d82bdf3a0732fcbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Recipe_Window_B: {fileID: 291885729}
-  Recipe_Window: {fileID: 1617007119}
 --- !u!1 &1611257874
 GameObject:
   m_ObjectHideFlags: 0
