@@ -734,10 +734,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1771789788}
+        m_TargetAssemblyTypeName: AddItem, Assembly-CSharp
+        m_MethodName: ItemCMinus
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 291885734}
         m_TargetAssemblyTypeName: ClickRecipe, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -1431,10 +1431,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1771789788}
+        m_TargetAssemblyTypeName: AddItem, Assembly-CSharp
+        m_MethodName: ItemAMinus
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1478,7 +1478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.03, y: 0}
+  m_AnchoredPosition: {x: 0.84, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &401713361
@@ -1602,10 +1602,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1771789788}
+        m_TargetAssemblyTypeName: AddItem, Assembly-CSharp
+        m_MethodName: ItemBPlus
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1799,6 +1799,7 @@ GameObject:
   - component: {fileID: 520957618}
   - component: {fileID: 520957617}
   - component: {fileID: 520957616}
+  - component: {fileID: 520957619}
   m_Layer: 5
   m_Name: RecipeItem_Button
   m_TagString: Untagged
@@ -1870,13 +1871,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 4996b0bb5cd9144409073a04b6ebb5b4, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 520957619}
+        m_TargetAssemblyTypeName: ClickRecipeItem, Assembly-CSharp
+        m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1920,6 +1921,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520957613}
   m_CullTransparentMesh: 1
+--- !u!114 &520957619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520957613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 954773dac810718479eb655b4da46603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecipeItem_Button: {fileID: 520957616}
+  RecipeInput: {fileID: 1106358775}
+  Recipe_NeedNumber: {fileID: 1362632446}
+  Number1: {fileID: 0}
+  Number2: {fileID: 0}
+  Number3: {fileID: 0}
 --- !u!1 &527535940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,10 +2060,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1771789788}
+        m_TargetAssemblyTypeName: AddItem, Assembly-CSharp
+        m_MethodName: ItemBMinus
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2136,10 +2155,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1771789788}
+        m_TargetAssemblyTypeName: AddItem, Assembly-CSharp
+        m_MethodName: ItemCPlus
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2655,10 +2674,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1771789788}
+        m_TargetAssemblyTypeName: AddItem, Assembly-CSharp
+        m_MethodName: ItemAPlus
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2925,7 +2944,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 920377332}
-  - component: {fileID: 920377333}
   m_Layer: 0
   m_Name: ClickRecipeItem
   m_TagString: Untagged
@@ -2948,18 +2966,6 @@ Transform:
   m_Father: {fileID: 604224803}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &920377333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920377331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 954773dac810718479eb655b4da46603, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1016617113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3319,7 +3325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1106358776
 Transform:
   m_ObjectHideFlags: 0
@@ -3328,7 +3334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106358775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -566.72656, y: -134.57462, z: -11544.544}
+  m_LocalPosition: {x: -538, y: -96, z: 171}
   m_LocalScale: {x: 51.30907, y: 51.30907, z: 51.30907}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3677,7 +3683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999997, y: 0}
+  m_AnchoredPosition: {x: 12.11, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352426829
@@ -3733,7 +3739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1362632447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3754,7 +3760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 57}
+  m_AnchoredPosition: {x: -21, y: 57}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1445219211
@@ -4960,6 +4966,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c6eed74d50f504a850486f4449574a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FishItem1: {fileID: 816425427}
+  FishItem2: {fileID: 443557715}
+  FishItem3: {fileID: 536498404}
+  Number1: {fileID: 1714328304}
+  Number2: {fileID: 516722886}
+  Number3: {fileID: 1024847183}
 --- !u!1 &1861883561
 GameObject:
   m_ObjectHideFlags: 0
