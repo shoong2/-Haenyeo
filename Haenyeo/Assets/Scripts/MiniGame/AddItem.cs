@@ -35,49 +35,49 @@ public class AddItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Number1.text = "0" + "/" + InputA;
-        Number2.text = "0" + "/" + InputB;
-        Number3.text = "0" + "/" + InputC;
+        Number1.text = a + "/" + InputA;
+        Number2.text = b + "/" + InputB;
+        Number3.text = c + "/" + InputC;
     }
 
     // Update is called once per frame
     public void ItemAPlus()
     {
         a++;
-        Number1.text = a.ToString() + "/" + InputA;
+        Number1.text = a + "/" + InputA;
     }
     public void ItemAMinus()
     {
         if (a>0)
         {
             a--;
-            Number1.text = a.ToString() + "/" + InputA;
+            Number1.text = a + "/" + InputA;
         }
     }
     public void ItemBPlus()
     {
         b++;
-        Number2.text = b.ToString() + "/" + InputB;
+        Number2.text = b + "/" + InputB;
     }
     public void ItemBMinus()
     {
         if (b>0)
         {
             b--;
-            Number2.text = b.ToString() + "/" + InputB;
+            Number2.text = b + "/" + InputB;
         }
     }
     public void ItemCPlus()
     {
         c++;
-        Number3.text = c.ToString() + "/" + InputC;
+        Number3.text = c + "/" + InputC;
     }
     public void ItemCMinus()
     {
         if (c>0)
         {
             c--;
-            Number3.text = c.ToString() + "/" + InputC;
+            Number3.text = c + "/" + InputC;
         }
     }
 }
