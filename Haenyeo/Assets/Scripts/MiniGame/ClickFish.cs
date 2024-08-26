@@ -18,7 +18,7 @@ public class ClickFish : MonoBehaviour
     {
         Fish_Window.SetActive(true);
         ClickRecipe clickRecipe = FindObjectOfType<ClickRecipe>();
-        clickRecipe.Recipe_Window.SetActive(false) ;
+        clickRecipe.Recipe_Window.SetActive(false);
     }
 
     // Update is called once per frame
