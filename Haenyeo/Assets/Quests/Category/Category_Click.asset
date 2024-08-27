@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9464cffedfbc91f4d8aa23dc28567652, type: 3}
   m_Name: Category_Click
   m_EditorClassIdentifier: 
-  codeName: 
+  codeName: click
   displayName: 

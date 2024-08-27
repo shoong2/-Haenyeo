@@ -25,7 +25,6 @@ MonoBehaviour:
   - tasks:
     - {fileID: 11400000, guid: 65b28ce2073667d41ab9fb549ad7db41, type: 2}
     - {fileID: 11400000, guid: d3804c1106c240d40b10df64aa267567, type: 2}
-    - {fileID: 11400000, guid: bd3a5ce323a0f32439772e1c8adb6941, type: 2}
   rewards: []
   useAutoComplete: 1
   isCancelable: 0

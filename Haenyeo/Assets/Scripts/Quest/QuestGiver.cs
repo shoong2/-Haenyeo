@@ -55,6 +55,7 @@ public class QuestGiver : MonoBehaviour
                 }
             }
         }
+
     }
 
 }

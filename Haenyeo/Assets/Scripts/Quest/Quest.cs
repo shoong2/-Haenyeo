@@ -107,7 +107,10 @@ public class Quest : ScriptableObject
             return;
 
         if (category == "DIALOGUE")  //여기서 대화 인덱스 업데이트
+        {
+            Debug.Log("update");
             GameManager.instance.storage.saveData.nowIndex++;
+        }
 
         CurrentTaskGroup.RecieveReport(category, target, successCount);
 
