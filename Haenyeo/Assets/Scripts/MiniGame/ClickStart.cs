@@ -12,8 +12,8 @@ public class ClickStart : MonoBehaviour
     Vector3 pos_ver; //현재 위치
     Vector3 pos;
     float delta_ver = 3.4f;
-    float delta = 3.0f;
-    float speed_ver = 8.0f;
+    float delta = 3.4f;
+    float speed_ver = 5.0f;
     float speed = 3.0f;
     private bool isMoving = false; // 움직임을 제어하기 위한 플래그 변수
     private float timeOffset_ver; // 세로 바를 위한 시간 오프셋
@@ -22,12 +22,13 @@ public class ClickStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MiniGame_ver_bar.transform.localPosition = new Vector2(-209,-344);
         Start_cook.onClick.AddListener(OnClickButton);
         pos_ver = MiniGame_ver_bar.transform.position;
         pos = MiniGame_bar.transform.position;
 
         //시간 오프셋을 서로 다르게 설정
-        timeOffset_ver = UnityEngine.Random.Range(0f,0f);
+        timeOffset_ver = UnityEngine.Random.Range(0f,10f);
         timeOffset = UnityEngine.Random.Range(0f,10f);
     }
     void OnClickButton()
@@ -43,7 +44,7 @@ public class ClickStart : MonoBehaviour
             //작은 세로 바 움직이기
             delta = delta_ver;
             Vector3 v = pos_ver;
-            v.x += delta_ver * Mathf.Sin((Time.time+timeOffset_ver)*speed);
+            v.x += delta_ver * Mathf.Sin((Time.time+timeOffset_ver)*speed_ver);
             MiniGame_ver_bar.transform.position = v;
 
             // 큰 가로 바 움직이기
