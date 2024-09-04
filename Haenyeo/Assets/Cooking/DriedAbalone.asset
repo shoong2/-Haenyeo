@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DriedAbalone
   m_EditorClassIdentifier: 
   cookingName: dried abalone
-  cookingImage: {fileID: 0}
+  cookingImage: {fileID: 21300000, guid: 614e76d2f2b73af4fa83ca82c2d7a961, type: 3}
   price: 100
   needfood:
   - food: {fileID: 11400000, guid: c28629acc2598cf478d5dc5195a50a8e, type: 2}

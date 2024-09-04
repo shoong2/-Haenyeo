@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: "\uD654\uC0B4\uC624\uC9D5\uC5B4"
   itemType: 2
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 591e58830bf42674388cbcd30d47159d, type: 3}
   itemPrefab: {fileID: 0}
-  per: 0
-  spawnTime: 0
+  per: 90
+  spawnTime: 10
   weaponType: 
