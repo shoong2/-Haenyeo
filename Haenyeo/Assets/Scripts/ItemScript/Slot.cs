@@ -10,7 +10,7 @@ public class Slot : MonoBehaviour
     public int itemCount;
 
     [SerializeField]
-    TMP_Text text_Count;
+    public TMP_Text text_Count;
     [SerializeField]
     GameObject countImage;
 
@@ -19,7 +19,7 @@ public class Slot : MonoBehaviour
 
 
     //이미지 투명도 조절
-    void SetColor(float _alpha)
+    protected void SetColor(float _alpha)
     {
         Color color = itemImage.color;
         color.a = _alpha;
@@ -28,7 +28,7 @@ public class Slot : MonoBehaviour
 
 
     //아이템 획득
-    public void AddItem(Item _item, int _count =1)
+    public virtual void AddItem(Item _item, int _count =1)
     {
         item = _item;
         itemCount = _count;
@@ -38,7 +38,8 @@ public class Slot : MonoBehaviour
         {
             text_Count.text = itemCount.ToString();
             //text_Count.text = "0";
-            countImage.SetActive(true);
+            if(countImage!=null)
+                countImage.SetActive(true);
             
         }
         else

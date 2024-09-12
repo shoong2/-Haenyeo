@@ -27,29 +27,15 @@ public class DialogueManager : MonoBehaviour
 
     [Header("저장소")]
     [SerializeField] SaveNLoad storage;
-    //public string tagName;
-    [Header("퀘스트")]
-    [SerializeField] QuestManager quest;
-    [Header("리워드")]
-    [SerializeField] RewardManager reward;
+
 
     [Header("알림창")]
-    [SerializeField] GameObject rewardBox;
     [SerializeField] Image itemBox;
-    //[SerializeField] Sprite[] itemSprite;
-    //[SerializeField] TMP_Text itemName;
-    //[SerializeField] TMP_Text itemDetail;
 
-    [SerializeField] GameObject questBox;
-    [SerializeField] TMP_Text questName;
 
     [Header("원화")]
     [SerializeField] Image[] charImg;
 
-    bool isClickRewardBox = false;
-    bool isClickQuestBox = false;
-
-    bool multiCoroutine = false;
 
     //QuestReporter[] reporters;
     QuestReporter reporter;
@@ -160,9 +146,10 @@ public class DialogueManager : MonoBehaviour
 
             if (hit)
             {
-
+                
                 foreach (var quest in QuestSystem.Instance.ActiveQuests)
                 {
+              
                     Debug.Log(quest.CurrentTaskGroup);
                     Debug.Log(quest.CurrentTaskGroup.ContainsTarget(hit.collider.tag));
                     Debug.Log(hit.collider.tag);
@@ -212,17 +199,4 @@ public class DialogueManager : MonoBehaviour
        
     }
 
-
-    public void ClickRewardBox()
-    {
-        isClickRewardBox = true;
-        rewardBox.SetActive(false);
-
-    }
-
-    public void ClickQuestBox()
-    {
-        isClickQuestBox = true;
-        questBox.SetActive(false);
-    }    
 }

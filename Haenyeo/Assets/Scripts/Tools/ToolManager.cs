@@ -38,6 +38,7 @@ public class ToolManager : MonoBehaviour
 
     private void Start()
     {
+        inven = FindObjectOfType<Inventory>();
         for (int i = 0; i < tools.Length; i++)
         {        
             Tool emp = myTool[i];
@@ -83,6 +84,11 @@ public class ToolManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void BagButton()
+    {
+        inven.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     private void Update()

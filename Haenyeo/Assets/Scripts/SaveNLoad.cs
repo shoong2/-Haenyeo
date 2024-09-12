@@ -61,7 +61,6 @@ public class SaveNLoad : MonoBehaviour
                 saveData.invenArrayNumber.Add(i);
                 saveData.invenItemName.Add(slots[i].item.itemName);
                 saveData.invenItemNumber.Add(slots[i].itemCount);
-
             }
         }
 
@@ -86,8 +85,10 @@ public class SaveNLoad : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveData();
-    }
+
+    //저장기능 임시 삭제
+    //private void OnApplicationQuit()
+    //{
+    //    SaveData();
+    //}
 }

@@ -105,7 +105,7 @@ public class QuestSystem : MonoBehaviour
             newQuest.onCanceled += OnQuestCanceled;
 
             activeQuests.Add(newQuest);
-
+            Debug.Log("Register Quest kkkk");
             newQuest.OnRegister();
             onQuestRegistered?.Invoke(newQuest);
            // if (newQuest.Category == "DIALOGUE")

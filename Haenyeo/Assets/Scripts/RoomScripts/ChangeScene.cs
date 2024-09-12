@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
+    Inventory inven;
 
    public void GoSea()
     {
@@ -35,8 +36,12 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("MiniGame");
     }
 
-    public void abc_test()
+    //In the beach scene, bag button 
+    public void BagButton()
     {
-        Debug.Log("test");
+        if (inven != null)
+            inven = FindObjectOfType<Inventory>();
+
+        inven.transform.GetChild(0).gameObject.SetActive(true);
     }
 }

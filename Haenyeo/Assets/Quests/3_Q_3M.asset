@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309731a8c08ce9e44966b29c11df6cb4, type: 3}
+  m_Name: 3_Q_3M
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 412477bc5d156f540948533e935b47b0, type: 2}
+  icon: {fileID: 0}
+  codeName: 321
+  displayName: "3m \uAE4C\uC9C0 \uBC84\uD2F0\uAE30"
+  description: 321
+  taskGroups:
+  - tasks:
+    - {fileID: 11400000, guid: 3055348823e0ca14bac5b3beeae2082a, type: 2}
+  rewards: []
+  useAutoComplete: 1
+  isCancelable: 0
+  isSavable: 0
+  isNotifier: 1
+  acceptionConditions:
+  - {fileID: 11400000, guid: 87c742f26c26da54982d064158897e67, type: 2}
+  cancelConditions: []

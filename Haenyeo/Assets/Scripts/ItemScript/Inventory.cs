@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-
     //½½·Ô ºÎ¸ð
     [SerializeField]
     GameObject go_SlotsParent;

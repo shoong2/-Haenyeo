@@ -10,7 +10,7 @@ public class ClickFish : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Fish_Window.SetActive(false);
+        //Fish_Window.SetActive(false);
         //GameObject.Find("Scipts/ClickRecipe").GetComponent<ClickRecipe>();
     }
 

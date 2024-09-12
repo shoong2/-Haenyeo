@@ -216,10 +216,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1922338153}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1891466969}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: BagButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1249,7 +1249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6033514301725074913, guid: 4611853839672cd428c0beb84e37ac56, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6033514301725074918, guid: 4611853839672cd428c0beb84e37ac56, type: 3}
       propertyPath: m_Pivot.x
@@ -3134,11 +3134,6 @@ MonoBehaviour:
   successCount: 1
   colliderTags: []
   sceneName: 
---- !u!1 &1922338153 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6033514301087109615, guid: 4611853839672cd428c0beb84e37ac56, type: 3}
-  m_PrefabInstance: {fileID: 445032836}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1965322522
 GameObject:
   m_ObjectHideFlags: 0

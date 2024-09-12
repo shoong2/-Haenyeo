@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: IsQuestComplete_1
   m_EditorClassIdentifier: 
   description: 
-  target: {fileID: 11400000, guid: a22471550cbece5418e0d3f36cbe683a, type: 2}
+  target: {fileID: 11400000, guid: 4a87426b9f83f594fb7fd517f820cf83, type: 2}

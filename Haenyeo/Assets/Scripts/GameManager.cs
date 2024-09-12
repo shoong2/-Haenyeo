@@ -185,4 +185,9 @@ public class GameManager : MonoBehaviour
     {
         ClickCount = 0;
     }
+
+    public void TimeSet()
+    {
+        Time.timeScale = 1f;
+    }
 }

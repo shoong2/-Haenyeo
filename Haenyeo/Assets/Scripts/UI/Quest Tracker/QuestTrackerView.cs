@@ -12,13 +12,16 @@ public class QuestTrackerView : MonoBehaviour
     [SerializeField]
     CategoryColor[] categoryColors;
 
+  
 
     private void Start()
     {
         QuestSystem.Instance.onQuestRegistered += CreateQuestTracker;
-
         foreach (var quest in QuestSystem.Instance.ActiveQuests)
+        {
             CreateQuestTracker(quest);
+        }
+
     }
 
     private void OnDestroy()

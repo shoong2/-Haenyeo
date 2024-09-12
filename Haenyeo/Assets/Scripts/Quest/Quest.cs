@@ -52,6 +52,8 @@ public class Quest : ScriptableObject
     bool isCancelable;
     [SerializeField]
     bool isSavable;
+    [SerializeField]
+    bool isNotifier= true;
 
     [Header("Condition")]
     [SerializeField]
@@ -77,6 +79,7 @@ public class Quest : ScriptableObject
     public virtual bool IsCancelable => isCancelable && cancelConditions.All(x=>x.IsPass(this));
     public bool IsAcceptable=> acceptionConditions.All(x=>x.IsPass(this));
     public virtual bool IsSavable => isSavable;
+    public bool IsNotifier => isNotifier;
 
     public event TaskSuccessChangedHandler onTaskSuccessChanged;
     public event CompletedHandler onCompleted;
@@ -124,6 +127,7 @@ public class Quest : ScriptableObject
             }
             else
             {
+                Debug.Log("here is task end");
                 var prevTaskGroup = taskGroups[currentTaskGroupIndex++];
                 prevTaskGroup.End();
                 CurrentTaskGroup.Start();

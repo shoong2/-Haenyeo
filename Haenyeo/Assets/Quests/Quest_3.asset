@@ -27,6 +27,6 @@ MonoBehaviour:
   useAutoComplete: 1
   isCancelable: 0
   isSavable: 0
-  acceptionConditions:
-  - {fileID: 11400000, guid: 4272aaea64c4d1b47b2f162c4cd2c203, type: 2}
+  isNotifier: 0
+  acceptionConditions: []
   cancelConditions: []
